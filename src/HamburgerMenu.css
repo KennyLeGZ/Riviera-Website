@@ -1,0 +1,41 @@
+/* Default state (for larger screens) */
+.hamburger-icon {
+  display: none;  /* Hide on larger screens */
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.dropdown-menu {
+  display: none;  /* Hidden by default */
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-menu.open {
+  display: flex;  /* Show when open */
+}
+
+.hamburger-icon.open {
+  transform: rotate(90deg);  /* Rotate to an 'X' */
+}
+
+/* Mobile view (max-width: 768px) */
+@media (max-width: 768px) {
+  .hamburger-icon {
+    display: block;  /* Show on mobile screens */
+  }
+
+  .dropdown-menu {
+    display: none;  /* Hidden by default */
+  }
+}
