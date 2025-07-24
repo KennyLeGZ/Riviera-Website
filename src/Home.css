@@ -25,7 +25,7 @@ html, body, #root, app-container {
   align-items: center;
   height: 80px;
   padding: 0 2rem;
-  background-color: transparent;
+  background-color: #ffffff;
   backdrop-filter: blur(10px);
   position: fixed;
   top: 0;
@@ -77,12 +77,24 @@ html, body, #root, app-container {
 .header-address::after {
   content: "";
   position: absolute;
-  width: 100%;
+  width: 0; /* Start hidden */
   height: 2px;
-  bottom: -8.5px;
+  bottom: 2px;
   left: 0;
   background-color: #707070;
+  animation: underlineGrow 0.6s ease-out forwards;
+  animation-delay: 0.4s; /* slight pause after text appears */
 }
+
+@keyframes underlineGrow {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
 
 .header-address:hover {
   color: #555555; /* text color on hover */
@@ -91,6 +103,11 @@ html, body, #root, app-container {
 
 .header-address:hover::after {
   background-color: #555555; /* underline color on hover */
+}
+
+.header-address img {
+  height: 70px; /* Increase this value to make logo bigger */
+  width: 50px;
 }
 
 .header-buttons {
@@ -290,10 +307,27 @@ html, body, #root, app-container {
 .discover-riviera {
   position: relative;
   width: 100vw;
-  height: 70vh;
+  height: 55vh;
   overflow: hidden;
-  padding: 0; /* no padding */
-  margin: 0; /* no margin */
+  margin: 80px 0 0 0;
+  padding: 0;
+}
+
+.slides-container {
+  display: flex;
+  width: 120vw; /* number of slides * 100vw */
+  height: 100%;
+  transition: transform 0.6s ease-in-out;
+  margin: 0;
+  padding: 0;
+}
+
+.slide {
+  width: 100vw;
+  flex-shrink: 0;
+  position: relative;
+  margin: 0;
+  padding: 0;
 }
 
 .riviera-image {
@@ -305,9 +339,10 @@ html, body, #root, app-container {
 .overlay {
   position: absolute;
   inset: 0;
+  background: rgba(0,0,0,0.4);
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
 .title {
@@ -317,18 +352,166 @@ html, body, #root, app-container {
   text-align: center;
 }
 
+.arrow-button {
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  transform: translateY(-50%);
+  background-color: #ffffff;
+  color: #1a1a1a;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 2.02rem; /* Big arrow */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.25s ease;
+  z-index: 10;
+  padding: 0;
+  line-height: 1;
+}
+
+.arrow-button:hover {
+  background-color: #f5f5f5;
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
+}
+
+.arrow-button:active {
+  transform: translateY(-50%) scale(0.95);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
 @media (min-width: 768px) {
   .title {
     font-size: 4.5rem;
   }
 }
 
-/* Sections */
-section {
+
+
+/* Discover Buildings Section */
+.discover-buildings-section {
+  display: flex;
+  width: 100vw;
+  height: 65vh;
+  font-family: 'Inter', sans-serif;
+}
+
+.building-half {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  transition: transform 0.4s ease;
+  cursor: pointer;
+}
+
+/* Subtle zoom on hover */
+.building-half:hover {
+  transform: scale(1.02);
+}
+
+/* Overlay - initially transparent */
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  margin-bottom: 3rem;
-  padding: 2rem 2rem 2rem 2rem;
-  box-sizing: border-box;
+  height: 100%;
+  background: rgba(17, 24, 39, 0.5); /* dark blue/black tint */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+/* Darken overlay only on hover */
+.building-half:hover .image-overlay {
+  opacity: 1;
+}
+
+/* Content */
+.building-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+}
+
+.building-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.building-info-box {
+  background-color: rgba(0, 0, 0, 0.267); /* lighter overlay */
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  display: inline-block;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  max-width: 100%;
+}
+
+.building-info-box h2 {
+  font-size: 3.0rem;
+  margin: 0 0 0rem;
+  color: #ffffff;
+}
+
+.building-info-box a.visit-button {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  background-color: #e9eaeb;
+  color: #000000 !important; /* override inherited white */
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  display: inline-block;
+}
+
+.building-info-box a.visit-button:hover {
+  background-color: #012e61;
+  color: #ffffff !important;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .discover-buildings-section {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .building-half {
+    height: 50vh;
+  }
+
+  .building-info-box {
+    padding: 0.5rem 0.75rem;
+    max-width: 95%;
+  }
+
+  .building-info-box h2 {
+    font-size: 1.5rem;
+  }
+
+  .building-info-box a.visit-button {
+    font-size: 0.95rem;
+  }
 }
 
 h2 {
@@ -708,20 +891,25 @@ th {
 }
 
 .highlight-hero {
+  width: 100vw;              /* Full viewport width */
+  max-width: 100%;           /* Prevents constraint */
   padding: 4rem 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 0;
+  box-sizing: border-box;    /* Includes padding in width */
 }
+
 
 .hero-content-wrapper {
   display: flex;
   flex-wrap: wrap;
   max-width: 1200px;
-  margin: 0 auto;
   gap: 2rem;
   align-items: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .highlight-hero.reverse .hero-content-wrapper {
@@ -857,8 +1045,6 @@ th {
   max-width: 100vw;    /* no max width to limit */
 }
 
-
-
 /* Image container */
 .about-image {
   flex: 1 1 50%;       /* 50% width */
@@ -874,12 +1060,15 @@ th {
   height: 100%;
   object-fit: cover;
   display: block;
-  border-radius: 0;    /* no radius on image corners */
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s ease;
 }
 
 .about-image img:hover {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
+
 
 /* Text container */
 .about-text {
@@ -892,13 +1081,20 @@ th {
 
 /* Section title */
 .about-text h2 {
-  font-size: 3.2rem;
+  font-size: 2.75rem;
   font-weight: 700;
-  margin-bottom: 1.5rem;
   color: #333333;
   border-left: 5px solid #AAAAAA;
   padding-left: 1rem;
-  letter-spacing: 0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.about-subheading {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #7d766b;
+  margin-bottom: 1.5rem;
+  padding-left: 1rem;
 }
 
 /* Paragraphs */
@@ -956,12 +1152,14 @@ th {
   }
 
   .about-image {
+    order: 2;               /* image comes after text on mobile */
     width: 100%;             /* full screen width */
     max-width: 100%;
     height: auto;
     max-height: 70vh;         /* keeps it big but doesn't push content off screen */
     object-fit: cover;        /* scales nicely */
     display: block;
+    padding: 1rem 1rem 2rem;
   }
 
   .about-image img {
@@ -974,7 +1172,8 @@ th {
 
   .about-text {
     width: 100%;
-    padding: 1rem;
+    order: 1;
+    padding: 1.5rem 1rem;
     box-sizing: border-box;
   }
 
@@ -982,8 +1181,12 @@ th {
     text-align: center;
     border-left: none;
     border-bottom: 3px solid #AAAAAA;
-    padding: 0.5rem 0;
-    margin-top: 1rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .about-subheading {
+    text-align: center;
+    padding: 0;
   }
 
   .about-text p {
@@ -995,10 +1198,11 @@ th {
 .our-properties-section {
   flex-grow: 1; /* takes up all leftover vertical space */
   width: 100vw;
-  padding: 2rem 1rem;
   background-color: #F9FAFB;
   box-sizing: border-box;
   text-align: center;
+  padding-top: 2rem;
+  padding-bottom: 6rem;
 }
 
 .our-properties-section h2 {
@@ -1011,27 +1215,42 @@ th {
   letter-spacing: 0.02em;
 }
 
+.our-properties-section p {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  margin-bottom: 1.4rem;
+  color: #444;
+}
+
 .property-switch {
   display: inline-flex;
-  border-radius: 30px;
-  border: 1px solid #0077ff;
-  overflow: hidden;
-  cursor: pointer;
-  user-select: none;
-  margin-top: 1rem;
+  border-radius: 999px;
+  background-color: #f0f4f8; /* subtle background */
+  padding: 4px;
+  border: 1px solid #d0d7de;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
+  margin-top: 1.5rem;
+  gap: 4px;
 }
 
 .property-switch button {
-  padding: 0.5rem 2rem;
+  padding: 0.6rem 1.8rem;
   border: none;
   background-color: transparent;
-  color: #0077ff;
+  color: #1a1a1a;
   font-weight: 600;
-  transition: background-color 0.3s, color 0.3s;
+  border-radius: 999px;
+  font-size: 1rem;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.property-switch button:hover {
+  background-color: #e0ebff;
+  color: #0057cc;
 }
 
 .property-switch button.active {
-  background-color: #0077ff;
+  background-color: #012e61;
   color: white;
 }
 
@@ -1087,22 +1306,24 @@ th {
 }
 
 .property-card-text h3 {
-  font-size: 3.2rem;
+  font-size: 2.6rem;
   font-weight: 700;
-  margin-bottom: 1.5rem;
-  color: #333333;
-  border-left: 5px solid #AAAAAA;
-  padding-left: 1rem;
-  letter-spacing: 0.02em;
+  margin-bottom: 0.75rem;
+  color: #2b2b2b;
+  border-left: 4px solid #999;
+  padding-left: 0.75rem;
+  letter-spacing: 0.01em;
 }
 
 .property-card-text p {
-  font-size: 1.125rem;
-  line-height: 1.7;
-  margin-bottom: 1.4rem;
-  color: #444;
+  font-size: 1.1rem;
+  line-height: 1.75;
+  margin-bottom: 1.5rem;
+  color: #4a4a4a;
+  max-width: 95%;
 }
 
+/*
 .property-card-text ul {
   list-style: none;
   padding-left: 0;
@@ -1129,6 +1350,7 @@ th {
   font-size: 1.2rem;
   line-height: 1;
 }
+*/
 
 /* Image container */
 .property-card-image {
@@ -1166,11 +1388,11 @@ th {
 
 /* Features Cards Section container */
 .features-cards-section {
-  padding: 2rem 1rem;
   max-width: 100vw; /* almost full viewport width */
   margin: 0 auto;
   box-sizing: border-box;
-  padding-bottom: 9rem
+  padding-bottom: 8rem;
+  padding-top: 6rem;
 }
 
 .features-cards-section h2 {
