@@ -227,6 +227,8 @@ function Home() {
         {/* Book A Tour Section */}
         <section
           className="highlight-hero lightgray-bg reverse"
+          data-aos="fade-up"
+          data-aos-once="true"
         >
           <div className="hero-content-wrapper">
             <div className="hero-image">
@@ -246,9 +248,8 @@ function Home() {
         <section
           ref={aboutRef1}
           className="about-section"
-          data-aos="fade-down"
+          data-aos="fade-right"
           data-aos-once="true"
-          data-aos-duration="400"
           data-aos-easing="ease-in-out"
         >
           <div className="about-wrapper">
@@ -345,6 +346,9 @@ function Home() {
         <section 
           className="discover-buildings-section"
           ref={setDiscoverRefs}
+          data-aos="fade-up"
+          data-aos-once="true"
+          data-aos-easing="ease-in-out"
         >
           <div
             className="building-half cormier"
@@ -354,14 +358,12 @@ function Home() {
             <div className="building-content">
               <div className="building-info-box">
                 <h2>Discover Cormier</h2>
-                <a
-                  href="https://cormier-website.com"
+                <button
+                  onClick={() => navigate('/cormier')}
                   className="visit-button"
-                  target="_blank"
-                  rel="noopener noreferrer"
                 >
                   Visit Website
-                </a>
+                </button>
               </div>
             </div>
           </div>
@@ -374,14 +376,12 @@ function Home() {
             <div className="building-content">
               <div className="building-info-box">
                 <h2>Discover Pearson</h2>
-                <a
-                  href="https://pearson-website.com"
+                <button
+                  onClick={() => navigate('/pearson')}
                   className="visit-button"
-                  target="_blank"
-                  rel="noopener noreferrer"
                 >
                   Visit Website
-                </a>
+                </button>
               </div>
             </div>
           </div>
@@ -392,7 +392,7 @@ function Home() {
 
 
         {/* Insert Features Cards Section right here */}
-        <section className="features-cards-section white-bg" data-aos="fade-down" data-aos-once="true" data-aos-duration="600" data-aos-easing="ease-in-out">
+        <section className="features-cards-section white-bg" data-aos="fade-up" data-aos-once="true" data-aos-easing="ease-in-out">
           <h2>Amenities Offered With Riviera</h2>
           <div className="features-cards-container">
             {/* Card 1: Outdoor Pool */}
@@ -488,30 +488,29 @@ function Home() {
         <section
           ref={testimonialsRef1}
           className="testimonials-section"
-          data-aos="fade-down"
+          data-aos="fade-up"
           data-aos-once="true"
-          data-aos-duration="600"
         >
           <h2 className="testimonials-title">What Our Residents Say</h2>
           <div className="testimonials-grid">
             <div className="testimonial-card">
               <p className="testimonial-text">
-                "Highly recommend living at 2170 Lincoln! The apartments are spacious and comfortable. The building is well-maintained and clean, and the location is great.
+                "Highly recommend living at 60 Cormier! The apartments are spacious and comfortable. The building is well-maintained and clean, and the location is great.
                 I’m happy to call this place home and definitely plan to stay long-term!"
               </p>
               <p className="testimonial-author"></p>
             </div>
             <div className="testimonial-card">
               <p className="testimonial-text">
-                "My husband and I had an amazing experience living here. It was our first time in Montréal and the location is just as great as described. It is close to vibrant neighborhoods, restaurants, and bars. 
+                "My husband and I had an amazing experience living here. It was our first time in Gatineau and the location is just as great as described. It is close to vibrant neighborhoods, restaurants, and bars. 
                 Our apartment felt spacious with a full kitchen, a nice bathroom, and a lovely balcony.
-                I would definitely recommend 2170 Lincoln to anyone looking for a great home."
+                I would definitely recommend 78 Pearson to anyone looking for a great home."
               </p>
               <p className="testimonial-author"></p>
             </div>
             <div className="testimonial-card">
               <p className="testimonial-text">
-                "Living at 2170 Lincoln has been fantastic. The apartments are spacious and clean and the location is unbeatable because it is close to everything you need.
+                "Living at 50 Cormier has been fantastic. The apartments are spacious and clean and the location is unbeatable because it is close to everything you need.
                 It truly feels like home and I’m happy to recommend it to anyone looking for a great place to live."
               </p>
               <p className="testimonial-author"></p>
