@@ -1,15 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import './Cormier.css';
+import './Global.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import HamburgerMenu from './HamburgerMenu';
 
 // 1 Bedroom
-import img1 from './assets/Appartements/IMG_4836_web.jpg';
-import img2 from './assets/Appartements/IMG_4836_web.jpg';
-import img3 from './assets/Appartements/IMG_4836_web.jpg';
-import img4 from './assets/Appartements/IMG_4836_web.jpg';
+import img1 from './assets/Appartements/furnished1.png';
+import img2 from './assets/Appartements/furnished3.png';
+import img3 from './assets/Appartements/furnished4.png';
+import img4 from './assets/Appartements/furnished5.png';
 
 import wifiIcon from './assets/Icons/wifi.svg';
 import kitchenIcon from './assets/Icons/kitchen.svg';
@@ -18,12 +19,15 @@ import heatingCoolingIcon from './assets/Icons/heating-cooling.png';
 import washerIcon from './assets/Icons/washer.png';
 import gymIcon from './assets/Icons/gymIcon.png';
 
+// Logo
+import rivieraLogo from './assets/Icons/Riviera-logo.png';
+
 
 
 const images = [
   { src: img1, caption: "Spacious 1 Bedroom Living Area", type: '1 bedroom' },
-  { src: img2, caption: "Spacious 1 Bedroom Living Area", type: '1 bedroom' },
-  { src: img3, caption: "Spacious 1 Bedroom Living Area", type: '1 bedroom' },
+  { src: img2, caption: " 1 Bedroom Living Area", type: '1 bedroom' },
+  { src: img3, caption: "Spacious 1  Living Area", type: '1 bedroom' },
   { src: img4, caption: "Spacious 1 Bedroom Living Area", type: '1 bedroom' },
 ];
 
@@ -38,6 +42,38 @@ const unitsData = [
 
 function Cormier() {
   const navigate = useNavigate();
+
+  // State for the discover cormier banner
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const slides = [
+    { image: img1, title: "Modern Living at Cormier" },
+    { image: img2, title: "Spacious & Bright Interiors" },
+    { image: img3, title: "Prime Location in Montreal" },
+    { image: img4, title: "Designed for Comfort" },
+  ];
+
+  const nextSlide = () => {
+    if (isTransitioning) return; // prevent spam clicks
+    setIsTransitioning(true);
+    setActiveSlide((prev) => prev + 1);
+  };
+
+  useEffect(() => {
+    if (activeSlide === slides.length) {
+      const timeout = setTimeout(() => {
+        setIsTransitioning(false);
+        setActiveSlide(0);
+      }, 600); // matches transition speed
+      return () => clearTimeout(timeout);
+    } else {
+      const timeout = setTimeout(() => setIsTransitioning(false), 600);
+      return () => clearTimeout(timeout);
+    }
+  }, [activeSlide]);
+
+
 
   // State for the hamburger menu
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -75,6 +111,15 @@ function Cormier() {
     }, 6000);
     return () => clearInterval(interval);
   }, []);
+
+  // Auto-advance slideshow
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 6000);
+
+    return () => clearInterval(interval);
+  }, [isTransitioning]); 
 
   // Navigation for slideshow with fade
   const goToPrevious = () => {
@@ -141,6 +186,7 @@ function Cormier() {
       <div className="header-left">
         {/* Desktop links */}
         <div className="desktop-links">
+          <button className="nav-header-link" onClick={() => navigate('/home')}>Riviera</button>
           <button className="nav-header-link" onClick={() => scrollToRef(aboutRef1, -200)}>About</button>
           <button className="nav-header-link" onClick={() => navigate('/photos')}>Gallery</button>
           <button className="nav-header-link" onClick={() => scrollToRef(unitsRef1, -220)}>Available Units</button>
@@ -153,13 +199,17 @@ function Cormier() {
       </div>
 
       <div className="header-center">
-        <h2
+        <div
           className="header-address"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          style={{ cursor: 'pointer' }}
+          style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.75rem' }}
         >
-          2170 LINCOLN
-        </h2>
+          <img
+            src={rivieraLogo}
+            alt="Riviera Logo"
+          />
+          <span>CORMIER</span>
+        </div>
       </div>
 
       <div className="header-right">
@@ -186,6 +236,46 @@ function Cormier() {
 
       {/* Main Content */}
       <main className="main-content">
+
+        {/* Discover Cormier Banner */}
+        <section 
+          className="discover-cormier"
+          data-aos="fade-up"
+          data-aos-once="true"
+        >
+          <div
+            className="cormier-slides-container"
+            style={{
+              width: `${(slides.length + 1) * 100}vw`,
+              transform: `translateX(-${activeSlide * 100}vw)`,
+              transition: isTransitioning ? 'transform 0.6s ease-in-out' : 'none',
+            }}
+          >
+            {slides.map(({ image, title }, index) => (
+              <div className="cormier-slide" key={index}>
+                <img src={image} alt={title} className="cormier-image" />
+                <div className="cormier-overlay">
+                  <h2 className="cormier-title">{title}</h2>
+                </div>
+              </div>
+            ))}
+
+            {/* Clone of first slide for seamless loop */}
+            <div className="cormier-slide" key="clone">
+              <img src={slides[0].image} alt={slides[0].title} className="cormier-image" />
+              <div className="cormier-overlay">
+                <h2 className="cormier-title">{slides[0].title}</h2>
+              </div>
+            </div>
+          </div>
+
+          <button className="cormier-arrow-button" onClick={nextSlide} aria-label="Next Slide">
+            &#8594;
+          </button>
+        </section>
+
+
+
         {/* Slideshow */}
         <section className="slideshow-section" aria-label="Building images slideshow">
           <div className="slideshow-container triple-display" role="region" aria-live="polite" style={{ position: 'relative' }}>
@@ -248,10 +338,10 @@ function Cormier() {
         >
           <div className="hero-content-wrapper">
             <div className="hero-image">
-              <img src={images[1].src} alt="Beautiful unit at 2170 Lincoln" />
+              <img src={images[1].src} alt="Beautiful unit at Cormier" />
             </div>
             <div className="hero-text">
-              <h1>Find Your New Home<br />At 2170 Lincoln</h1>
+              <h1>Find Your New Home<br />At Cormier</h1>
               <p>Modern Design, Unbeatable Location, and Unmatched Comfort.</p>
               <button className="hero-tour-button" onClick={openModal}>
                 Book a Tour
@@ -273,15 +363,15 @@ function Cormier() {
             <div className="about-image">
               <img
                 src={images[1].src}
-                alt="2170 Lincoln Building Exterior"
+                alt="Cormier Building Exterior"
                 loading="lazy"
               />
             </div>
 
             <div className="about-text">
-              <h2>About 2170 Lincoln</h2>
+              <h2>About Cormier</h2>
               <p>
-                Welcome to <strong>2170 Lincoln</strong>, a beautifully renovated
+                Welcome to <strong>Cormier</strong>, a beautifully renovated
                 residential building located in a vibrant neighborhood close to downtown Montréal. 
                 Designed for modern comfort, it blends convenience with style,
                 offering a high-quality living experience for a diverse community.
@@ -302,7 +392,7 @@ function Cormier() {
 
         {/* Insert Features Cards Section right here */}
         <section className="features-cards-section white-bg" data-aos="fade-down" data-aos-once="true" data-aos-duration="600" data-aos-easing="ease-in-out">
-          <h2>Live Better at 2170 Lincoln</h2>
+          <h2>Live Better at Cormier</h2>
           <div className="features-cards-container">
             {/* Card 1: Free Wifi */}
             <div className="feature-card">
@@ -357,7 +447,7 @@ function Cormier() {
         >
           <div className="amenities-hero-content-wrapper">
             <div className="amenities-hero-image">
-              <img src={1} alt="Gym at 2170 Lincoln" />
+              <img src={img1} alt="Gym at Cormier" />
             </div>
             <div className="amenities-hero-text">
               <h1>Modern Gym with Stunning <br />Downtown Montreal View</h1>
@@ -375,7 +465,7 @@ function Cormier() {
         >
           <div className="amenities-hero-content-wrapper">
             <div className="amenities-hero-image">
-              <img src={img2} alt="Conference Room at 2170 Lincoln" />
+              <img src={img2} alt="Conference Room at Cormier" />
             </div>
             <div className="amenities-hero-text">
               <h1>Fully Equipped Conference Space</h1>
@@ -435,15 +525,15 @@ function Cormier() {
             <div className="modern-location-text">
               <h2>Discover the Neighborhood</h2>
               <p>
-                2170 Lincoln is ideally located just 10 minutes from <b>downtown Montréal</b> and <b>Mount Royal Park</b>, and only steps away from <b>Concordia University</b> and <b>Dawson College</b>.
+                Cormier is ideally located just 10 minutes from <b>downtown Montréal</b> and <b>Mount Royal Park</b>, and only steps away from <b>Concordia University</b> and <b>Dawson College</b>.
                 Metro stations, shopping centres, cafés, and daily conveniences are all next to the building, making life easy and accessible.
-                Whether you're commuting, studying, or unwinding, 2170 Lincoln is the perfect place to be.
+                Whether you're commuting, studying, or unwinding, Cormier is the perfect place to be.
               </p>
             </div>
             <div className="modern-location-map">
               <iframe
-                title="2170 Lincoln Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2796.9118091031046!2d-73.58670585513063!3d45.49172065292192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc91a6cd3a0f723%3A0xee5439f76e8ba810!2sImmeuble%202170%20Lincoln!5e0!3m2!1sen!2sca!4v1750963597382!5m2!1sen!2sca"
+                title="Cormier Map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2801.2978998192875!2d-75.85497622339608!3d45.40333203749745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cce01f8afa357a5%3A0x75f0e3bc46daf141!2s50%20Rue%20Cormier%2C%20Gatineau%2C%20QC%20J9H%206C9!5e0!3m2!1sen!2sca!4v1753815041755!5m2!1sen!2sca"
                 loading="lazy"
                 allowFullScreen
               />
@@ -465,7 +555,7 @@ function Cormier() {
           <div className="testimonials-grid">
             <div className="testimonial-card">
               <p className="testimonial-text">
-                "Highly recommend living at 2170 Lincoln! The apartments are spacious and comfortable. The building is well-maintained and clean, and the location is great.
+                "Highly recommend living at Cormier! The apartments are spacious and comfortable. The building is well-maintained and clean, and the location is great.
                 I’m happy to call this place home and definitely plan to stay long-term!"
               </p>
               <p className="testimonial-author"></p>
@@ -474,13 +564,13 @@ function Cormier() {
               <p className="testimonial-text">
                 "My husband and I had an amazing experience living here. It was our first time in Montréal and the location is just as great as described. It is close to vibrant neighborhoods, restaurants, and bars. 
                 Our apartment felt spacious with a full kitchen, a nice bathroom, and a lovely balcony.
-                I would definitely recommend 2170 Lincoln to anyone looking for a great home."
+                I would definitely recommend Cormier to anyone looking for a great home."
               </p>
               <p className="testimonial-author"></p>
             </div>
             <div className="testimonial-card">
               <p className="testimonial-text">
-                "Living at 2170 Lincoln has been fantastic. The apartments are spacious and clean and the location is unbeatable because it is close to everything you need.
+                "Living at Cormier has been fantastic. The apartments are spacious and clean and the location is unbeatable because it is close to everything you need.
                 It truly feels like home and I’m happy to recommend it to anyone looking for a great place to live."
               </p>
               <p className="testimonial-author"></p>
@@ -564,7 +654,7 @@ function Cormier() {
 
       {/* Footer */}
       <footer className="footer lightgray-bg">
-        <p>© 2025 2170 Lincoln. All rights reserved.</p>
+        <p>© 2025 Cormier. All rights reserved.</p>
       </footer>
     </>
   );

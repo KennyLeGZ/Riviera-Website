@@ -1,13 +1,26 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
+import './Global.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 // Outside
-import rivieraImage from './assets/Services/CLV Ottawa Aug 2016-44_web.jpg';
+import rivieraImage1 from './assets/Outside/drone1.jpg';
+import rivieraImage2 from './assets/Outside/drone2.jpg';
+import rivieraImage3 from './assets/Outside/drone3.jpg';
 import cormierImage from './assets/Outside/cormier-outside6.jpg';
 import pearsonImage from './assets/Outside/78-Pearson-1.jpg';
+
+// Amenities
+import outdoorPoolImage from './assets/Amenities/pool1.png';
+import bbqImage from './assets/Amenities/park1.png';
+import basketballImage from './assets/Amenities/park1.png';
+import tennisImage from './assets/Amenities/park1.png';
+import gymImage from './assets/Amenities/gym1.jpg';
+import laundryImage from './assets/Amenities/park1.png';
+import dogParkImage from './assets/Amenities/park1.png';
+import cinemaImage from './assets/Amenities/cinema1.jpg';
 
 // Icons
 import washerIcon from './assets/Icons/washer.png';
@@ -18,13 +31,17 @@ import bbq from './assets/Icons/bbq.png';
 import tennis from './assets/Icons/tennis.png';
 import dog from './assets/Icons/dog.png';
 import cinema from './assets/Icons/cinema.png';
+
+// Logo
 import rivieraLogo from './assets/Icons/Riviera-logo.png';
 
 
 
 
 const images = [
-  { src: rivieraImage, caption: "Building View", type: 'outside' },
+  { src: rivieraImage1, caption: "Building View", type: 'outside' },
+  { src: rivieraImage2, caption: "Building View", type: 'outside' },
+  { src: rivieraImage3, caption: "Building View", type: 'outside' },
   { src: cormierImage, caption: "Building View", type: 'outside' },
   { src: pearsonImage, caption: "Building View", type: 'outside' },
 
@@ -39,6 +56,9 @@ function Home() {
   const [selectedProperty, setSelectedProperty] = useState('Cormier');
   const [activeSlide, setActiveSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(true);
+
+  // Selected Amenities
+  const [selectedAmenity, setSelectedAmenity] = useState(null);
 
 
   // Function to toggle the hamburger menu
@@ -100,7 +120,7 @@ function Home() {
 
   const slides = [
     {
-      image: rivieraImage,
+      image: rivieraImage1,
       title: "Discover Riviera",
     },
     {
@@ -255,7 +275,7 @@ function Home() {
           <div className="about-wrapper">
             <div className="about-image">
               <img
-                src={rivieraImage}
+                src={rivieraImage3}
                 alt="2170 Lincoln Building Exterior"
                 loading="lazy"
               />
@@ -359,7 +379,7 @@ function Home() {
               <div className="building-info-box">
                 <h2>Discover Cormier</h2>
                 <button
-                  onClick={() => navigate('/cormier')}
+                  onClick={() => { window.scrollTo(0, 0); navigate('/cormier'); }}
                   className="visit-button"
                 >
                   Visit Website
@@ -377,7 +397,7 @@ function Home() {
               <div className="building-info-box">
                 <h2>Discover Pearson</h2>
                 <button
-                  onClick={() => navigate('/pearson')}
+                  onClick={() => { window.scrollTo(0, 0); navigate('/pearson'); }}
                   className="visit-button"
                 >
                   Visit Website
@@ -389,69 +409,89 @@ function Home() {
 
 
 
-
-
         {/* Insert Features Cards Section right here */}
         <section className="features-cards-section white-bg" data-aos="fade-up" data-aos-once="true" data-aos-easing="ease-in-out">
           <h2>Amenities Offered With Riviera</h2>
           <div className="features-cards-container">
+            
             {/* Card 1: Outdoor Pool */}
-            <div className="feature-card">
+            <div className="feature-card" onClick={() => setSelectedAmenity({ title: "Outdoor Pool", image: outdoorPoolImage })}>
               <img src={outdoorPoolIcon} alt="Outdoor Pool icon" className="feature-icon" style={{ width: '140px', height: '140px', marginTop: '30px' }}/>
               <h3>Outdoor Pool</h3>
               <p>Enjoy a refreshing swim in our outdoor pool, perfect for relaxation and leisure.</p>
             </div>
 
             {/* Card 2: BBQ Area */}
-            <div className="feature-card">
+            <div className="feature-card" onClick={() => setSelectedAmenity({ title: "BBQ Area", image: bbqImage })}>
               <img src={bbq} alt="BBQ icon" className="feature-icon" style={{ width: '110px', height: '110px', marginTop: '40px' }} />
               <h3>BBQ Area</h3>
               <p>Enjoy outdoor cooking and dining with our BBQ facilities, perfect for gatherings.</p>
             </div>
 
             {/* Card 3: Basketball Court */}
-            <div className="feature-card">
+            <div className="feature-card" onClick={() => setSelectedAmenity({ title: "Basketball Court", image: basketballImage })}>
               <img src={basketball} alt="Basketball icon" className="feature-icon" style={{ width: '110px', height: '110px', marginTop: '40px' }}/>
               <h3>Basketball Court</h3>
               <p>Enjoy a game of basketball on our outdoor court, designed for fun and fitness.</p>
             </div>
 
             {/* Card 4: Tennis Court */}
-            <div className="feature-card">
+            <div className="feature-card" onClick={() => setSelectedAmenity({ title: "Tennis Court", image: tennisImage })}>
               <img src={tennis} alt="Tennis icon" className="feature-icon" style={{ width: '110px', height: '110px', marginTop: '40px' }} />
               <h3>Tennis Court</h3>
               <p>Enjoy a game of tennis on our outdoor court, designed for fun and fitness.</p>
             </div>
 
-            {/* Card 4: Gym */}
-            <div className="feature-card feature-card-medium">
+            {/* Card 5: Gym */}
+            <div className="feature-card feature-card-medium" onClick={() => setSelectedAmenity({ title: "Fitness Centre", image: gymImage })}>
               <img src={gymIcon} alt="Gym icon" className="feature-icon" />
               <h3>Fitness Centre</h3>
               <p>Stay fit and active with our fully equipped on-site gym, available 24/7 for residents.</p>
             </div>
 
-            {/* Card 5: In-Unit Washer/Dryer */}
-            <div className="feature-card feature-card-medium">
+            {/* Card 6: Laundry */}
+            <div className="feature-card feature-card-medium" onClick={() => setSelectedAmenity({ title: "Laundry Room", image: laundryImage })}>
               <img src={washerIcon} alt="Washer/Dryer icon" className="feature-icon" />
               <h3>Laundry Room</h3>
               <p>Convenient on-site laundry with modern washers and dryers.</p>
             </div>
 
-            {/* Card 6: Dog Park */}
-            <div className="feature-card feature-card-medium">
+            {/* Card 7: Dog Park */}
+            <div className="feature-card feature-card-medium" onClick={() => setSelectedAmenity({ title: "Dog Park", image: dogParkImage })}>
               <img src={dog} alt="Dog icon" className="feature-icon" />
               <h3>Dog Park</h3>
               <p>Convenient on-site dog park for your furry friends to play and socialize.</p>
             </div>
 
-            {/* Card 7: Cinema Room */}
-            <div className="feature-card feature-card-medium">
+            {/* Card 8: Cinema */}
+            <div className="feature-card feature-card-medium" onClick={() => setSelectedAmenity({ title: "Cinema Room", image: cinemaImage })}>
               <img src={cinema} alt="Cinema icon" className="feature-icon" style={{ width: '150px', height: '150px'}}/>
               <h3>Cinema Room</h3>
               <p>Enjoy movie nights in our cozy cinema room, complete with comfortable seating and a large screen.</p>
             </div>
           </div>
         </section>
+
+      {/* Modal */}
+      {selectedAmenity && (
+        <div className="modal-overlay" onClick={() => setSelectedAmenity(null)} 
+          style={{
+            position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
+            background: 'rgba(0,0,0,0.6)', display: 'flex', justifyContent: 'center',
+            alignItems: 'center', zIndex: 9999
+          }}
+        >
+          <div className="modal-content" onClick={(e) => e.stopPropagation()} 
+            style={{ background: '#fff', padding: '1rem', borderRadius: '10px', maxWidth: '90%', textAlign: 'center' }}
+          >
+            <h2>{selectedAmenity.title}</h2>
+            <img src={selectedAmenity.image} alt={selectedAmenity.title} style={{ maxWidth: '100%', borderRadius: '8px' }}/>
+            <button onClick={() => setSelectedAmenity(null)} style={{ marginTop: '1rem', padding: '0.5rem 1rem', cursor: 'pointer' }}>
+              Close
+            </button>
+          </div>
+        </div>
+      )}
 
         {/* Location Section */}
         <section

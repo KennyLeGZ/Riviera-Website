@@ -8,7 +8,11 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        {/* Redirect root path "/" to "/home" */}
+        <Route path="/" element={<Navigate to="/home" replace />} />
+
+        {/* Your actual pages */}
+        <Route path="/home" element={<Home />} />
         <Route path="/cormier" element={<Cormier />} />
         <Route path="/pearson" element={<Pearson />} />
       </Routes>
