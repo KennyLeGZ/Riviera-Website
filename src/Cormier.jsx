@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
-import './Cormier.css';
 import './Global.css';
+import './Properties.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import HamburgerMenu from './HamburgerMenu';
@@ -34,9 +34,9 @@ const images = [
 
 // Sample units data
 const unitsData = [
-  { unit: '101', type: '1 Bedroom', size: '490 sq ft', floor: 1, price: '$1,745 / month' },
-  { unit: '203', type: '2 Bedroom', size: '765 sq ft', floor: 2, price: '$2,345 / month' },
-  { unit: '305', type: 'Studio', size: '300-342 sq ft', floor: 3, price: '$1,645 / month'},
+  { unit: '101', type: '1 Bedroom', size: '490 sq ft', floor: 1, price: '$1,745 / month', img: img1 },
+  { unit: '203', type: '2 Bedroom', size: '765 sq ft', floor: 2, price: '$2,345 / month', img: img2 },
+  { unit: '305', type: 'Studio', size: '300-342 sq ft', floor: 3, price: '$1,645 / month', img: img3 },
 ];
 
 
@@ -188,8 +188,8 @@ function Cormier() {
         <div className="desktop-links">
           <button className="nav-header-link" onClick={() => navigate('/home')}>Riviera</button>
           <button className="nav-header-link" onClick={() => scrollToRef(aboutRef1, -200)}>About</button>
-          <button className="nav-header-link" onClick={() => navigate('/photos')}>Gallery</button>
-          <button className="nav-header-link" onClick={() => scrollToRef(unitsRef1, -220)}>Available Units</button>
+          <button className="nav-header-link" onClick={() => navigate('/cormier/photos')}>Gallery</button>
+          <button className="nav-header-link" onClick={() => scrollToRef(unitsRef1, -200)}>Available Units</button>
         </div>
         
         {/* Hamburger Icon for Mobile */}
@@ -236,45 +236,6 @@ function Cormier() {
 
       {/* Main Content */}
       <main className="main-content">
-
-        {/* Discover Cormier Banner */}
-        <section 
-          className="discover-cormier"
-          data-aos="fade-up"
-          data-aos-once="true"
-        >
-          <div
-            className="cormier-slides-container"
-            style={{
-              width: `${(slides.length + 1) * 100}vw`,
-              transform: `translateX(-${activeSlide * 100}vw)`,
-              transition: isTransitioning ? 'transform 0.6s ease-in-out' : 'none',
-            }}
-          >
-            {slides.map(({ image, title }, index) => (
-              <div className="cormier-slide" key={index}>
-                <img src={image} alt={title} className="cormier-image" />
-                <div className="cormier-overlay">
-                  <h2 className="cormier-title">{title}</h2>
-                </div>
-              </div>
-            ))}
-
-            {/* Clone of first slide for seamless loop */}
-            <div className="cormier-slide" key="clone">
-              <img src={slides[0].image} alt={slides[0].title} className="cormier-image" />
-              <div className="cormier-overlay">
-                <h2 className="cormier-title">{slides[0].title}</h2>
-              </div>
-            </div>
-          </div>
-
-          <button className="cormier-arrow-button" onClick={nextSlide} aria-label="Next Slide">
-            &#8594;
-          </button>
-        </section>
-
-
 
         {/* Slideshow */}
         <section className="slideshow-section" aria-label="Building images slideshow">
@@ -495,9 +456,9 @@ function Cormier() {
               return (
                 <div key={type} className="unit-type-card">
                   <h3>{type}</h3>
-                  {unitsOfType.map(({ unit, size, price, image }) => (
+                  {unitsOfType.map(({ unit, size, price, img }) => (
                     <div key={unit} className="unit-card">
-                      <img src={image} alt={`${type} unit ${unit}`} className="unit-image" />
+                      <img src={img} alt={`${type} unit ${unit}`} className="unit-image" />
                       <div className="unit-info">
                         <p><strong>Type:</strong> {type}</p>
                         <p><strong>Size:</strong> {size}</p>
@@ -543,7 +504,7 @@ function Cormier() {
 
 
 
-        {/* Testimonials */}
+        {/* Testimonials
         <section
           ref={testimonialsRef1}
           className="testimonials-section"
@@ -577,6 +538,7 @@ function Cormier() {
             </div>
           </div>
         </section>
+        */}
       </main>
 
       {/* Modal for Apply Now */}

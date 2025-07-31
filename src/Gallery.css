@@ -1,0 +1,650 @@
+/* General Reset */
+* {
+  box-sizing: border-box;
+}
+
+/* Custom background colors for specific about sections */
+.lightgray-bg {
+  background-color: #F9FAFB; /* very light gray, almost white */
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.header-address-photo {
+  font-size: 2.5rem; /* Slightly smaller for balance */
+  font-weight: 600; /* Use a numeric value instead of '1rem' */
+  margin: 0;
+  color: #1a1a1a; /* Dark gray for softer contrast than pure black */
+  font-family: 'Inter', 'Playfair Display', Tahoma, Geneva, Verdana, sans-serif;
+  user-select: none;
+  cursor: pointer;
+
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.08); /* Subtle lift */
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+.header-address-photo::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -8.5px;
+  left: 0;
+  background-color: #707070;
+}
+
+.header-address-photo:hover {
+  color: #555555; /* text color on hover */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.header-address-photo:hover::after {
+  background-color: #555555; /* underline color on hover */
+}
+
+.nav-header-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0 12px;
+  font: inherit;
+  color: #000000;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
+.nav-header-btn:hover {
+  color: #555555;
+  font-weight: 600; /* slightly bolder */
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.back-arrow {
+  position: relative;
+  font-size: 2.7rem;
+  color: #1a1a1a;
+  font-weight: 400;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.back-arrow:hover {
+  color: #555555;
+  font-weight: 600;
+}
+
+.back-arrow::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 20px; /* Adjust distance from text */
+  width: 100%;
+  height: 1px; /* Thin underline */
+  background-color: #555555;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.back-arrow:hover::after {
+  opacity: 1;
+}
+
+
+body {
+  margin: 0;
+  font-family: 'Inter', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.discover-properties {
+  position: relative;
+  width: 100vw;
+  height: 40vh;
+  overflow: hidden;
+  margin: 80px 0 0 0;
+  padding: 0;
+}
+
+/* Main Layout */
+.hero-title {
+  text-align: center;
+  padding-top: 3rem;
+  padding-bottom: 1rem;
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+.hero-title h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2F2F2F;
+  margin-bottom: 1rem;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.2;
+}
+
+.photo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin: 3rem auto;
+  max-width: 900px;
+  padding: 0 1rem;
+}
+
+/* Section wrapper */
+.photo-intro {
+  text-align: center;
+  margin: 1rem auto;
+  max-width: 900px;
+  padding: 0 1rem;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Title like your hero section */
+.photo-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 0.75rem;
+  position: relative;
+  display: inline-block;
+}
+
+.photo-title::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: #7ea5d3; /* accent line (match site’s blue) */
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+/* Subtitle / paragraph */
+.photo-subtitle p {
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1.8;
+  color: #555;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+/* Filter panel */
+.filter-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.filter-btn {
+  background: #f8f8f8;
+  border: 1px solid #ddd;
+  color: #333;
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.filter-btn:hover {
+  background: #eaeaea;
+  border-color: #bbb;
+}
+
+.filter-btn.active {
+  background: #2c3e50; /* deep muted navy */
+  color: #fff;
+  border-color: #2c3e50;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+.filter-divider {
+  border: none;
+  border-top: 2px solid #ddd; /* light gray line */
+  margin: 2rem 0 2rem 0;
+  width: 100vw; /* full viewport width */
+  position: relative;
+  left: 50%;
+  right: 50%;
+  transform: translateX(-50%);
+  max-width: 100%;
+}
+
+/* Photo Grid - 2 per row full width */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 850px); /* fixed image width */
+  gap: 1.5rem;
+  justify-content: center;   /* centers the whole grid */
+  justify-items: center; /* centers each item in its cell */
+  margin: 0 auto;
+  padding: 0;
+  margin-bottom: 5rem;
+}
+
+
+
+/* Before/After slider container */
+.before-after-container {
+  position: relative;
+  width: 100%;
+  height: 400px;  /* fixed uniform height */
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+/* Images inside slider */
+.before-after-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Furnished image gets clipped */
+.after-image-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Divider bar */
+.divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: #fff;
+  border-left: 1px solid #333;
+  border-right: 1px solid #333;
+  transform: translateX(-50%);
+  cursor: ew-resize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.divider .handle {
+  width: 20px;
+  height: 20px;
+  background: #333;
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+
+
+.photo-section-title {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  color: #2F2F2F;
+  position: relative;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.5px;
+  padding-bottom: 0.75rem;
+}
+
+.photo-section-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: #7ea5d3; /* accent line (match site’s blue) */
+  border-radius: 9999px;
+  transition: width 0.3s ease;
+}
+
+.photo-section-title:hover::after {
+  width: 90px;
+}
+
+
+
+/* Each photo fills its grid cell */
+.photo-item {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  border-radius: 0.5rem;                  /* subtle rounded corners */
+  box-shadow: none;                       /* remove card shadow */
+  display: block;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.photo-item:hover {
+  transform: scale(1.02);                 /* subtle zoom on hover */
+}
+
+.single-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.photo-item {
+  display: flex;
+  flex-direction: column; /* stack image + caption */
+  align-items: center;
+}
+
+
+
+
+.photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;                      /* crop if needed */
+  display: block;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+.modal-content {
+  position: relative;
+  max-width: 1500px;      /* Increase max width */
+  max-height: 100vh;       /* Increase max height */
+  background: white;
+  border-radius: 10px;
+  padding: 1rem 4rem;     /* More padding on sides for arrows */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.modal-image {
+  max-width: 100%;
+  max-height: 85vh;       /* Make image bigger vertically */
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.modal-caption {
+  margin-top: 0.7rem;
+  font-size: 1.3rem;
+  color: #333;
+}
+
+/* Close button */
+.modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  font-size: 2.8rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #555;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  color: #000;
+}
+
+/* Prev / Next buttons */
+.modal-prev,
+.modal-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+  font-size: 3rem;
+  padding: 0 14px;
+  cursor: pointer;
+  border-radius: 6px;
+  color: #222;
+  user-select: none;
+  transition: background-color 0.25s ease;
+}
+
+.modal-prev:hover,
+.modal-next:hover {
+  background: rgba(255, 255, 255, 1);
+}
+
+.modal-prev {
+  left: 1rem;
+}
+
+.modal-next {
+  right: 1rem;
+}
+
+@media (max-width: 768px) {
+  .header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap; /* allows wrapping if necessary */
+    padding: 0.75rem 1rem;
+  }
+
+  .header-left,
+  .header-right {
+    flex: 0 0 auto;
+  }
+
+  .header-center-photo {
+    flex: 1 1 100%;
+    text-align: center;
+    order: 1; /* ensure it stays centered and on its own line */
+    margin-top: 0.5rem;
+  }
+
+  .header-address-photo {
+    font-size: 1.6rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+
+  /* Optional: hide the header-right section if you don’t want Contact / Book a Tour */
+  .header-right {
+    display: none;
+  }
+
+  .header-center-photo .header-address-photo {
+    font-size: 1.8rem;
+    white-space: nowrap;
+    overflow: visible; /* Ensure underline is visible */
+    text-overflow: ellipsis;
+    position: relative; /* for ::after positioning */
+  }
+
+
+  /* Underline effect for header-address on mobile */
+  .header-center-photo .header-address-photo::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -15px;         /* Adjust this if needed */
+    left: 0;
+    background-color: #707070;
+  }
+
+  .nav-header-btn {
+    align-self: flex-start;
+  }
+
+  /* --- Body & general adjustments --- */
+  body {
+    font-size: 16px; /* ensure readable base font size */
+    padding: 0 1rem; /* add some horizontal padding */
+  }
+
+  /* --- Hero Title --- */
+  .hero-title {
+    padding-bottom: 1rem;
+    max-width: 100%;
+    margin: 0 rem;
+  }
+
+  .hero-title h1 {
+    font-size: 1.8rem; /* smaller headline for mobile */
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+  }
+
+  /* --- Photo Description --- */
+  .photo-description,
+  .photo-description * {
+    font-size: 1rem !important;
+    padding: 0.75rem 0.75rem 1.5rem;
+    max-width: 100%;
+    line-height: 1.5;
+  }
+
+  /* --- Filter Panel --- */
+  .filter-panel {
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .filter-btn {
+    width: 100%;
+    padding: 0.5rem 0;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+  }
+
+  /* --- Filter Divider --- */
+  .filter-divider {
+    margin: 3rem 0 1.5rem 0;
+    width: 100%;
+    left: 0;
+    right: 0;
+    transform: none;
+  }
+
+  /* --- Photo Grid --- */
+  .photo-grid {
+    grid-template-columns: 1fr; /* single column grid */
+    gap: 1rem;
+    padding: 0 0.5rem 2rem;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  /* --- Photo Section Title --- */
+  .photo-section-title {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .photo-section-title::after {
+    width: 40px;
+  }
+
+  /* --- Photo Items --- */
+  .photo-item {
+    border-radius: 0.75rem;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  }
+
+  .photo-item:hover {
+    transform: none; /* disable hover transform on mobile */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  /* --- Photo Caption --- */
+  .photo-caption {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+
+  /* --- Modal Overlay --- */
+  .modal-overlay {
+    padding: 1rem;
+  }
+
+  .modal-content {
+    max-width: 95vw;
+    max-height: 90vh;
+    padding: 1rem 1.5rem;
+  }
+
+  .modal-image {
+    max-height: 70vh;
+  }
+
+  .modal-caption {
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+  }
+
+  /* --- Modal Buttons --- */
+  .modal-close {
+    font-size: 2.4rem;
+    top: 0.25rem;
+    right: 0.75rem;
+  }
+
+  .modal-prev,
+  .modal-next {
+    font-size: 2.2rem;
+    padding: 0 10px;
+  }
+
+  .modal-prev {
+    left: 0.5rem;
+  }
+
+  .modal-next {
+    right: 0.5rem;
+  }
+}

@@ -386,7 +386,7 @@ th {
 
 .testimonials-title {
   font-size: 2.75rem;
-  font-weight: 700;
+  font-weight: 500;
   color: #3b3b3b;
   margin-bottom: 4rem;
   text-align: center;
@@ -959,7 +959,6 @@ th {
 }
 
 .features-cards-section h2 {
-  font-size: 2.75rem;
   font-weight: 700;
   color: #333333;
   margin-bottom: 1rem;
@@ -968,6 +967,7 @@ th {
   text-align: center;
   padding-bottom: 0.5rem;
   text-transform: capitalize;
+  font-family: 'Inter', sans-serif;
 }
 
 .features-cards-section h2::after {

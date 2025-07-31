@@ -1,206 +1,103 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
-import './Cormier.css';
-import Photos from './Photos';
+import { useNavigate } from 'react-router-dom';
+import './Home.css';
+import './Global.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import HamburgerMenu from './HamburgerMenu';
 
 // Outside
-import img0 from './assets/Outside/buildingView.png';
+import rivieraImage1 from './assets/Outside/drone1.jpg';
+import rivieraImage2 from './assets/Outside/drone2.jpg';
+import rivieraImage3 from './assets/Outside/drone3.jpg';
+import cormierImage from './assets/Outside/cormier-outside3.jpg';
+import pearsonImage from './assets/Outside/78-Pearson-1.jpg';
 
-// 1 Bedroom
-import img1 from './assets/Units/1_bedroom/DSC02695.jpg';
-import img2 from './assets/Units/1_bedroom/DSC02717.jpg';
-import img3 from './assets/Units/1_bedroom/DSC02769.jpg';
-import img4 from './assets/Units/1_bedroom/DSC02777.jpg';
-import img5 from './assets/Units/1_bedroom/DSC02801.jpg';
-import img6 from './assets/Units/1_bedroom/DSC02838.jpg';
-import img7 from './assets/Units/1_bedroom/DSC02847.jpg';
-import img8 from './assets/Units/1_bedroom/DSC02862.jpg';
-import img9 from './assets/Units/1_bedroom/DSC02870.jpg';
-import img10 from './assets/Units/1_bedroom/DSC02887.jpg';
-import img11 from './assets/Units/1_bedroom/DSC02895.jpg';
-import img12 from './assets/Units/1_bedroom/DSC02914.jpg';
+// Amenities
+import outdoorPoolImage from './assets/Amenities/pool1.png';
+import bbqImage from './assets/Amenities/park1.png';
+import basketballImage from './assets/Amenities/park1.png';
+import tennisImage from './assets/Amenities/park1.png';
+import gymImage from './assets/Amenities/gym1.jpg';
+import laundryImage from './assets/Amenities/park1.png';
+import dogParkImage from './assets/Amenities/park1.png';
+import cinemaImage from './assets/Amenities/cinema1.jpg';
 
-// 2_bedroom
-import img13 from './assets/Units/2_bedroom/DSC05221.jpg';
-import img14 from './assets/Units/2_bedroom/DSC05244.jpg';
-import img15 from './assets/Units/2_bedroom/DSC05292.jpg';
-import img16 from './assets/Units/2_bedroom/DSC05318.jpg';
-import img17 from './assets/Units/2_bedroom/DSC05322.jpg';
-import img18 from './assets/Units/2_bedroom/DSC05341.jpg';
-import img19 from './assets/Units/2_bedroom/DSC05345.jpg';
-import img20 from './assets/Units/2_bedroom/DSC05356.jpg';
-import img21 from './assets/Units/2_bedroom/DSC05366.jpg';
-import img22 from './assets/Units/2_bedroom/DSC05380.jpg';
-import img23 from './assets/Units/2_bedroom/DSC05410.jpg';
-import img24 from './assets/Units/2_bedroom/DSC05419.jpg';
-import img25 from './assets/Units/2_bedroom/DSC05430.jpg';
-import img26 from './assets/Units/2_bedroom/DSC05451.jpg';
-
-// Studio
-import img27 from './assets/Units/Studio/DSC02500.jpg';
-import img28 from './assets/Units/Studio/DSC02519.jpg';
-import img29 from './assets/Units/Studio/DSC02544.jpg';
-import img30 from './assets/Units/Studio/DSC02551.jpg';
-import img31 from './assets/Units/Studio/DSC02574.jpg';
-import img32 from './assets/Units/Studio/DSC02581.jpg';
-import img33 from './assets/Units/Studio/DSC02614.jpg';
-import img34 from './assets/Units/Studio/DSC02626.jpg';
-import img35 from './assets/Units/Studio/DSC02643.jpg';
-import img36 from './assets/Units/Studio/DSC02652.jpg';
-import img37 from './assets/Units/Studio/DSC02659.jpg';
-import img38 from './assets/Units/Studio/DSC02683.jpg';
-
-// Gym
-import gymImage from './assets/Gym/gym.jpg';
-
-// Conference Room
-import conferenceRoomImage from './assets/Amenities/ConferenceRoom.png';
-
-import wifiIcon from './assets/Icons/wifi.svg';
-import kitchenIcon from './assets/Icons/kitchen.svg';
-import lockIcon from './assets/Icons/security-camera.svg';
-import heatingCoolingIcon from './assets/Icons/heating-cooling.png';
+// Icons
 import washerIcon from './assets/Icons/washer.png';
 import gymIcon from './assets/Icons/gymIcon.png';
+import outdoorPoolIcon from './assets/Icons/outdoorPoolIcon.png';
+import basketball from './assets/Icons/basketball.png';
+import bbq from './assets/Icons/bbq.png';
+import tennis from './assets/Icons/tennis.png';
+import dog from './assets/Icons/dog.png';
+import cinema from './assets/Icons/cinema.png';
+
+// Logo
+import rivieraLogo from './assets/Icons/Riviera-logo.png';
+
+// Appartments
+import apartment1 from './assets/Appartements/IMG_4854_web.jpg';
+
+
 
 
 
 const images = [
-  { src: img0, caption: "Vue du bâtiment", type: 'outside' },
-  { src: img1, caption: "Espace de vie spacieux d'une chambre", type: '1 bedroom' },
-  { src: img2, caption: "Espace de vie d'une chambre", type: '1 bedroom' },
-  { src: img3, caption: "Salon ensoleillé avec de grandes fenêtres", type: '1 bedroom' },
-  { src: img4, caption: "Bureau compact et pratique dans le salon", type: '1 bedroom' },
-  { src: img5, caption: "Configuration complète du salon avec des meubles modernes", type: '1 bedroom' },
-  { src: img6, caption: "Allée spacieuse vers la chambre", type: '1 bedroom' },
-  { src: img7, caption: "Cuisine moderne avec des finitions élégantes", type: '1 bedroom' },
-  { src: img8, caption: "Espace de vie fonctionnel", type: '1 bedroom' },
-  { src: img9, caption: "Disposition confortable et spacieuse d'une chambre", type: '1 bedroom' },
-  { src: img10, caption: "Configuration de lit relaxante", type: '1 bedroom' },
-  { src: img11, caption: "Chambre lumineuse et aérée", type: '1 bedroom' },
-  { src: img12, caption: "Salle de bain moderne et propre", type: '1 bedroom' },
-  { src: img13, caption: "Espace de vie accueillant de 2 chambres", type: '2 bedroom' },
-  { src: img14, caption: "Salon spacieux dans un appartement de 2 chambres", type: '2 bedroom' },
-  { src: img15, caption: "Salon spacieux", type: '2 bedroom' },
-  { src: img16, caption: "Espace de vie spacieux", type: '2 bedroom' },
-  { src: img17, caption: "Coin repas confortable", type: '2 bedroom' },
-  { src: img18, caption: "Espace de vie lumineux et aéré", type: '2 bedroom' },
-  { src: img19, caption: "Coin repas moderne et cuisine combinée", type: '2 bedroom' },
-  { src: img20, caption: "Coin repas moderne et cuisine combinée", type: '2 bedroom' },
-  { src: img21, caption: "Cuisine entièrement équipée avec une esthétique moderne", type: '2 bedroom' },
-  { src: img22, caption: "Cuisine moderne et élégante", type: '2 bedroom' },
-  { src: img23, caption: "Chambre confortable avec lumière naturelle dans 2 chambres", type: '2 bedroom' },
-  { src: img24, caption: "Chambre confortable avec lumière naturelle dans 2 chambres", type: '2 bedroom' },
-  { src: img25, caption: "Chambre chaleureuse et aérée avec beaucoup de lumière naturelle", type: '2 bedroom' },
-  { src: img26, caption: "Salle de bain moderne et lumineuse", type: '2 bedroom' },
-  { src: img27, caption: "Appartement moderne d'une chambre", type: 'studio' },
-  { src: img28, caption: "Espace de vie confortable dans le studio", type: 'studio' },
-  { src: img29, caption: "Espace fonctionnel avec un bureau et une table à manger dans le studio", type: 'studio' },
-  { src: img30, caption: "Chambre lumineuse dans le studio", type: 'studio' },
-  { src: img31, caption: "Configuration de lit relaxante", type: 'studio' },
-  { src: img32, caption: "Cuisine moderne avec une table à manger confortable dans le studio", type: 'studio' },
-  { src: img33, caption: "Plan de l'appartement studio", type: 'studio' },
-  { src: img34, caption: "Aperçu de l'appartement studio", type: 'studio' },
-  { src: img35, caption: "Coin de travail élégant", type: 'studio' },
-  { src: img36, caption: "Cuisine élégante avec améliorations dans le studio", type: 'studio' },
-  { src: img37, caption: "Cuisine élégante avec améliorations dans le studio", type: 'studio' },
-  { src: img38, caption: "Salle de bain moderne et épurée dans l'appartement studio", type: 'studio' }
+  { src: rivieraImage1, caption: "Building View", type: 'outside' },
+  { src: rivieraImage2, caption: "Building View", type: 'outside' },
+  { src: rivieraImage3, caption: "Building View", type: 'outside' },
+  { src: cormierImage, caption: "Building View", type: 'outside' },
+  { src: pearsonImage, caption: "Building View", type: 'outside' },
+
 ];
 
-// Sample units data
-const unitsData = [
-  { unit: '101', type: '1 Bedroom', size: '490 sq ft', floor: 1, price: '$1,745 / month', image: img1 },
-  { unit: '203', type: '2 Bedroom', size: '765 sq ft', floor: 2, price: '$2,345 / month', image: img13 },
-  { unit: '305', type: 'Studio', size: '300-342 sq ft', floor: 3, price: '$1,645 / month', image: img27 },
-];
-
-
-function HomeFr() {
-
+function Home() {
   const navigate = useNavigate();
-
-  const goToEnglish = () => {
-    navigate('/');
-  };
-
-  const goToPhotosFr = () => {
-    navigate('/fr/photos');
-  };
 
   // State for the hamburger menu
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedProperty, setSelectedProperty] = useState('Cormier');
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+
+  // Selected Amenities
+  const [selectedAmenity, setSelectedAmenity] = useState(null);
+
 
   // Function to toggle the hamburger menu
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };  
 
-  // Slideshow state
-  const [currentIndex, setCurrentIndex] = useState(0);
-  // Filter state
-  const [filterType, setFilterType] = useState('All');
-  // Modal state
-  const [showModal, setShowModal] = useState(false);
-  // For fade animation
-  const [fade, setFade] = useState(true);
-
   // Refs for smooth scrolling
   const aboutRef1 = useRef(null);
-  const aboutRef2 = useRef(null);
-  const unitsRef1 = useRef(null);
+  const discoverRef1 = useRef(null);
+  const discoverRef2 = useRef(null);
   const locationRef = useRef(null);
   const testimonialsRef1 = useRef(null);
-  const additionalInfoRef = useRef(null);
 
-  // Auto slideshow with fade
+  const setDiscoverRefs = (el) => {
+    discoverRef1.current = el;
+    discoverRef2.current = el;
+  };
+
+
+  useEffect(() => {
+  AOS.init({ duration: 1000 });
+  AOS.refresh();
+
+  // Scroll to top only on first mount
+  window.scrollTo(0, 0);
+}, []); // ✅ run once
+
   useEffect(() => {
     const interval = setInterval(() => {
-      setFade(false); // start fade out
-      setTimeout(() => {
-        setCurrentIndex((prev) => (prev + 1) % images.length);
-        setFade(true); // fade in new image
-      }, 500);
-    }, 6000);
+      nextSlide();
+    }, 5000);
+
     return () => clearInterval(interval);
-  }, []);
-
-  // Navigation for slideshow with fade
-  const goToPrevious = () => {
-    setFade(false);
-    setTimeout(() => {
-      setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
-      setFade(true);
-    }, 300);
-  };
-
-  const goToNext = () => {
-    setFade(false);
-    setTimeout(() => {
-      setCurrentIndex((prev) => (prev + 1) % images.length);
-      setFade(true);
-    }, 300);
-  };
-
-  const goToIndex = (index) => {
-    setFade(false);
-    setTimeout(() => {
-      setCurrentIndex(index);
-      setFade(true);
-    }, 300);
-  };
-
-  useEffect(() => {
-    AOS.init({ duration: 1000 });
-    AOS.refresh();
-  }, []);
-
-  // Filter units by type
-  const filteredUnits = unitsData.filter(unit =>
-    filterType === 'All' || unit.type === filterType
-  );
+  }, [activeSlide]);
 
   // Smooth scroll to sections
   const scrollToRef = (ref) => {
@@ -225,6 +122,33 @@ function HomeFr() {
     window.location.href = 'mailto:kle@gestionzagora.com';
   };
 
+  const slides = [
+    {
+      image: rivieraImage1,
+      title: "Découvrez Riviera",
+    },
+    {
+      image: outdoorPoolImage,
+      title: "Explorez De Nouveaux Horizons",
+    },
+  ];
+
+  const nextSlide = () => {
+    if (activeSlide === slides.length) return; // prevent multiple clicks during transition
+
+    setActiveSlide((prev) => prev + 1);
+
+    // If we're moving to the clone slide, jump back to real first slide
+    if (activeSlide === slides.length - 1) {
+      setTimeout(() => {
+        setIsTransitioning(false);      // disable transition
+        setActiveSlide(0);              // jump to first real slide
+
+        // re-enable transition after jump
+        setTimeout(() => setIsTransitioning(true), 50);
+      }, 600); // match transition duration
+    }
+  };
 
   return (
   <>
@@ -234,8 +158,7 @@ function HomeFr() {
         {/* Desktop links */}
         <div className="desktop-links">
           <button className="nav-header-link" onClick={() => scrollToRef(aboutRef1, -200)}>À Propos</button>
-          <button className="nav-header-link" onClick={goToPhotosFr}>Galerie</button>
-          <button className="nav-header-link" onClick={() => scrollToRef(unitsRef1, -220)}>Unités Disponibles</button>
+          <button className="nav-header-link" onClick={() => scrollToRef(discoverRef1, -190)}>Nos Propriétés</button>
         </div>
         
         {/* Hamburger Icon for Mobile */}
@@ -245,29 +168,34 @@ function HomeFr() {
       </div>
 
       <div className="header-center">
-        <h2
+        <div
           className="header-address"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          style={{ cursor: 'pointer' }}
+          style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.75rem' }}
         >
-          2170 LINCOLN
-        </h2>
+          <img
+            src={rivieraLogo}
+            alt="Riviera Logo"
+          />
+          <span>RIVIERA</span>
+        </div>
       </div>
 
       <div className="header-right">
         {/* Desktop buttons */}
         <div className="desktop-buttons">
-          <button className="nav-header-link" onClick={handleContactClick}>Contacter l'Agent de Location</button>
+          <button className="nav-header-link" onClick={handleContactClick}>Contacter l'Agent</button>
           <button className="nav-header-link" onClick={openModal}>Réserver Une Visite</button>
-          <button onClick={goToEnglish} className="nav-header-link">EN</button>
+          <button className="nav-header-link" onClick={() => navigate('/home')}>EN</button>
         </div>
       </div>
 
       {/* Mobile Dropdown Menu */}
       <div className={`dropdown-menu ${isMenuOpen ? 'open' : ''}`}>
         <button className="nav-header-link" onClick={() => scrollToRef(aboutRef1, -200)}>À Propos</button>
-        <button className="nav-header-link" onClick={() => navigate('/photos')}>Galerie</button>
-        <button className="nav-header-link" onClick={() => scrollToRef(unitsRef1, -220)}>Unités Disponibles</button>
+        <button className="nav-header-link" onClick={() => scrollToRef(discoverRef1, -190)}>Nos Propriétés</button>
+        <button className="nav-header-link" onClick={handleContactClick}>Contacter l'Agent</button>
+        <button className="nav-header-link" onClick={openModal}>Réserver Une Visite</button>
       </div>
 
     </header>
@@ -276,73 +204,56 @@ function HomeFr() {
 
       {/* Main Content */}
       <main className="main-content">
-        {/* Slideshow */}
-        <section className="slideshow-section" aria-label="Building images slideshow">
-          <div className="slideshow-container triple-display" role="region" aria-live="polite" style={{ position: 'relative' }}>
-            {/* Left arrow button */}
-            <button
-              className="nav-button left"
-              onClick={goToPrevious}
-              aria-label="Previous image"
-              style={{ position: 'absolute', left: 0, top: '50%', transform: 'translateY(-50%)', zIndex: 10 }}
-            >
-              ‹
-            </button>
 
-            {/* Previous image preview */}
-            <img
-              src={images[(currentIndex - 1 + images.length) % images.length].src}
-              alt={`Previous: ${images[(currentIndex - 1 + images.length) % images.length].caption}`}
-              className="side-image"
-              onClick={goToPrevious}
-              tabIndex={0}
-              onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') goToPrevious(); }}
-              aria-label="Go to previous image"
-            />
+        <section 
+          className="discover-riviera"
+          data-aos="fade-up"
+          data-aos-once="true"
+        >
+          <div
+            className="slides-container"
+            style={{
+              width: `${(slides.length + 1) * 100}vw`,
+              transform: `translateX(-${activeSlide * 100}vw)`,
+              transition: isTransitioning ? 'transform 0.6s ease-in-out' : 'none',
+            }}
+          >
+            {slides.map(({ image, title }, index) => (
+              <div className="slide" key={index}>
+                <img src={image} alt={title} className="riviera-image" />
+                <div className="overlay">
+                  <h2 className="title">{title}</h2>
+                </div>
+              </div>
+            ))}
 
-            {/* Main image */}
-            <img
-              key={images[currentIndex].src}
-              src={images[currentIndex].src}
-              alt={images[currentIndex].caption}
-              className={`main-image ${fade ? 'fade-in' : 'fade-out'}`}
-            />
-
-            {/* Next image preview */}
-            <img
-              src={images[(currentIndex + 1) % images.length].src}
-              alt={`Next: ${images[(currentIndex + 1) % images.length].caption}`}
-              className="side-image"
-              onClick={goToNext}
-              tabIndex={0}
-              onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') goToNext(); }}
-              aria-label="Go to next image"
-            />
-
-            {/* Right arrow button */}
-            <button
-              className="nav-button right"
-              onClick={goToNext}
-              aria-label="Next image"
-              style={{ position: 'absolute', right: 0, top: '50%', transform: 'translateY(-50%)', zIndex: 10 }}
-            >
-              ›
-            </button>
+            {/* Clone of first slide */}
+            <div className="slide" key="clone">
+              <img src={slides[0].image} alt={slides[0].title} className="riviera-image" />
+              <div className="overlay">
+                <h2 className="title">{slides[0].title}</h2>
+              </div>
+            </div>
           </div>
-          <p className="caption">{images[currentIndex].caption}</p>
+
+          <button className="arrow-button" onClick={nextSlide} aria-label="Next Slide">
+            &#8594;
+          </button>
         </section>
 
         {/* Book A Tour Section */}
         <section
           className="highlight-hero lightgray-bg reverse"
+          data-aos="fade-up"
+          data-aos-once="true"
         >
           <div className="hero-content-wrapper">
             <div className="hero-image">
-              <img src={images[2].src} alt="Beautiful unit at 2170 Lincoln" />
+              <img src={apartment1} alt="Beautiful unit at 2170 Lincoln" />
             </div>
             <div className="hero-text">
-              <h1>Trouvez Votre Nouvelle Maison<br />À 2170 Lincoln</h1>
-              <p>Design moderne, emplacement imbattable et confort inégalé.</p>
+              <h1>Trouvez Votre Prochaine<br />Maison avec Riviera</h1>
+              <p>Logement Abordable, Emplacement Imbattable et Confort Inégalé</p>
               <button className="hero-tour-button" onClick={openModal}>
                 Réserver Une Visite
               </button>
@@ -354,162 +265,286 @@ function HomeFr() {
         <section
           ref={aboutRef1}
           className="about-section"
-          data-aos="fade-down"
+          data-aos="fade-right"
           data-aos-once="true"
-          data-aos-duration="400"
           data-aos-easing="ease-in-out"
         >
           <div className="about-wrapper">
             <div className="about-image">
               <img
-                src={images[1].src}
-                alt="2170 Lincoln Building Exterior"
+                src={rivieraImage3}
+                alt="Riviera Building Exterior"
                 loading="lazy"
               />
             </div>
 
             <div className="about-text">
-              <h2>À Propos Du <br />2170 Lincoln</h2>
+              <h2>À Propos de Riviera</h2>
               <p>
-                Bienvenue à <strong>2170 Lincoln</strong>, un immeuble résidentiel magnifiquement rénové
-                situé dans un quartier dynamique près du centre-ville de Montréal.
-                Conçu pour le confort moderne, il allie commodité et style,
-                offrant une expérience de vie de haute qualité pour une communauté diversifiée.
+                Bienvenue aux <strong>Appartements Riviera</strong>, une communauté résidentielle abordable située 
+                dans le secteur Aylmer de Gatineau. À seulement quelques minutes d’Ottawa et de la rivière des Outaouais, 
+                Riviera allie confort et valeur avec un accès pratique aux écoles, aux parcs, aux centres commerciaux 
+                et au transport en commun. Les commodités sur place incluent des piscines extérieures, un centre de mise en forme, 
+                des terrains de sport, un parc canin et des installations de buanderie.
               </p>
               <p>
-                Nous nous efforçons de créer une communauté où le confort rencontre la commodité, offrant des espaces soigneusement 
-                conçus et des caractéristiques modernes qui améliorent la vie quotidienne.
+                Aux <strong>Appartements Riviera</strong>, nous nous engageons à offrir des logements abordables et pratiques 
+                dans une communauté accueillante. Avec des espaces accessibles et des commodités essentielles, le quotidien 
+                devient simple, confortable et pratique.
               </p>
+
               <ul className="about-features">
-                <li>Design moderne et élégant</li>
-                <li>Emplacement privilégié à proximité de Concordia, Dawson, du centre-ville et d'autres commodités</li>
-                <li>Espaces de vie spacieux et soigneusement conçus</li>
-                <li>Atmosphère axée sur la communauté</li>
+                <li>Appartements abordables et confortables</li>
+                <li>Emplacement pratique à Gatineau avec un accès facile à Ottawa, au transport en commun et aux commerces</li>
+                <li>Plans pratiques avec commodités essentielles</li>
+                <li>Environnement accueillant et axé sur la communauté</li>
               </ul>
             </div>
           </div>
         </section>
 
-        {/* Insert Features Cards Section right here */}
-        <section className="features-cards-section white-bg" data-aos="fade-down" data-aos-once="true" data-aos-duration="600" data-aos-easing="ease-in-out">
-          <h2>Vivez Mieux Au 2170 Lincoln</h2>
-          <div className="features-cards-container">
-            {/* Card 1: Free Wifi */}
-            <div className="feature-card">
-              <img src={wifiIcon} alt="WiFi icon" className="feature-icon" />
-              <h3>Internet Gratuit</h3>
-              <p>Restez connecté avec l'internet sans fil inclus dans tout l'immeuble.</p>
-            </div>
+        {/* Our Properties Section */}
+        <section className="our-properties-section" data-aos="fade-up" data-aos-once="true">
+          <h2>Nos Propriétés</h2>
+          <p>
+            Riviera possède et gère fièrement deux résidences de premier plan : <strong>Cormier</strong> et <strong>Pearson</strong>. 
+            Explorez chaque propriété en utilisant le sélecteur ci‑dessous.
+          </p>
 
-            {/* Card 2: Kitchen Features */}
-            <div className="feature-card">
-              <img src={kitchenIcon} alt="Kitchen icon" className="feature-icon" />
-              <h3>Cuisine Équipée</h3>
-              <p>Une cuisine équipée d'une plaque de cuisson, d'un micro-ondes et d'autres essentiels, conçue pour votre confort et votre commodité.</p>
-            </div>
 
-            {/* Card 3: Secure Building */}
-            <div className="feature-card">
-              <img src={lockIcon} alt="Lock icon" className="feature-icon" />
-              <h3>Accès Sécurisé 24/7</h3>
-              <p>Restez en sécurité grâce à une surveillance continue et des systèmes d'entrée sécurisés pour les résidents.</p>
-            </div>
+          <div className="property-switch">
+            {['Cormier', 'Pearson'].map((name) => (
+              <button
+                key={name}
+                onClick={() => setSelectedProperty(name)}
+                className={selectedProperty === name ? 'active' : ''}
+                type="button"
+              >
+                {name}
+              </button>
+            ))}
+          </div>
 
-            {/* Card 4: Heating and Cooling */}
-            <div className="feature-card">
-              <img src={heatingCoolingIcon} alt="Heating/Cooling icon" className="feature-icon" />
-              <h3>Climatisation & Chauffage</h3>
-              <p>Climatisation et chauffage confortables inclus toute l'année pour votre commodité.</p>
-            </div>
+          {/* Property Cards Section */}
+          <div className="property-cards">
+            {/* Cormier Card */}
+            {selectedProperty === 'Cormier' && (
+              <div className="property-card">
+                <div className="property-card-text">
+                  <h3>Cormier</h3>
+                  <p>
+                    <strong>Cormier</strong>, faisant partie de la communauté des Appartements Riviera, offre une expérience de vie 
+                    confortable et pratique à Gatineau. Bien que conçu avec des touches modernes, Cormier met l’accent sur 
+                    l’accessibilité et l’abordabilité, ce qui en fait un choix pratique pour les étudiants, les professionnels et les familles. 
+                    Les résidents profitent de commodités essentielles sur place, notamment le stationnement, un centre de mise en forme, 
+                    des espaces extérieurs et un accès facile au transport en commun. 
+                    Situé à seulement quelques minutes du centre-ville d’Ottawa ainsi que des commerces, restaurants et parcs locaux, 
+                    <strong> Cormier</strong> offre un environnement accueillant qui allie confort au quotidien et valeurs communautaires 
+                    des Appartements Riviera.
+                  </p>
+                </div>
+                <div className="property-card-image">
+                  <img src={cormierImage} alt="Cormier Property" />
+                </div>
+              </div>
+            )}
 
-            {/* Card 4: Gym */}
-            <div className="feature-card feature-card-medium">
-              <img src={gymIcon} alt="Gym icon" className="feature-icon" />
-              <h3>Gym Sur Place</h3>
-              <p>Restez en forme et actif avec notre gym entièrement équipé sur place, disponible 24/7 pour les résidents.</p>
-            </div>
-
-            {/* Card 5: In-Unit Washer/Dryer */}
-            <div className="feature-card feature-card-medium">
-              <img src={washerIcon} alt="Washer/Dryer icon" className="feature-icon" />
-              <h3>Buanderie</h3>
-              <p>Buanderie pratique sur place avec des lave-linge et des sèche-linge modernes.</p>
-            </div>
+            {/* Pearson Card */}
+            {selectedProperty === 'Pearson' && (
+              <div className="property-card reverse">
+                <div className="property-card-text">
+                  <h3>Pearson</h3>
+                  <p>
+                    <strong>Pearson</strong>, faisant partie de la communauté des Appartements Riviera, offre une expérience de vie 
+                    accueillante avec des espaces spacieux et une vue panoramique sur les environs. Ses intérieurs lumineux à aire ouverte 
+                    et ses balcons privés créent un cadre idéal pour se détendre et profiter d’un sentiment de tranquillité. 
+                    Les résidents bénéficient de commodités pratiques sur place, telles qu’un centre de mise en forme, des salons communs, 
+                    des espaces extérieurs aménagés et un stationnement sécurisé. 
+                    Situé à proximité de parcs, de commerces et du transport en commun, <strong>Pearson</strong> constitue une option abordable 
+                    pour ceux qui recherchent confort, commodité et un cadre de vie paisible.
+                  </p>
+                </div>
+                <div className="property-card-image">
+                  <img src={pearsonImage} alt="Pearson Property" />
+                </div>
+              </div>
+            )}
           </div>
         </section>
 
-        {/* Amenities Gym Highlight Section */}
-        <section
-          className="amenities-hero lightgray-bg"
-          data-aos="fade-right"
+        {/* Discover Buildings Section */}
+        <section 
+          className="discover-buildings-section"
+          ref={setDiscoverRefs}
+          data-aos="fade-up"
           data-aos-once="true"
-          data-aos-duration="500"
-        >
-          <div className="amenities-hero-content-wrapper">
-            <div className="amenities-hero-image">
-              <img src={gymImage} alt="Gym at 2170 Lincoln" />
-            </div>
-            <div className="amenities-hero-text">
-              <h1>Gym Moderne avec Vue Imprenable sur le Centre-Ville de Montréal</h1>
-              <p>Profitez de vos entraînements dans une salle de sport moderne et lumineuse offrant une vue panoramique imprenable sur le centre-ville de Montréal.</p>
-            </div>
-          </div>
-        </section>
-
-        {/* Amenities Conference Room Highlight Section */}
-        <section
-          className="amenities-hero lightgray-bg reverse"
-          data-aos="fade-left"
-          data-aos-once="true"
-          data-aos-duration="500"
-        >
-          <div className="amenities-hero-content-wrapper">
-            <div className="amenities-hero-image">
-              <img src={conferenceRoomImage} alt="Conference Room at 2170 Lincoln" />
-            </div>
-            <div className="amenities-hero-text">
-              <h1>Salle de Conférence Entièrement Équipée</h1>
-              <p>Organisez vos réunions et événements dans notre élégante salle de conférence, conçue pour offrir un espace professionnel et confortable pour tous vos rassemblements.</p>
-            </div>
-          </div>
-        </section>
-
-
-        {/* Available Units Section*/}
-        <section
-          ref={unitsRef1}
-          className="units-section coolgray-bg"
-          data-aos="fade-down"
-          data-aos-once="true"
-          data-aos-duration="400"
           data-aos-easing="ease-in-out"
         >
-          <h2>Unités et Plans d'Étage Disponibles</h2>
+          <div
+            className="building-half cormier"
+            style={{ backgroundImage: `url(${cormierImage})` }}
+          >
+            <div className="image-overlay"></div>
+            <div className="building-content">
+              <div className="building-info-box">
+                <h2>Découvrez Cormier</h2>
+                <button
+                  onClick={() => { window.scrollTo(0, 0); navigate('/cormier'); }}
+                  className="visit-button"
+                >
+                  Visitez Cormier
+                </button>
+              </div>
+            </div>
+          </div>
 
-          <div className="units-card-container">
-            {['Studio', '1 Bedroom', '2 Bedroom'].map((type) => {
-              // Show all units of this type (no filter)
-              const unitsOfType = filteredUnits.filter(u => u.type === type);
-              if (unitsOfType.length === 0) return null;
-
-              return (
-                <div key={type} className="unit-type-card">
-                  <h3>{type}</h3>
-                  {unitsOfType.map(({ unit, size, price, image }) => (
-                    <div key={unit} className="unit-card">
-                      <img src={image} alt={`${type} unit ${unit}`} className="unit-image" />
-                      <div className="unit-info">
-                        <p><strong>Type:</strong> {type}</p>
-                        <p><strong>Taille:</strong> {size}</p>
-                        <p><strong>Prix de Départ:</strong> {price}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              );
-            })}
+          <div
+            className="building-half pearson"
+            style={{ backgroundImage: `url(${pearsonImage})` }}
+          >
+            <div className="image-overlay"></div>
+            <div className="building-content">
+              <div className="building-info-box">
+                <h2>Découvrez Pearson</h2>
+                <button
+                  onClick={() => { window.scrollTo(0, 0); navigate('/pearson'); }}
+                  className="visit-button"
+                >
+                  Visitez Pearson
+                </button>
+              </div>
+            </div>
           </div>
         </section>
+
+
+
+        {/* Insert Features Cards Section right here */}
+        <section className="features-cards-section white-bg" data-aos="fade-up" data-aos-once="true" data-aos-easing="ease-in-out">
+          <h2>Commodités Offertes Avec Rivier</h2>
+          <div className="features-cards-container">
+            
+            {/* Card 1: Outdoor Pool */}
+            <div className="feature-card" onClick={() => setSelectedAmenity({ title: "Outdoor Pool", image: outdoorPoolImage })}>
+              <img src={outdoorPoolIcon} alt="Outdoor Pool icon" className="feature-icon" style={{ width: '140px', height: '140px', marginTop: '30px' }}/>
+              <h3>Piscine Extérieure</h3>
+              <p>Profitez d'une baignade rafraîchissante dans notre piscine extérieure, parfaite pour la détente et les loisirs.</p>
+            </div>
+
+            {/* Card 2: BBQ Area */}
+            <div className="feature-card" onClick={() => setSelectedAmenity({ title: "BBQ Area", image: bbqImage })}>
+              <img src={bbq} alt="BBQ icon" className="feature-icon" style={{ width: '110px', height: '110px', marginTop: '40px' }} />
+              <h3>Espace Barbecue</h3>
+              <p>Profitez de nos barbecues extérieurs, parfaits pour vos rassemblements.</p>
+            </div>
+
+            {/* Card 3: Basketball Court */}
+            <div className="feature-card" onClick={() => setSelectedAmenity({ title: "Basketball Court", image: basketballImage })}>
+              <img src={basketball} alt="Basketball icon" className="feature-icon" style={{ width: '110px', height: '110px', marginTop: '40px' }}/>
+              <h3>Terrain de Basket</h3>
+              <p>Profitez d'une partie de basket-ball sur notre terrain extérieur, conçu pour le plaisir et la remise en forme.</p>
+            </div>
+
+            {/* Card 4: Tennis Court */}
+            <div className="feature-card" onClick={() => setSelectedAmenity({ title: "Tennis Court", image: tennisImage })}>
+              <img src={tennis} alt="Tennis icon" className="feature-icon" style={{ width: '110px', height: '110px', marginTop: '40px' }} />
+              <h3>Court de Tennis</h3>
+              <p>Profitez d'une partie de tennis sur notre court extérieur, conçu pour le plaisir et la remise en forme.</p>
+            </div>
+
+            {/* Card 5: Gym */}
+            <div className="feature-card feature-card-medium" onClick={() => setSelectedAmenity({ title: "Fitness Centre", image: gymImage })}>
+              <img src={gymIcon} alt="Gym icon" className="feature-icon" />
+              <h3>Salle de Sport</h3>
+              <p>Restez actif avec notre salle de sport entièrement équipée, ouverte 24h/24 pour les résidents.</p>
+            </div>
+
+            {/* Card 6: Laundry */}
+            <div className="feature-card feature-card-medium" onClick={() => setSelectedAmenity({ title: "Laundry Room", image: laundryImage })}>
+              <img src={washerIcon} alt="Washer/Dryer icon" className="feature-icon" />
+              <h3>Buanderie</h3>
+              <p>Buanderie pratique sur place avec laveuses et sécheuses modernes.</p>
+            </div>
+
+            {/* Card 7: Dog Park */}
+            <div className="feature-card feature-card-medium" onClick={() => setSelectedAmenity({ title: "Dog Park", image: dogParkImage })}>
+              <img src={dog} alt="Dog icon" className="feature-icon" />
+              <h3>Parc à Chiens</h3>
+              <p>Parc à chiens pratique sur place pour que vos amis à quatre pattes puissent jouer et socialiser.</p>
+            </div>
+
+            {/* Card 8: Cinema */}
+            <div className="feature-card feature-card-medium" onClick={() => setSelectedAmenity({ title: "Cinema Room", image: cinemaImage })}>
+              <img src={cinema} alt="Cinema icon" className="feature-icon" style={{ width: '150px', height: '150px'}}/>
+              <h3>Salle de Cinéma</h3>
+              <p>Profitez de notre salle de cinéma conviviale avec sièges confortables et grand écran.</p>
+            </div>
+          </div>
+        </section>
+
+      {/* Modal */}
+      {selectedAmenity && (
+        <div 
+          className="modal-overlay" 
+          onClick={() => setSelectedAmenity(null)} 
+          style={{
+            position: 'fixed', 
+            top: 0, left: 0, 
+            width: '100%', height: '100%',
+            background: 'rgba(0,0,0,0.9)', 
+            display: 'flex', 
+            justifyContent: 'center',
+            alignItems: 'center', 
+            zIndex: 9999
+          }}
+        >
+          {/* Close Button in top-right of overlay */}
+          <button 
+            onClick={() => setSelectedAmenity(null)} 
+            style={{
+              position: 'absolute',
+              top: '20px',
+              right: '30px',
+              background: 'transparent',
+              border: 'none',
+              fontSize: '2.5rem',
+              color: '#fff',
+              cursor: 'pointer',
+              zIndex: 10000
+            }}
+            aria-label="Close"
+          >
+            &times;
+          </button>
+
+          {/* Stop click bubbling on image */}
+          <div 
+            style={{ 
+              maxWidth: '70%', 
+              maxHeight: '80%', 
+              display: 'flex', 
+              justifyContent: 'center', 
+              alignItems: 'center'
+            }} 
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img 
+              src={selectedAmenity.image} 
+              alt={selectedAmenity.title} 
+              style={{ 
+                maxWidth: '100%', 
+                maxHeight: '100%', 
+                borderRadius: '10px',
+                objectFit: 'contain',
+                boxShadow: '0 0 20px rgba(0,0,0,0.5)'
+              }} 
+            />
+          </div>
+        </div>
+      )}
+
+
+
 
 
         {/* Location Section */}
@@ -525,15 +560,17 @@ function HomeFr() {
             <div className="modern-location-text">
               <h2>Découvrez le Quartier</h2>
               <p>
-                2170 Lincoln est idéalement situé à seulement 10 minutes du <b>centre-ville de Montréal</b> et du <b>Parc du Mont-Royal</b>, et à quelques pas de <b>l'Université Concordia</b> et du <b>Collège Dawson</b>.
-                Les stations de métro, les centres commerciaux, les cafés et les commodités quotidiennes sont tous à côté de l'immeuble, rendant la vie facile et accessible.
-                Que vous fassiez la navette, étudiiez ou vous détendiez, 2170 Lincoln est l'endroit idéal.
+                Les <strong>Appartements Riviera</strong> sont idéalement situés à quelques minutes du 
+                <b>centre-ville d’Ottawa</b> et à deux pas de la <b>rivière des Outaouais</b>, offrant à la fois commodité et beauté naturelle. 
+                À proximité, vous trouverez des <b>parcs, écoles, centres commerciaux et épiceries</b>, ainsi que des 
+                <b>liaisons de transport en commun fiables</b> à travers Gatineau et vers Ottawa. 
+                Que vous soyez en déplacement, aux études ou en plein air, Riviera vous place au cœur de tout.
               </p>
             </div>
             <div className="modern-location-map">
               <iframe
                 title="2170 Lincoln Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2796.9118091031046!2d-73.58670585513063!3d45.49172065292192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc91a6cd3a0f723%3A0xee5439f76e8ba810!2sImmeuble%202170%20Lincoln!5e0!3m2!1sen!2sca!4v1750963597382!5m2!1sen!2sca"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3322.797395610749!2d-75.85485123615219!3d45.40336418920163!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cce01f8afa357a5%3A0x75f0e3bc46daf141!2s50%20Rue%20Cormier%2C%20Gatineau%2C%20QC%20J9H%206C9!5e1!3m2!1sen!2sca!4v1753277295913!5m2!1sen!2sca"
                 loading="lazy"
                 allowFullScreen
               />
@@ -541,39 +578,41 @@ function HomeFr() {
           </div>
         </section>
 
-
-
         {/* Testimonials */}
         <section
           ref={testimonialsRef1}
           className="testimonials-section"
-          data-aos="fade-down"
+          data-aos="fade-up"
           data-aos-once="true"
-          data-aos-duration="600"
         >
-          <h2 className="testimonials-title">Ce Que Nos Résidents Disent</h2>
+          <h2 className="testimonials-title">Ce que disent nos résidents</h2>
           <div className="testimonials-grid">
             <div className="testimonial-card">
               <p className="testimonial-text">
-                "Je recommande vivement de vivre au 2170 Lincoln ! Les appartements sont spacieux et confortables. L'immeuble est bien entretenu et propre, et l'emplacement est idéal.
-                Je suis heureux d'appeler cet endroit chez moi et je prévois définitivement de rester à long terme !"
+                "Je recommande vivement de vivre au 60 Cormier ! Les appartements sont spacieux et confortables. 
+                L’immeuble est bien entretenu et propre, et l’emplacement est excellent. 
+                Je suis heureux(se) d’appeler cet endroit ma maison et je prévois certainement d’y rester à long terme !"
               </p>
-              <p className="testimonial-author"></p>
+              <p className="testimonial-author">– Sarah L.</p>
             </div>
+
             <div className="testimonial-card">
               <p className="testimonial-text">
-                "Mon mari et moi avons eu une expérience incroyable en vivant ici. C'était notre première fois à Montréal et l'emplacement est tout aussi génial que décrit. Il est proche de quartiers animés, de restaurants et de bars.
-                Notre appartement semblait spacieux avec une cuisine complète, une belle salle de bain et un joli balcon.
-                Je recommanderais définitivement 2170 Lincoln à quiconque à la recherche d'un excellent chez-soi."
+                "Mon mari et moi avons eu une expérience incroyable en vivant ici. C’était notre première fois à Gatineau et 
+                l’emplacement est exactement comme décrit : proche de quartiers animés, de restaurants et de bars. 
+                Notre appartement était spacieux avec une cuisine complète, une belle salle de bain et un charmant balcon. 
+                Je recommanderais sans hésiter le 78 Pearson à toute personne à la recherche d’un excellent logement."
               </p>
-              <p className="testimonial-author"></p>
+              <p className="testimonial-author">– Emily & James P.</p>
             </div>
+
             <div className="testimonial-card">
               <p className="testimonial-text">
-                "Vivre au 2170 Lincoln a été fantastique. Les appartements sont spacieux et propres et l'emplacement est imbattable car il est proche de tout ce dont vous avez besoin.
-                On se sent vraiment chez soi et je suis heureux de le recommander à quiconque à la recherche d'un excellent endroit où vivre."
+                "Vivre au 50 Cormier a été fantastique. Les appartements sont spacieux et propres, et l’emplacement est imbattable 
+                car il est proche de tout ce dont vous avez besoin. Cela ressemble vraiment à la maison et je suis heureux(se) de 
+                le recommander à toute personne à la recherche d’un endroit idéal où vivre."
               </p>
-              <p className="testimonial-author"></p>
+              <p className="testimonial-author">– Daniel M.</p>
             </div>
           </div>
         </section>
@@ -660,4 +699,4 @@ function HomeFr() {
   );
 }
 
-export default HomeFr;
+export default Home;

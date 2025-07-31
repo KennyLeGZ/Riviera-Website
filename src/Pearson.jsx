@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
-import './Pearson.css';
 import './Global.css';
+import './Properties.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import HamburgerMenu from './HamburgerMenu';
@@ -34,16 +34,16 @@ const images = [
 
 // Sample units data
 const unitsData = [
-  { unit: '101', type: '1 Bedroom', size: '490 sq ft', floor: 1, price: '$1,745 / month' },
-  { unit: '203', type: '2 Bedroom', size: '765 sq ft', floor: 2, price: '$2,345 / month' },
-  { unit: '305', type: 'Studio', size: '300-342 sq ft', floor: 3, price: '$1,645 / month'},
+  { unit: '101', type: '1 Bedroom', size: '490 sq ft', floor: 1, price: '$1,745 / month', img: img1 },
+  { unit: '203', type: '2 Bedroom', size: '765 sq ft', floor: 2, price: '$2,345 / month', img: img2 },
+  { unit: '305', type: 'Studio', size: '300-342 sq ft', floor: 3, price: '$1,645 / month', img: img3 },
 ];
 
 
 function Pearson() {
   const navigate = useNavigate();
 
-  // State for the discover pearson banner
+  // State for the discover Pearson banner
   const [activeSlide, setActiveSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
@@ -188,8 +188,8 @@ function Pearson() {
         <div className="desktop-links">
           <button className="nav-header-link" onClick={() => navigate('/home')}>Riviera</button>
           <button className="nav-header-link" onClick={() => scrollToRef(aboutRef1, -200)}>About</button>
-          <button className="nav-header-link" onClick={() => navigate('/photos')}>Gallery</button>
-          <button className="nav-header-link" onClick={() => scrollToRef(unitsRef1, -220)}>Available Units</button>
+          <button className="nav-header-link" onClick={() => navigate('/pearson/photos')}>Gallery</button>
+          <button className="nav-header-link" onClick={() => scrollToRef(unitsRef1, -200)}>Available Units</button>
         </div>
         
         {/* Hamburger Icon for Mobile */}
@@ -236,45 +236,6 @@ function Pearson() {
 
       {/* Main Content */}
       <main className="main-content">
-
-        {/* Discover Pearson Banner */}
-        <section 
-          className="discover-cormier"
-          data-aos="fade-up"
-          data-aos-once="true"
-        >
-          <div
-            className="cormier-slides-container"
-            style={{
-              width: `${(slides.length + 1) * 100}vw`,
-              transform: `translateX(-${activeSlide * 100}vw)`,
-              transition: isTransitioning ? 'transform 0.6s ease-in-out' : 'none',
-            }}
-          >
-            {slides.map(({ image, title }, index) => (
-              <div className="cormier-slide" key={index}>
-                <img src={image} alt={title} className="cormier-image" />
-                <div className="cormier-overlay">
-                  <h2 className="cormier-title">{title}</h2>
-                </div>
-              </div>
-            ))}
-
-            {/* Clone of first slide for seamless loop */}
-            <div className="cormier-slide" key="clone">
-              <img src={slides[0].image} alt={slides[0].title} className="cormier-image" />
-              <div className="cormier-overlay">
-                <h2 className="cormier-title">{slides[0].title}</h2>
-              </div>
-            </div>
-          </div>
-
-          <button className="cormier-arrow-button" onClick={nextSlide} aria-label="Next Slide">
-            &#8594;
-          </button>
-        </section>
-
-
 
         {/* Slideshow */}
         <section className="slideshow-section" aria-label="Building images slideshow">
@@ -338,10 +299,10 @@ function Pearson() {
         >
           <div className="hero-content-wrapper">
             <div className="hero-image">
-              <img src={images[1].src} alt="Beautiful unit at Cormier" />
+              <img src={images[1].src} alt="Beautiful unit at Pearson" />
             </div>
             <div className="hero-text">
-              <h1>Find Your New Home<br />At Cormier</h1>
+              <h1>Find Your New Home<br />At Pearson</h1>
               <p>Modern Design, Unbeatable Location, and Unmatched Comfort.</p>
               <button className="hero-tour-button" onClick={openModal}>
                 Book a Tour
@@ -363,15 +324,15 @@ function Pearson() {
             <div className="about-image">
               <img
                 src={images[1].src}
-                alt="Cormier Building Exterior"
+                alt="Pearson Building Exterior"
                 loading="lazy"
               />
             </div>
 
             <div className="about-text">
-              <h2>About Cormier</h2>
+              <h2>About Pearson</h2>
               <p>
-                Welcome to <strong>Cormier</strong>, a beautifully renovated
+                Welcome to <strong>Pearson</strong>, a beautifully renovated
                 residential building located in a vibrant neighborhood close to downtown Montréal. 
                 Designed for modern comfort, it blends convenience with style,
                 offering a high-quality living experience for a diverse community.
@@ -495,9 +456,9 @@ function Pearson() {
               return (
                 <div key={type} className="unit-type-card">
                   <h3>{type}</h3>
-                  {unitsOfType.map(({ unit, size, price, image }) => (
+                  {unitsOfType.map(({ unit, size, price, img }) => (
                     <div key={unit} className="unit-card">
-                      <img src={image} alt={`${type} unit ${unit}`} className="unit-image" />
+                      <img src={img} alt={`${type} unit ${unit}`} className="unit-image" />
                       <div className="unit-info">
                         <p><strong>Type:</strong> {type}</p>
                         <p><strong>Size:</strong> {size}</p>
@@ -533,7 +494,7 @@ function Pearson() {
             <div className="modern-location-map">
               <iframe
                 title="Pearson Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2801.2978998192875!2d-75.85497622339608!3d45.40333203749745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cce01f8afa357a5%3A0x75f0e3bc46daf141!2s50%20Rue%20Cormier%2C%20Gatineau%2C%20QC%20J9H%206C9!5e0!3m2!1sen!2sca!4v1753815041755!5m2!1sen!2sca"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2801.2978998192875!2d-75.85497622339608!3d45.40333203749745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cce01f8afa357a5%3A0x75f0e3bc46daf141!2s50%20Rue%20Pearson%2C%20Gatineau%2C%20QC%20J9H%206C9!5e0!3m2!1sen!2sca!4v1753815041755!5m2!1sen!2sca"
                 loading="lazy"
                 allowFullScreen
               />
@@ -543,7 +504,7 @@ function Pearson() {
 
 
 
-        {/* Testimonials */}
+        {/* Testimonials
         <section
           ref={testimonialsRef1}
           className="testimonials-section"
@@ -555,7 +516,7 @@ function Pearson() {
           <div className="testimonials-grid">
             <div className="testimonial-card">
               <p className="testimonial-text">
-                "Highly recommend living at Cormier! The apartments are spacious and comfortable. The building is well-maintained and clean, and the location is great.
+                "Highly recommend living at Pearson! The apartments are spacious and comfortable. The building is well-maintained and clean, and the location is great.
                 I’m happy to call this place home and definitely plan to stay long-term!"
               </p>
               <p className="testimonial-author"></p>
@@ -564,19 +525,20 @@ function Pearson() {
               <p className="testimonial-text">
                 "My husband and I had an amazing experience living here. It was our first time in Montréal and the location is just as great as described. It is close to vibrant neighborhoods, restaurants, and bars. 
                 Our apartment felt spacious with a full kitchen, a nice bathroom, and a lovely balcony.
-                I would definitely recommend Cormier to anyone looking for a great home."
+                I would definitely recommend Pearson to anyone looking for a great home."
               </p>
               <p className="testimonial-author"></p>
             </div>
             <div className="testimonial-card">
               <p className="testimonial-text">
-                "Living at Cormier has been fantastic. The apartments are spacious and clean and the location is unbeatable because it is close to everything you need.
+                "Living at Pearson has been fantastic. The apartments are spacious and clean and the location is unbeatable because it is close to everything you need.
                 It truly feels like home and I’m happy to recommend it to anyone looking for a great place to live."
               </p>
               <p className="testimonial-author"></p>
             </div>
           </div>
         </section>
+        */}
       </main>
 
       {/* Modal for Apply Now */}
@@ -654,7 +616,7 @@ function Pearson() {
 
       {/* Footer */}
       <footer className="footer lightgray-bg">
-        <p>© 2025 Cormier. All rights reserved.</p>
+        <p>© 2025 Pearson. All rights reserved.</p>
       </footer>
     </>
   );

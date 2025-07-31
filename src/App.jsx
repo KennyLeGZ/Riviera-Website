@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Home from './Home';
 import Cormier from './Cormier';
 import Pearson from './Pearson';
+import CormierGallery from './CormierGallery';
+import PearsonGallery from './PearsonGallery';
+import HomeFr from './HomeFr';
 
 function App() {
   return (
@@ -13,8 +16,11 @@ function App() {
 
         {/* Your actual pages */}
         <Route path="/home" element={<Home />} />
+        <Route path="home/fr" element={<HomeFr />} />
         <Route path="/cormier" element={<Cormier />} />
+        <Route path="/cormier/photos" element={<CormierGallery />} />
         <Route path="/pearson" element={<Pearson />} />
+        <Route path="/pearson/photos" element={<PearsonGallery />} />
       </Routes>
     </Router>
   );

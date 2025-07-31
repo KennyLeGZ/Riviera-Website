@@ -9,7 +9,7 @@ import 'aos/dist/aos.css';
 import rivieraImage1 from './assets/Outside/drone1.jpg';
 import rivieraImage2 from './assets/Outside/drone2.jpg';
 import rivieraImage3 from './assets/Outside/drone3.jpg';
-import cormierImage from './assets/Outside/cormier-outside6.jpg';
+import cormierImage from './assets/Outside/cormier-outside3.jpg';
 import pearsonImage from './assets/Outside/78-Pearson-1.jpg';
 
 // Amenities
@@ -34,6 +34,10 @@ import cinema from './assets/Icons/cinema.png';
 
 // Logo
 import rivieraLogo from './assets/Icons/Riviera-logo.png';
+
+// Appartments
+import apartment1 from './assets/Appartements/IMG_4854_web.jpg';
+
 
 
 
@@ -124,7 +128,7 @@ function Home() {
       title: "Discover Riviera",
     },
     {
-      image: cormierImage,
+      image: outdoorPoolImage,
       title: "Explore New Horizons",
     },
   ];
@@ -154,8 +158,7 @@ function Home() {
         {/* Desktop links */}
         <div className="desktop-links">
           <button className="nav-header-link" onClick={() => scrollToRef(aboutRef1, -200)}>About</button>
-          <button className="nav-header-link" onClick={() => scrollToRef(discoverRef1, -220)}>Visit Cormier</button>
-          <button className="nav-header-link" onClick={() => scrollToRef(discoverRef2, -220)}>Visit Pearson</button>
+          <button className="nav-header-link" onClick={() => scrollToRef(discoverRef1, -190)}>Our Properties</button>
         </div>
         
         {/* Hamburger Icon for Mobile */}
@@ -183,7 +186,7 @@ function Home() {
         <div className="desktop-buttons">
           <button className="nav-header-link" onClick={handleContactClick}>Contact Leasing Agent</button>
           <button className="nav-header-link" onClick={openModal}>Book A Tour</button>
-          <button className="nav-header-link" onClick={() => navigate('/fr')}>FR</button>
+          <button className="nav-header-link" onClick={() => navigate('/home/fr')}>FR</button>
         </div>
       </div>
 
@@ -239,11 +242,6 @@ function Home() {
           </button>
         </section>
 
-
-
-
-
-
         {/* Book A Tour Section */}
         <section
           className="highlight-hero lightgray-bg reverse"
@@ -252,11 +250,11 @@ function Home() {
         >
           <div className="hero-content-wrapper">
             <div className="hero-image">
-              <img src={images[2].src} alt="Beautiful unit at 2170 Lincoln" />
+              <img src={apartment1} alt="Beautiful unit at 2170 Lincoln" />
             </div>
             <div className="hero-text">
-              <h1>Find Your Next Home<br />With Riviera</h1>
-              <p>Modern Design, Unbeatable Location, and Unmatched Comfort.</p>
+              <h1>Find Your Next<br />Home With Riviera</h1>
+              <p>Affordable Housing, Unbeatable Location, and Unmatched Comfort.</p>
               <button className="hero-tour-button" onClick={openModal}>
                 Book a Tour
               </button>
@@ -284,20 +282,21 @@ function Home() {
             <div className="about-text">
               <h2>About Riviera</h2>
               <p>
-                Welcome to <strong>2170 Lincoln</strong>, a beautifully renovated
-                residential building located in a vibrant neighborhood close to downtown Montréal. 
-                Designed for modern comfort, it blends convenience with style,
-                offering a high-quality living experience for a diverse community.
+                Welcome to <strong>Riviera Apartments</strong>, an affordable rental community in Gatineau’s Aylmer sector. 
+                Just minutes from Ottawa and the Ottawa River, Riviera combines comfort and value with convenient access to 
+                schools, parks, shopping, and public transit. On‑site amenities include outdoor pools, a fitness centre, 
+                sports courts, a dog park, and laundry facilities.
               </p>
+
               <p>
-                We strive to create a community where comfort meets convenience, offering thoughtfully 
-                designed spaces and modern features that enhance everyday living.
+                At <strong>Riviera Apartments</strong>, we’re committed to offering affordable, practical homes in a welcoming 
+                community. With accessible spaces and essential amenities, everyday living is simple, comfortable, and convenient.
               </p>
               <ul className="about-features">
-                <li>Modern and stylish design</li>
-                <li>Prime location close to Concordia, Dawson, downtown, and other amenities</li>
-                <li>Spacious, thoughtfully crafted living spaces</li>
-                <li>Community-focused atmosphere</li>
+                <li>Affordable and comfortable apartments</li>
+                <li>Convenient Gatineau location with easy access to Ottawa, transit, and shopping</li>
+                <li>Practical layouts with essential amenities</li>
+                <li>Welcoming, community-oriented environment</li>
               </ul>
             </div>
           </div>
@@ -331,10 +330,15 @@ function Home() {
                 <div className="property-card-text">
                   <h3>Cormier</h3>
                   <p>
-                    Cormier is a premier luxury residence offering a perfect blend of comfort, sophistication, and convenience. Thoughtfully designed with modern architecture and upscale finishes, Cormier features spacious layouts, high-end appliances, and elegant interiors that cater to a refined lifestyle. 
-                    Residents enjoy a full suite of premium amenities, including secure parking, on-site fitness facilities, and beautifully landscaped outdoor spaces. 
-                    Ideally situated just minutes from downtown, Cormier provides easy access to vibrant shopping districts, top-rated restaurants, cultural venues, and public transit — making it an ideal choice for professionals and urban dwellers seeking both style and accessibility.
-                  </p>
+                  <strong>Cormier</strong>, part of the Riviera Apartments community, offers a comfortable and convenient 
+                  living experience in Gatineau. While designed with modern touches, Cormier emphasizes accessibility 
+                  and affordability, making it a practical choice for students, professionals, and families. 
+                  Residents enjoy essential on-site amenities, including parking, a fitness centre, outdoor spaces, 
+                  and easy access to transit. 
+                  Located just minutes from downtown Ottawa and local shopping, dining, and parks, 
+                  <strong>Cormier</strong> provides a welcoming environment that combines everyday comfort with 
+                  the community-focused values of Riviera Apartments.
+                </p>
                 </div>
                 <div className="property-card-image">
                   <img src={cormierImage} alt="Cormier Property" />
@@ -348,10 +352,12 @@ function Home() {
                 <div className="property-card-text">
                   <h3>Pearson</h3>
                   <p>
-                    Pearson offers an exceptional living experience with spacious, thoughtfully designed units that showcase scenic views of the surrounding landscape. 
-                    Whether you're enjoying the sunrise from your private balcony or relaxing in a bright, open-concept living space, Pearson provides the perfect setting for comfort and tranquility. 
-                    The residence features a range of top-tier community amenities, including a fitness center, lounge areas, green outdoor spaces, and secure on-site parking. 
-                    With a strong sense of community and a prime location close to local parks, transit, and shopping, Pearson is ideal for those seeking both convenience and a peaceful place to call home.
+                    <strong>Pearson</strong>, part of the Riviera Apartments community, offers a welcoming living experience 
+                    with spacious layouts and scenic views of the surrounding area. Bright open‑concept interiors and private 
+                    balconies create an ideal space to relax, unwind, and enjoy a sense of calm. Residents benefit from convenient 
+                    on‑site amenities such as a fitness centre, lounge spaces, landscaped outdoor areas, and secure parking. 
+                    Located close to parks, shopping, and public transit, <strong>Pearson</strong> provides an affordable option 
+                    for those seeking comfort, convenience, and a peaceful place to call home.
                   </p>
                 </div>
                 <div className="property-card-image">
@@ -382,7 +388,7 @@ function Home() {
                   onClick={() => { window.scrollTo(0, 0); navigate('/cormier'); }}
                   className="visit-button"
                 >
-                  Visit Website
+                  Visit Cormier
                 </button>
               </div>
             </div>
@@ -400,7 +406,7 @@ function Home() {
                   onClick={() => { window.scrollTo(0, 0); navigate('/pearson'); }}
                   className="visit-button"
                 >
-                  Visit Website
+                  Visit Pearson
                 </button>
               </div>
             </div>
@@ -474,24 +480,68 @@ function Home() {
 
       {/* Modal */}
       {selectedAmenity && (
-        <div className="modal-overlay" onClick={() => setSelectedAmenity(null)} 
+        <div 
+          className="modal-overlay" 
+          onClick={() => setSelectedAmenity(null)} 
           style={{
-            position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
-            background: 'rgba(0,0,0,0.6)', display: 'flex', justifyContent: 'center',
-            alignItems: 'center', zIndex: 9999
+            position: 'fixed', 
+            top: 0, left: 0, 
+            width: '100%', height: '100%',
+            background: 'rgba(0,0,0,0.9)', 
+            display: 'flex', 
+            justifyContent: 'center',
+            alignItems: 'center', 
+            zIndex: 9999
           }}
         >
-          <div className="modal-content" onClick={(e) => e.stopPropagation()} 
-            style={{ background: '#fff', padding: '1rem', borderRadius: '10px', maxWidth: '90%', textAlign: 'center' }}
+          {/* Close Button in top-right of overlay */}
+          <button 
+            onClick={() => setSelectedAmenity(null)} 
+            style={{
+              position: 'absolute',
+              top: '20px',
+              right: '30px',
+              background: 'transparent',
+              border: 'none',
+              fontSize: '2.5rem',
+              color: '#fff',
+              cursor: 'pointer',
+              zIndex: 10000
+            }}
+            aria-label="Close"
           >
-            <h2>{selectedAmenity.title}</h2>
-            <img src={selectedAmenity.image} alt={selectedAmenity.title} style={{ maxWidth: '100%', borderRadius: '8px' }}/>
-            <button onClick={() => setSelectedAmenity(null)} style={{ marginTop: '1rem', padding: '0.5rem 1rem', cursor: 'pointer' }}>
-              Close
-            </button>
+            &times;
+          </button>
+
+          {/* Stop click bubbling on image */}
+          <div 
+            style={{ 
+              maxWidth: '70%', 
+              maxHeight: '80%', 
+              display: 'flex', 
+              justifyContent: 'center', 
+              alignItems: 'center'
+            }} 
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img 
+              src={selectedAmenity.image} 
+              alt={selectedAmenity.title} 
+              style={{ 
+                maxWidth: '100%', 
+                maxHeight: '100%', 
+                borderRadius: '10px',
+                objectFit: 'contain',
+                boxShadow: '0 0 20px rgba(0,0,0,0.5)'
+              }} 
+            />
           </div>
         </div>
       )}
+
+
+
+
 
         {/* Location Section */}
         <section
@@ -506,9 +556,11 @@ function Home() {
             <div className="modern-location-text">
               <h2>Discover the Neighborhood</h2>
               <p>
-                2170 Lincoln is ideally located just 10 minutes from <b>downtown Montréal</b> and <b>Mount Royal Park</b>, and only steps away from <b>Concordia University</b> and <b>Dawson College</b>.
-                Metro stations, shopping centres, cafés, and daily conveniences are all next to the building, making life easy and accessible.
-                Whether you're commuting, studying, or unwinding, 2170 Lincoln is the perfect place to be.
+                <strong>Riviera Apartments</strong> is ideally located just minutes from <b>downtown Ottawa</b> and steps away 
+                from the <b>Ottawa River</b>, offering both convenience and natural beauty. 
+                Nearby, you’ll find <b>parks, schools, shopping centres, and grocery stores</b>, as well as reliable 
+                <b> public transit connections</b> throughout Gatineau and into Ottawa. 
+                Whether you’re commuting, studying, or enjoying the outdoors, Riviera places you at the centre of it all.
               </p>
             </div>
             <div className="modern-location-map">
