@@ -22,6 +22,14 @@ import gymIcon from './assets/Icons/gymIcon.png';
 // Logo
 import rivieraLogo from './assets/Icons/Riviera-logo.png';
 
+// Amenities
+import pool from './assets/Amenities/pool1.png';
+
+// View
+import balconyview from './assets/Outside/view1.png';
+
+
+
 
 
 const images = [
@@ -34,22 +42,21 @@ const images = [
 
 // Sample units data
 const unitsData = [
-  { unit: '101', type: '1 Bedroom', size: '490 sq ft', floor: 1, price: '$1,745 / month', img: img1 },
-  { unit: '203', type: '2 Bedroom', size: '765 sq ft', floor: 2, price: '$2,345 / month', img: img2 },
-  { unit: '305', type: 'Studio', size: '300-342 sq ft', floor: 3, price: '$1,645 / month', img: img3 },
-  { unit: '405', type: '3 Bedroom', size: '300-342 sq ft', floor: 3, price: '$1,695 / month', img: img4 },
+  { unit: '101', type: '1 Bedroom', size: '490 sq ft', floor: 1, price: '$1,220 / month', img: img1 },
+  { unit: '203', type: '2 Bedroom', size: '765 sq ft', floor: 2, price: '$1,695 / month', img: img2 },
+  { unit: '305', type: 'Studio', size: '300-342 sq ft', floor: 3, price: '$1,220 / month', img: img3 },
 ];
 
 
-function Pearson() {
+function Cormier() {
   const navigate = useNavigate();
 
-  // State for the discover Pearson banner
+  // State for the discover cormier banner
   const [activeSlide, setActiveSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   const slides = [
-    { image: img1, title: "Modern Living at Pearson" },
+    { image: img1, title: "Modern Living at Cormier" },
     { image: img2, title: "Spacious & Bright Interiors" },
     { image: img3, title: "Prime Location in Montreal" },
     { image: img4, title: "Designed for Comfort" },
@@ -188,9 +195,9 @@ function Pearson() {
         {/* Desktop links */}
         <div className="desktop-links">
           <button className="nav-header-link" onClick={() => navigate('/home')}>Riviera</button>
-          <button className="nav-header-link" onClick={() => scrollToRef(aboutRef1, -200)}>About</button>
-          <button className="nav-header-link" onClick={() => navigate('/pearson/photos')}>Gallery</button>
-          <button className="nav-header-link" onClick={() => scrollToRef(unitsRef1, -200)}>Available Units</button>
+          <button className="nav-header-link" onClick={() => scrollToRef(aboutRef1, -200)}>À Propos</button>
+          <button className="nav-header-link" onClick={() => navigate('/cormier/photos')}>Galerie</button>
+          <button className="nav-header-link" onClick={() => scrollToRef(unitsRef1, -200)}>Unités Disponibles</button>
         </div>
         
         {/* Hamburger Icon for Mobile */}
@@ -209,26 +216,27 @@ function Pearson() {
             src={rivieraLogo}
             alt="Riviera Logo"
           />
-          <span>Pearson</span>
+          <span>CORMIER</span>
         </div>
       </div>
 
       <div className="header-right">
         {/* Desktop buttons */}
         <div className="desktop-buttons">
-          <button className="nav-header-link" onClick={handleContactClick}>Contact Leasing Agent</button>
-          <button className="nav-header-link" onClick={openModal}>Book A Tour</button>
-          <button className="nav-header-link" onClick={() => navigate('/pearson/fr')}>FR</button>
+          <button className="nav-header-link" onClick={handleContactClick}>Contacter l'Agent</button>
+          <button className="nav-header-link" onClick={openModal}>Réserver Une Visite</button>
+          <button className="nav-header-link" onClick={() => navigate('/cormier')}>EN</button>
         </div>
       </div>
 
       {/* Mobile Dropdown Menu */}
       <div className={`dropdown-menu ${isMenuOpen ? 'open' : ''}`}>
-        <button className="nav-header-link" onClick={() => scrollToRef(aboutRef1, -200)}>About</button>
-        <button className="nav-header-link" onClick={() => navigate('/photos')}>Gallery</button>
-        <button className="nav-header-link" onClick={() => scrollToRef(unitsRef1, -220)}>Available Units</button>
-        <button className="nav-header-link" onClick={handleContactClick}>Contact Leasing Agent</button>
-        <button className="nav-header-link" onClick={openModal}>Book A Tour</button>
+        <button className="nav-header-link" onClick={() => navigate('/home')}>Riviera</button>
+        <button className="nav-header-link" onClick={() => scrollToRef(aboutRef1, -200)}>À Propos</button>
+        <button className="nav-header-link" onClick={() => navigate('/cormier/photos')}>Galerie</button>
+        <button className="nav-header-link" onClick={() => scrollToRef(unitsRef1, -220)}>Unités Disponibles</button>
+        <button className="nav-header-link" onClick={handleContactClick}>Contacter l'Agent</button>
+        <button className="nav-header-link" onClick={openModal}>Réserver Une Visite</button>
       </div>
 
     </header>
@@ -239,7 +247,13 @@ function Pearson() {
       <main className="main-content">
 
         {/* Slideshow */}
-        <section className="slideshow-section" aria-label="Building images slideshow">
+        <section className="slideshow-section" 
+          aria-label="Building images slideshow" 
+          data-aos="fade-left"
+          data-aos-once="true"
+          data-aos-duration="400"
+          data-aos-easing="ease-in-out"
+        >
           <div className="slideshow-container triple-display" role="region" aria-live="polite" style={{ position: 'relative' }}>
             {/* Left arrow button */}
             <button
@@ -297,16 +311,20 @@ function Pearson() {
         {/* Book A Tour Section */}
         <section
           className="highlight-hero lightgray-bg reverse"
+          data-aos="fade-down"
+          data-aos-once="true"
+          data-aos-duration="400"
+          data-aos-easing="ease-in-out"
         >
           <div className="hero-content-wrapper">
             <div className="hero-image">
-              <img src={images[1].src} alt="Beautiful unit at Pearson" />
+              <img src={images[1].src} alt="Beautiful unit at Cormier" />
             </div>
             <div className="hero-text">
-              <h1>Find Your New Home<br />At Pearson</h1>
-              <p>Modern Design, Unbeatable Location, and Unmatched Comfort.</p>
+              <h1>Bienvenue à <br />50 & 60 Cormier<br />Appartements Riviera</h1>
+              <p>Logements Abordables, Emplacement Central, Confort Total.</p>
               <button className="hero-tour-button" onClick={openModal}>
-                Book a Tour
+                Réserver Une Visite
               </button>
             </div>
           </div>
@@ -325,28 +343,27 @@ function Pearson() {
             <div className="about-image">
               <img
                 src={images[1].src}
-                alt="Pearson Building Exterior"
+                alt="Cormier Building Exterior"
                 loading="lazy"
               />
             </div>
 
             <div className="about-text">
-              <h2>About Pearson</h2>
+              <h2>À Propos De Cormier</h2>
               <p>
-                Welcome to <strong>Pearson</strong>, a beautifully renovated
-                residential building located in a vibrant neighborhood close to downtown Montréal. 
-                Designed for modern comfort, it blends convenience with style,
-                offering a high-quality living experience for a diverse community.
-              </p>
-              <p>
-                We strive to create a community where comfort meets convenience, offering thoughtfully 
-                designed spaces and modern features that enhance everyday living.
-              </p>
+                Bienvenue à <strong>Cormier</strong>, une résidence magnifiquement rénovée à Aylmer, Gatineau,  
+                à seulement quelques minutes de la rivière des Outaouais et du centre-ville d’Ottawa.  
+                Conçue pour le confort, elle allie commodité et style afin d’offrir une expérience de vie de qualité.
+                </p>
+                <p>
+                À <strong>Cormier</strong>, les appartements récemment rénovés offrent des espaces accueillants  
+                où le confort et la praticité se rencontrent pour le quotidien.
+                </p>
               <ul className="about-features">
-                <li>Modern and stylish design</li>
-                <li>Prime location close to Concordia, Dawson, downtown, and other amenities</li>
-                <li>Spacious, thoughtfully crafted living spaces</li>
-                <li>Community-focused atmosphere</li>
+                <li>Design Rénové Et Confortable</li>
+                <li>Emplacement Idéal Près De La Rivière Des Outaouais, Du Centre-Ville D’Ottawa Et Des Commodités À Proximité</li>
+                <li>Espaces Spacieux Conçus Pour Un Quotidien Facile</li>
+                <li>Une Atmosphère Accueillante Et Axée Sur La Communauté</li>
               </ul>
             </div>
           </div>
@@ -354,48 +371,48 @@ function Pearson() {
 
         {/* Insert Features Cards Section right here */}
         <section className="features-cards-section white-bg" data-aos="fade-down" data-aos-once="true" data-aos-duration="600" data-aos-easing="ease-in-out">
-          <h2>Live Better at Pearson</h2>
+          <h2>Vivez Mieux À Cormier</h2>
           <div className="features-cards-container">
             {/* Card 1: Free Wifi */}
             <div className="feature-card">
               <img src={wifiIcon} alt="WiFi icon" className="feature-icon" />
-              <h3>Free Internet</h3>
-              <p>Stay connected with included wireless internet available throughout the building.</p>
+              <h3>Internet Gratuit</h3>
+              <p>Restez connecté grâce à l’internet sans fil inclus dans tout l’immeuble.</p>
             </div>
 
             {/* Card 2: Kitchen Features */}
             <div className="feature-card">
               <img src={kitchenIcon} alt="Kitchen icon" className="feature-icon" />
-              <h3>Equipped Kitchen</h3>
-              <p>A kitchen equipped with a cooktop, microwave, and other essentials, designed for your convenience and comfort</p>
+              <h3>Cuisine Équipée</h3>
+              <p>Une Cuisine Équipée D’Une Plaque De Cuisson, D’Un Four À Micro-Ondes Et D’Autres Éléments Essentiels, Conçue Pour Votre Commodité Et Votre Confort.</p>
             </div>
 
             {/* Card 3: Secure Building */}
             <div className="feature-card">
               <img src={lockIcon} alt="Lock icon" className="feature-icon" />
-              <h3>24/7 Secure Access</h3>
-              <p>Feel safe with round-the-clock surveillance and secure entry systems for residents.</p>
+              <h3>Accès Sécurisé 24/7</h3>
+              <p>Sentez-Vous En Sécurité Grâce À Une Surveillance Continue Et À Des Systèmes D’Entrée Sécurisés Pour Les Résidents.</p>
             </div>
 
             {/* Card 4: Heating and Cooling */}
             <div className="feature-card">
               <img src={heatingCoolingIcon} alt="Heating/Cooling icon" className="feature-icon" />
-              <h3>Air Conditioning & Heating</h3>
-              <p>Comfortable air conditioning and heating included year-round for your convenience.</p>
+              <h3>Climatisation & Chauffage</h3>
+              <p>Climatisation Et Chauffage Inclus Toute L’Année Pour Votre Confort.</p>
             </div>
 
             {/* Card 4: Gym */}
             <div className="feature-card feature-card-medium">
               <img src={gymIcon} alt="Gym icon" className="feature-icon" />
-              <h3>On-Site Gym</h3>
-              <p>Stay fit and active with our fully equipped on-site gym, available 24/7 for residents.</p>
+              <h3>Gym Sur Place</h3>
+              <p>Restez En Forme Et Actif Grâce À Notre Gym Entièrement Équipé, Accessible 24/7 Pour Les Résidents.</p>
             </div>
 
             {/* Card 5: In-Unit Washer/Dryer */}
             <div className="feature-card feature-card-medium">
               <img src={washerIcon} alt="Washer/Dryer icon" className="feature-icon" />
-              <h3>Laundry Room</h3>
-              <p>Convenient on-site laundry with modern washers and dryers.</p>
+              <h3>Buanderie</h3>
+              <p>Buanderie Sur Place Avec Laveuses Et Sécheuses Modernes.</p>
             </div>
           </div>
         </section>
@@ -409,11 +426,11 @@ function Pearson() {
         >
           <div className="amenities-hero-content-wrapper">
             <div className="amenities-hero-image">
-              <img src={img1} alt="Gym at Pearson" />
+              <img src={pool} alt="Pool at Cormier" />
             </div>
             <div className="amenities-hero-text">
-              <h1>Modern Gym with Stunning <br />Downtown Montreal View</h1>
-              <p>Enjoy your workouts in a bright, modern gym with stunning panoramic views of downtown Montréal.</p>
+              <h1>Détendez-Vous Et Rafraîchissez-Vous À La Piscine</h1>
+              <p>Profitez D’Une Baignade Rafraîchissante Dans Une Piscine Lumineuse Et Accueillante, Conçue Pour La Détente Et Les Loisirs.</p>
             </div>
           </div>
         </section>
@@ -427,11 +444,14 @@ function Pearson() {
         >
           <div className="amenities-hero-content-wrapper">
             <div className="amenities-hero-image">
-              <img src={img2} alt="Conference Room at Pearson" />
+              <img src={balconyview} alt="Conference Room at Cormier" />
             </div>
             <div className="amenities-hero-text">
-              <h1>Fully Equipped Conference Space</h1>
-              <p>Host your meetings and events in our elegant conference room, designed to provide a professional and comfortable space for all your gatherings.</p>
+              <h1>Une Vue Superbe Sur La Rivière Des Outaouais</h1>
+              <p>
+                Profitez D’Une Vue Imprenable Sur La Rivière Des Outaouais Directement Depuis Votre Appartement, 
+                Créer Un Environnement De Vie Paisible Et Inspirant.
+              </p>
             </div>
           </div>
         </section>
@@ -446,10 +466,10 @@ function Pearson() {
           data-aos-duration="400"
           data-aos-easing="ease-in-out"
         >
-          <h2>Available Units & Floor Plans</h2>
+          <h2>Unités Disponibles & Plans Des Appartements</h2>
 
           <div className="units-card-container">
-            {['Studio', '1 Bedroom', '2 Bedroom', '3 Bedroom'].map((type) => {
+            {['Studio', '1 Bedroom', '2 Bedroom'].map((type) => {
               // Show all units of this type (no filter)
               const unitsOfType = filteredUnits.filter(u => u.type === type);
               if (unitsOfType.length === 0) return null;
@@ -462,8 +482,8 @@ function Pearson() {
                       <img src={img} alt={`${type} unit ${unit}`} className="unit-image" />
                       <div className="unit-info">
                         <p><strong>Type:</strong> {type}</p>
-                        <p><strong>Size:</strong> {size}</p>
-                        <p><strong>Starting Price:</strong> {price}</p>
+                        <p><strong>Taille:</strong> {size}</p>
+                        <p><strong>Prix Initial:</strong> {price}</p>
                       </div>
                     </div>
                   ))}
@@ -485,61 +505,23 @@ function Pearson() {
         >
           <div className="modern-location-wrapper">
             <div className="modern-location-text">
-              <h2>Discover the Neighborhood</h2>
+              <h2>Découvrez Le Quartier</h2>
               <p>
-                Pearson is ideally located just 10 minutes from <b>downtown Montréal</b> and <b>Mount Royal Park</b>, and only steps away from <b>Concordia University</b> and <b>Dawson College</b>.
-                Metro stations, shopping centres, cafés, and daily conveniences are all next to the building, making life easy and accessible.
-                Whether you're commuting, studying, or unwinding, Pearson is the perfect place to be.
+                Situé À Aylmer, Gatineau, <strong>Cormier</strong> Offre Un Accès Facile À La <b>Rivière Des Outaouais</b> Et Se Trouve À Seulement Quelques Minutes Du <b>Centre-Ville D’Ottawa</b>.  
+                Entouré De Cafés, De Restaurants Et De Boutiques, Les Commodités Quotidiennes Sont Toujours À Portée De Main, Et L’<b>Université D’Ottawa</b> N’Est Qu’À 15 Minutes En Voiture.  
+                Cormier Est L’Endroit Où Le Confort, La Commodité Et L’Emplacement Se Rencontrent.
               </p>
             </div>
             <div className="modern-location-map">
               <iframe
-                title="Pearson Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2801.2978998192875!2d-75.85497622339608!3d45.40333203749745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cce01f8afa357a5%3A0x75f0e3bc46daf141!2s50%20Rue%20Pearson%2C%20Gatineau%2C%20QC%20J9H%206C9!5e0!3m2!1sen!2sca!4v1753815041755!5m2!1sen!2sca"
+                title="Cormier Map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2801.2978998192875!2d-75.85497622339608!3d45.40333203749745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cce01f8afa357a5%3A0x75f0e3bc46daf141!2s50%20Rue%20Cormier%2C%20Gatineau%2C%20QC%20J9H%206C9!5e0!3m2!1sen!2sca!4v1753815041755!5m2!1sen!2sca"
                 loading="lazy"
                 allowFullScreen
               />
             </div>
           </div>
         </section>
-
-
-
-        {/* Testimonials
-        <section
-          ref={testimonialsRef1}
-          className="testimonials-section"
-          data-aos="fade-down"
-          data-aos-once="true"
-          data-aos-duration="600"
-        >
-          <h2 className="testimonials-title">What Our Residents Say</h2>
-          <div className="testimonials-grid">
-            <div className="testimonial-card">
-              <p className="testimonial-text">
-                "Highly recommend living at Pearson! The apartments are spacious and comfortable. The building is well-maintained and clean, and the location is great.
-                I’m happy to call this place home and definitely plan to stay long-term!"
-              </p>
-              <p className="testimonial-author"></p>
-            </div>
-            <div className="testimonial-card">
-              <p className="testimonial-text">
-                "My husband and I had an amazing experience living here. It was our first time in Montréal and the location is just as great as described. It is close to vibrant neighborhoods, restaurants, and bars. 
-                Our apartment felt spacious with a full kitchen, a nice bathroom, and a lovely balcony.
-                I would definitely recommend Pearson to anyone looking for a great home."
-              </p>
-              <p className="testimonial-author"></p>
-            </div>
-            <div className="testimonial-card">
-              <p className="testimonial-text">
-                "Living at Pearson has been fantastic. The apartments are spacious and clean and the location is unbeatable because it is close to everything you need.
-                It truly feels like home and I’m happy to recommend it to anyone looking for a great place to live."
-              </p>
-              <p className="testimonial-author"></p>
-            </div>
-          </div>
-        </section>
-        */}
       </main>
 
       {/* Modal for Apply Now */}
@@ -617,11 +599,11 @@ function Pearson() {
 
       {/* Footer */}
       <footer className="footer lightgray-bg">
-        <p>© 2025 Pearson. All rights reserved.</p>
+        <p>© 2025 Cormier. All rights reserved.</p>
       </footer>
     </>
   );
 }
 
-export default Pearson;
+export default Cormier;
 

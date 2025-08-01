@@ -218,7 +218,7 @@ function Pearson() {
         <div className="desktop-buttons">
           <button className="nav-header-link" onClick={handleContactClick}>Contact Leasing Agent</button>
           <button className="nav-header-link" onClick={openModal}>Book A Tour</button>
-          <button className="nav-header-link" onClick={() => navigate('/pearson/fr')}>FR</button>
+          <button className="nav-header-link" onClick={() => navigate('/pearson')}>EN</button>
         </div>
       </div>
 

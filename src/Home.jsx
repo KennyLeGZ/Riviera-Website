@@ -9,8 +9,11 @@ import 'aos/dist/aos.css';
 import rivieraImage1 from './assets/Outside/drone1.jpg';
 import rivieraImage2 from './assets/Outside/drone2.jpg';
 import rivieraImage3 from './assets/Outside/drone3.jpg';
-import cormierImage from './assets/Outside/cormier-outside3.jpg';
-import pearsonImage from './assets/Outside/78-Pearson-1.jpg';
+import cormierImage1 from './assets/Outside/cormier-outside3.jpg';
+import cormierImage2 from './assets/Outside/cormier-outside2.jpg';
+import pearsonImage1 from './assets/Outside/78-Pearson-1.jpg';
+import pearsonImage2 from './assets/Outside/80-Pearson-3.jpg';
+
 
 // Amenities
 import outdoorPoolImage from './assets/Amenities/pool1.png';
@@ -43,12 +46,13 @@ import apartment1 from './assets/Appartements/IMG_4854_web.jpg';
 
 
 const images = [
-  { src: rivieraImage1, caption: "Building View", type: 'outside' },
-  { src: rivieraImage2, caption: "Building View", type: 'outside' },
-  { src: rivieraImage3, caption: "Building View", type: 'outside' },
-  { src: cormierImage, caption: "Building View", type: 'outside' },
-  { src: pearsonImage, caption: "Building View", type: 'outside' },
-
+  { src: rivieraImage1, caption: "Riviera Building View", type: 'outside' },
+  { src: rivieraImage2, caption: "Riverea Building View", type: 'outside' },
+  { src: rivieraImage3, caption: "Riviera Building View", type: 'outside' },
+  { src: cormierImage1, caption: "Cormier Building View", type: 'outside' },
+  { src: cormierImage2, caption: "Cormier Building View", type: 'outside' },
+  { src: pearsonImage1, caption: "Pearson Building View", type: 'outside' },
+  { src: pearsonImage2, caption: "Pearson Building View", type: 'outside' },
 ];
 
 function Home() {
@@ -60,6 +64,7 @@ function Home() {
   const [selectedProperty, setSelectedProperty] = useState('Cormier');
   const [activeSlide, setActiveSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(true);
+  const [viewMode, setViewMode] = useState("cards");
 
   // Selected Amenities
   const [selectedAmenity, setSelectedAmenity] = useState(null);
@@ -274,7 +279,7 @@ function Home() {
             <div className="about-image">
               <img
                 src={rivieraImage3}
-                alt="2170 Lincoln Building Exterior"
+                alt="Riviera Building Exterior"
                 loading="lazy"
               />
             </div>
@@ -336,12 +341,12 @@ function Home() {
                   Residents enjoy essential on-site amenities, including parking, a fitness centre, outdoor spaces, 
                   and easy access to transit. 
                   Located just minutes from downtown Ottawa and local shopping, dining, and parks, 
-                  <strong>Cormier</strong> provides a welcoming environment that combines everyday comfort with 
+                  <strong> Cormier</strong> provides a welcoming environment that combines everyday comfort with 
                   the community-focused values of Riviera Apartments.
                 </p>
                 </div>
                 <div className="property-card-image">
-                  <img src={cormierImage} alt="Cormier Property" />
+                  <img src={cormierImage2} alt="Cormier Property" />
                 </div>
               </div>
             )}
@@ -361,7 +366,7 @@ function Home() {
                   </p>
                 </div>
                 <div className="property-card-image">
-                  <img src={pearsonImage} alt="Pearson Property" />
+                  <img src={pearsonImage2} alt="Pearson Property" />
                 </div>
               </div>
             )}
@@ -378,7 +383,7 @@ function Home() {
         >
           <div
             className="building-half cormier"
-            style={{ backgroundImage: `url(${cormierImage})` }}
+            style={{ backgroundImage: `url(${cormierImage1})` }}
           >
             <div className="image-overlay"></div>
             <div className="building-content">
@@ -396,7 +401,7 @@ function Home() {
 
           <div
             className="building-half pearson"
-            style={{ backgroundImage: `url(${pearsonImage})` }}
+            style={{ backgroundImage: `url(${pearsonImage1})` }}
           >
             <div className="image-overlay"></div>
             <div className="building-content">
@@ -414,68 +419,128 @@ function Home() {
         </section>
 
 
-
-        {/* Insert Features Cards Section right here */}
-        <section className="features-cards-section white-bg" data-aos="fade-up" data-aos-once="true" data-aos-easing="ease-in-out">
+        {/* Features Cards Section */}
+        <section 
+          className="features-cards-section white-bg" 
+          data-aos="fade-up" 
+          data-aos-once="true" 
+          data-aos-easing="ease-in-out"
+        >
+          {/* Section Title */}
           <h2>Amenities Offered With Riviera</h2>
-          <div className="features-cards-container">
-            
-            {/* Card 1: Outdoor Pool */}
-            <div className="feature-card" onClick={() => setSelectedAmenity({ title: "Outdoor Pool", image: outdoorPoolImage })}>
-              <img src={outdoorPoolIcon} alt="Outdoor Pool icon" className="feature-icon" style={{ width: '140px', height: '140px', marginTop: '30px' }}/>
-              <h3>Outdoor Pool</h3>
-              <p>Enjoy a refreshing swim in our outdoor pool, perfect for relaxation and leisure.</p>
-            </div>
 
-            {/* Card 2: BBQ Area */}
-            <div className="feature-card" onClick={() => setSelectedAmenity({ title: "BBQ Area", image: bbqImage })}>
-              <img src={bbq} alt="BBQ icon" className="feature-icon" style={{ width: '110px', height: '110px', marginTop: '40px' }} />
-              <h3>BBQ Area</h3>
-              <p>Enjoy outdoor cooking and dining with our BBQ facilities, perfect for gatherings.</p>
-            </div>
-
-            {/* Card 3: Basketball Court */}
-            <div className="feature-card" onClick={() => setSelectedAmenity({ title: "Basketball Court", image: basketballImage })}>
-              <img src={basketball} alt="Basketball icon" className="feature-icon" style={{ width: '110px', height: '110px', marginTop: '40px' }}/>
-              <h3>Basketball Court</h3>
-              <p>Enjoy a game of basketball on our outdoor court, designed for fun and fitness.</p>
-            </div>
-
-            {/* Card 4: Tennis Court */}
-            <div className="feature-card" onClick={() => setSelectedAmenity({ title: "Tennis Court", image: tennisImage })}>
-              <img src={tennis} alt="Tennis icon" className="feature-icon" style={{ width: '110px', height: '110px', marginTop: '40px' }} />
-              <h3>Tennis Court</h3>
-              <p>Enjoy a game of tennis on our outdoor court, designed for fun and fitness.</p>
-            </div>
-
-            {/* Card 5: Gym */}
-            <div className="feature-card feature-card-medium" onClick={() => setSelectedAmenity({ title: "Fitness Centre", image: gymImage })}>
-              <img src={gymIcon} alt="Gym icon" className="feature-icon" />
-              <h3>Fitness Centre</h3>
-              <p>Stay fit and active with our fully equipped on-site gym, available 24/7 for residents.</p>
-            </div>
-
-            {/* Card 6: Laundry */}
-            <div className="feature-card feature-card-medium" onClick={() => setSelectedAmenity({ title: "Laundry Room", image: laundryImage })}>
-              <img src={washerIcon} alt="Washer/Dryer icon" className="feature-icon" />
-              <h3>Laundry Room</h3>
-              <p>Convenient on-site laundry with modern washers and dryers.</p>
-            </div>
-
-            {/* Card 7: Dog Park */}
-            <div className="feature-card feature-card-medium" onClick={() => setSelectedAmenity({ title: "Dog Park", image: dogParkImage })}>
-              <img src={dog} alt="Dog icon" className="feature-icon" />
-              <h3>Dog Park</h3>
-              <p>Convenient on-site dog park for your furry friends to play and socialize.</p>
-            </div>
-
-            {/* Card 8: Cinema */}
-            <div className="feature-card feature-card-medium" onClick={() => setSelectedAmenity({ title: "Cinema Room", image: cinemaImage })}>
-              <img src={cinema} alt="Cinema icon" className="feature-icon" style={{ width: '150px', height: '150px'}}/>
-              <h3>Cinema Room</h3>
-              <p>Enjoy movie nights in our cozy cinema room, complete with comfortable seating and a large screen.</p>
-            </div>
+          {/* Toggle Button */}
+          <div className="view-toggle">
+            <button onClick={() => setViewMode(viewMode === "cards" ? "photos" : "cards")}>
+              Switch to {viewMode === "cards" ? "Photo View" : "Card View"}
+            </button>
           </div>
+
+          {/* Conditional Rendering */}
+          {viewMode === "cards" ? (
+            <div className="features-cards-container">
+              {/* --- Your existing cards (no change) --- */}
+
+              {/* Card 1: Outdoor Pool */}
+              <div className="feature-card" onClick={() => setSelectedAmenity({ title: "Outdoor Pool", image: outdoorPoolImage })}>
+                <img src={outdoorPoolIcon} alt="Outdoor Pool icon" className="feature-icon" style={{ width: '140px', height: '140px', marginTop: '30px' }}/>
+                <h3>Outdoor Pool</h3>
+                <p>Enjoy a refreshing swim in our outdoor pool, perfect for relaxation and leisure.</p>
+              </div>
+
+              {/* Card 2: BBQ Area */}
+              <div className="feature-card" onClick={() => setSelectedAmenity({ title: "BBQ Area", image: bbqImage })}>
+                <img src={bbq} alt="BBQ icon" className="feature-icon" style={{ width: '110px', height: '110px', marginTop: '40px' }} />
+                <h3>BBQ Area</h3>
+                <p>Enjoy outdoor cooking and dining with our BBQ facilities, perfect for gatherings.</p>
+              </div>
+
+              {/* Card 3: Basketball Court */}
+              <div className="feature-card" onClick={() => setSelectedAmenity({ title: "Basketball Court", image: basketballImage })}>
+                <img src={basketball} alt="Basketball icon" className="feature-icon" style={{ width: '110px', height: '110px', marginTop: '40px' }}/>
+                <h3>Basketball Court</h3>
+                <p>Enjoy a game of basketball on our outdoor court, designed for fun and fitness.</p>
+              </div>
+
+              {/* Card 4: Tennis Court */}
+              <div className="feature-card" onClick={() => setSelectedAmenity({ title: "Tennis Court", image: tennisImage })}>
+                <img src={tennis} alt="Tennis icon" className="feature-icon" style={{ width: '110px', height: '110px', marginTop: '40px' }} />
+                <h3>Tennis Court</h3>
+                <p>Enjoy a game of tennis on our outdoor court, designed for fun and fitness.</p>
+              </div>
+
+              {/* Card 5: Gym */}
+              <div className="feature-card feature-card-medium" onClick={() => setSelectedAmenity({ title: "Fitness Centre", image: gymImage })}>
+                <img src={gymIcon} alt="Gym icon" className="feature-icon" />
+                <h3>Fitness Centre</h3>
+                <p>Stay fit and active with our fully equipped on-site gym, available 24/7 for residents.</p>
+              </div>
+
+              {/* Card 6: Laundry */}
+              <div className="feature-card feature-card-medium" onClick={() => setSelectedAmenity({ title: "Laundry Room", image: laundryImage })}>
+                <img src={washerIcon} alt="Washer/Dryer icon" className="feature-icon" />
+                <h3>Laundry Room</h3>
+                <p>Convenient on-site laundry with modern washers and dryers.</p>
+              </div>
+
+              {/* Card 7: Dog Park */}
+              <div className="feature-card feature-card-medium" onClick={() => setSelectedAmenity({ title: "Dog Park", image: dogParkImage })}>
+                <img src={dog} alt="Dog icon" className="feature-icon" />
+                <h3>Dog Park</h3>
+                <p>Convenient on-site dog park for your furry friends to play and socialize.</p>
+              </div>
+
+              {/* Card 8: Cinema */}
+              <div className="feature-card feature-card-medium" onClick={() => setSelectedAmenity({ title: "Cinema Room", image: cinemaImage })}>
+                <img src={cinema} alt="Cinema icon" className="feature-icon" style={{ width: '150px', height: '150px'}}/>
+                <h3>Cinema Room</h3>
+                <p>Enjoy movie nights in our cozy cinema room, complete with comfortable seating and a large screen.</p>
+              </div>
+            </div>
+          ) : (
+            <div className="features-photos-container">
+              {/* Photo View */}
+              <div className="feature-photo-item" onClick={() => setSelectedAmenity({ title: "Outdoor Pool", image: outdoorPoolImage })}>
+                <img src={outdoorPoolImage} alt="Outdoor Pool" className="feature-photo"/>
+                <p className="photo-caption">Outdoor Pool</p>
+              </div>
+
+              <div className="feature-photo-item" onClick={() => setSelectedAmenity({ title: "BBQ Area", image: bbqImage })}>
+                <img src={bbqImage} alt="BBQ Area" className="feature-photo"/>
+                <p className="photo-caption">BBQ Area</p>
+              </div>
+
+              <div className="feature-photo-item" onClick={() => setSelectedAmenity({ title: "Basketball Court", image: basketballImage })}>
+                <img src={basketballImage} alt="Basketball Court" className="feature-photo"/>
+                <p className="photo-caption">Basketball Court</p>
+              </div>
+
+              <div className="feature-photo-item" onClick={() => setSelectedAmenity({ title: "Tennis Court", image: tennisImage })}>
+                <img src={tennisImage} alt="Tennis Court" className="feature-photo"/>
+                <p className="photo-caption">Tennis Court</p>
+              </div>
+
+              <div className="feature-photo-item" onClick={() => setSelectedAmenity({ title: "Fitness Centre", image: gymImage })}>
+                <img src={gymImage} alt="Fitness Centre" className="feature-photo"/>
+                <p className="photo-caption">Fitness Centre</p>
+              </div>
+
+              <div className="feature-photo-item" onClick={() => setSelectedAmenity({ title: "Laundry Room", image: laundryImage })}>
+                <img src={laundryImage} alt="Laundry Room" className="feature-photo"/>
+                <p className="photo-caption">Laundry Room</p>
+              </div>
+
+              <div className="feature-photo-item" onClick={() => setSelectedAmenity({ title: "Dog Park", image: dogParkImage })}>
+                <img src={dogParkImage} alt="Dog Park" className="feature-photo"/>
+                <p className="photo-caption">Dog Park</p>
+              </div>
+
+              <div className="feature-photo-item" onClick={() => setSelectedAmenity({ title: "Cinema Room", image: cinemaImage })}>
+                <img src={cinemaImage} alt="Cinema Room" className="feature-photo"/>
+                <p className="photo-caption">Cinema Room</p>
+              </div>
+            </div>
+          )}
         </section>
 
       {/* Modal */}
@@ -565,7 +630,7 @@ function Home() {
             </div>
             <div className="modern-location-map">
               <iframe
-                title="2170 Lincoln Map"
+                title="Riviera Map"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3322.797395610749!2d-75.85485123615219!3d45.40336418920163!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cce01f8afa357a5%3A0x75f0e3bc46daf141!2s50%20Rue%20Cormier%2C%20Gatineau%2C%20QC%20J9H%206C9!5e1!3m2!1sen!2sca!4v1753277295913!5m2!1sen!2sca"
                 loading="lazy"
                 allowFullScreen
@@ -686,7 +751,7 @@ function Home() {
 
       {/* Footer */}
       <footer className="footer lightgray-bg">
-        <p>© 2025 2170 Lincoln. All rights reserved.</p>
+        <p>© 2025 Riviera Apartments. All rights reserved.</p>
       </footer>
     </>
   );

@@ -182,9 +182,10 @@ function Photos() {
   }, [isTransitioning]);
 
   const groupedPhotos = {
+    'studio': images.filter(photo => photo.type === 'studio'),
     '1 bedroom': images.filter(photo => photo.type === '1 bedroom'),
     '2 bedroom': images.filter(photo => photo.type === '2 bedroom'),
-    'studio': images.filter(photo => photo.type === 'studio'),
+    '3 bedroom': images.filter(photo => photo.type === '3 bedroom'),
   };
 
   const filteredPhotos = filter === 'all' ? null : groupedPhotos[filter];
@@ -243,9 +244,10 @@ function Photos() {
         {/* Filter Panel */}
         <div className="filter-panel">
           <button className={filter === 'all' ? 'filter-btn active' : 'filter-btn'} onClick={() => setFilter('all')}>All</button>
+          <button className={filter === 'studio' ? 'filter-btn active' : 'filter-btn'} onClick={() => setFilter('studio')}>Studio</button>
           <button className={filter === '1 bedroom' ? 'filter-btn active' : 'filter-btn'} onClick={() => setFilter('1 bedroom')}>1 Bedroom</button>
           <button className={filter === '2 bedroom' ? 'filter-btn active' : 'filter-btn'} onClick={() => setFilter('2 bedroom')}>2 Bedroom</button>
-          <button className={filter === 'studio' ? 'filter-btn active' : 'filter-btn'} onClick={() => setFilter('studio')}>Studio</button>
+          <button className={filter === '3 bedroom' ? 'filter-btn active' : 'filter-btn'} onClick={() => setFilter('3 bedroom')}>3 Bedroom</button>
         </div>
       </div>
 

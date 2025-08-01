@@ -212,19 +212,7 @@ html, body, #root, app-container {
     text-overflow: ellipsis;
     position: relative; /* for ::after positioning */
   }
-
-
-  /* Underline effect for header-address on mobile */
-  .header-center .header-address::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    bottom: -15px;         /* Adjust this if needed */
-    left: 0;
-    background-color: #707070;
-  }
-
+  
   .header-right {
     display: none;              /* Hide the right section on mobile */
   }

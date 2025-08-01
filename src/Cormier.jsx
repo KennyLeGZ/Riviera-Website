@@ -22,6 +22,14 @@ import gymIcon from './assets/Icons/gymIcon.png';
 // Logo
 import rivieraLogo from './assets/Icons/Riviera-logo.png';
 
+// Amenities
+import pool from './assets/Amenities/pool1.png';
+
+// View
+import balconyview from './assets/Outside/view1.png';
+
+
+
 
 
 const images = [
@@ -34,9 +42,9 @@ const images = [
 
 // Sample units data
 const unitsData = [
-  { unit: '101', type: '1 Bedroom', size: '490 sq ft', floor: 1, price: '$1,745 / month', img: img1 },
-  { unit: '203', type: '2 Bedroom', size: '765 sq ft', floor: 2, price: '$2,345 / month', img: img2 },
-  { unit: '305', type: 'Studio', size: '300-342 sq ft', floor: 3, price: '$1,645 / month', img: img3 },
+  { unit: '101', type: '1 Bedroom', size: '490 sq ft', floor: 1, price: '$1,220 / month', img: img1 },
+  { unit: '203', type: '2 Bedroom', size: '765 sq ft', floor: 2, price: '$1,695 / month', img: img2 },
+  { unit: '305', type: 'Studio', size: '300-342 sq ft', floor: 3, price: '$1,220 / month', img: img3 },
 ];
 
 
@@ -217,14 +225,15 @@ function Cormier() {
         <div className="desktop-buttons">
           <button className="nav-header-link" onClick={handleContactClick}>Contact Leasing Agent</button>
           <button className="nav-header-link" onClick={openModal}>Book A Tour</button>
-          <button className="nav-header-link" onClick={() => navigate('/fr')}>FR</button>
+          <button className="nav-header-link" onClick={() => navigate('/cormier/fr')}>FR</button>
         </div>
       </div>
 
       {/* Mobile Dropdown Menu */}
       <div className={`dropdown-menu ${isMenuOpen ? 'open' : ''}`}>
+        <button className="nav-header-link" onClick={() => navigate('/home')}>Riviera</button>
         <button className="nav-header-link" onClick={() => scrollToRef(aboutRef1, -200)}>About</button>
-        <button className="nav-header-link" onClick={() => navigate('/photos')}>Gallery</button>
+        <button className="nav-header-link" onClick={() => navigate('/cormier/photos')}>Gallery</button>
         <button className="nav-header-link" onClick={() => scrollToRef(unitsRef1, -220)}>Available Units</button>
         <button className="nav-header-link" onClick={handleContactClick}>Contact Leasing Agent</button>
         <button className="nav-header-link" onClick={openModal}>Book A Tour</button>
@@ -238,7 +247,13 @@ function Cormier() {
       <main className="main-content">
 
         {/* Slideshow */}
-        <section className="slideshow-section" aria-label="Building images slideshow">
+        <section className="slideshow-section" 
+          aria-label="Building images slideshow" 
+          data-aos="fade-left"
+          data-aos-once="true"
+          data-aos-duration="400"
+          data-aos-easing="ease-in-out"
+        >
           <div className="slideshow-container triple-display" role="region" aria-live="polite" style={{ position: 'relative' }}>
             {/* Left arrow button */}
             <button
@@ -296,14 +311,18 @@ function Cormier() {
         {/* Book A Tour Section */}
         <section
           className="highlight-hero lightgray-bg reverse"
+          data-aos="fade-down"
+          data-aos-once="true"
+          data-aos-duration="400"
+          data-aos-easing="ease-in-out"
         >
           <div className="hero-content-wrapper">
             <div className="hero-image">
               <img src={images[1].src} alt="Beautiful unit at Cormier" />
             </div>
             <div className="hero-text">
-              <h1>Find Your New Home<br />At Cormier</h1>
-              <p>Modern Design, Unbeatable Location, and Unmatched Comfort.</p>
+              <h1>Welcome To <br/>50 & 60 Cormier<br />Riviera Apartments</h1>
+              <p>Affordable Housing, Central Location, Total Comfort.</p>
               <button className="hero-tour-button" onClick={openModal}>
                 Book a Tour
               </button>
@@ -332,20 +351,19 @@ function Cormier() {
             <div className="about-text">
               <h2>About Cormier</h2>
               <p>
-                Welcome to <strong>Cormier</strong>, a beautifully renovated
-                residential building located in a vibrant neighborhood close to downtown Montréal. 
-                Designed for modern comfort, it blends convenience with style,
-                offering a high-quality living experience for a diverse community.
+                Welcome to <strong>Cormier</strong>, a beautifully renovated residence in Aylmer, Gatineau,  
+                just minutes from the Ottawa River and downtown Ottawa. Designed for comfort, it blends convenience with style  
+                to offer a high‑quality living experience.
               </p>
               <p>
-                We strive to create a community where comfort meets convenience, offering thoughtfully 
-                designed spaces and modern features that enhance everyday living.
+                At <strong>Cormier</strong>, recently renovated apartments provide welcoming spaces 
+                where comfort and convenience come together for everyday living.
               </p>
               <ul className="about-features">
-                <li>Modern and stylish design</li>
-                <li>Prime location close to Concordia, Dawson, downtown, and other amenities</li>
-                <li>Spacious, thoughtfully crafted living spaces</li>
-                <li>Community-focused atmosphere</li>
+                <li>Renovated and comfortable design</li>
+                <li>Prime location near the Ottawa River, downtown Ottawa, and nearby amenities</li>
+                <li>Spacious layouts designed for easy living</li>
+                <li>A welcoming, community‑oriented atmosphere</li>
               </ul>
             </div>
           </div>
@@ -408,11 +426,11 @@ function Cormier() {
         >
           <div className="amenities-hero-content-wrapper">
             <div className="amenities-hero-image">
-              <img src={img1} alt="Gym at Cormier" />
+              <img src={pool} alt="Pool at Cormier" />
             </div>
             <div className="amenities-hero-text">
-              <h1>Modern Gym with Stunning <br />Downtown Montreal View</h1>
-              <p>Enjoy your workouts in a bright, modern gym with stunning panoramic views of downtown Montréal.</p>
+              <h1>Relax and Refresh by the Pool</h1>
+              <p>Enjoy a refreshing swim in a bright, welcoming pool designed for relaxation and leisure.</p>
             </div>
           </div>
         </section>
@@ -426,11 +444,13 @@ function Cormier() {
         >
           <div className="amenities-hero-content-wrapper">
             <div className="amenities-hero-image">
-              <img src={img2} alt="Conference Room at Cormier" />
+              <img src={balconyview} alt="Conference Room at Cormier" />
             </div>
             <div className="amenities-hero-text">
-              <h1>Fully Equipped Conference Space</h1>
-              <p>Host your meetings and events in our elegant conference room, designed to provide a professional and comfortable space for all your gatherings.</p>
+              <h1>A Stunning View Across the Ottawa River</h1>
+              <p>
+                Enjoy breathtaking views of the Ottawa River right from your apartment, creating a peaceful and inspiring living environment.
+              </p>
             </div>
           </div>
         </section>
@@ -486,9 +506,9 @@ function Cormier() {
             <div className="modern-location-text">
               <h2>Discover the Neighborhood</h2>
               <p>
-                Cormier is ideally located just 10 minutes from <b>downtown Montréal</b> and <b>Mount Royal Park</b>, and only steps away from <b>Concordia University</b> and <b>Dawson College</b>.
-                Metro stations, shopping centres, cafés, and daily conveniences are all next to the building, making life easy and accessible.
-                Whether you're commuting, studying, or unwinding, Cormier is the perfect place to be.
+                Nestled in Aylmer, Gatineau, <strong>Cormier</strong> offers easy access to the <b>Ottawa River</b> and is just minutes from <b>downtown Ottawa</b>.  
+                Surrounded by cafés, restaurants, and shops, daily conveniences are always within reach, and the <b>University of Ottawa</b> is only a 15‑minute drive away.  
+                Cormier is where comfort, convenience, and location come together.
               </p>
             </div>
             <div className="modern-location-map">
@@ -501,44 +521,6 @@ function Cormier() {
             </div>
           </div>
         </section>
-
-
-
-        {/* Testimonials
-        <section
-          ref={testimonialsRef1}
-          className="testimonials-section"
-          data-aos="fade-down"
-          data-aos-once="true"
-          data-aos-duration="600"
-        >
-          <h2 className="testimonials-title">What Our Residents Say</h2>
-          <div className="testimonials-grid">
-            <div className="testimonial-card">
-              <p className="testimonial-text">
-                "Highly recommend living at Cormier! The apartments are spacious and comfortable. The building is well-maintained and clean, and the location is great.
-                I’m happy to call this place home and definitely plan to stay long-term!"
-              </p>
-              <p className="testimonial-author"></p>
-            </div>
-            <div className="testimonial-card">
-              <p className="testimonial-text">
-                "My husband and I had an amazing experience living here. It was our first time in Montréal and the location is just as great as described. It is close to vibrant neighborhoods, restaurants, and bars. 
-                Our apartment felt spacious with a full kitchen, a nice bathroom, and a lovely balcony.
-                I would definitely recommend Cormier to anyone looking for a great home."
-              </p>
-              <p className="testimonial-author"></p>
-            </div>
-            <div className="testimonial-card">
-              <p className="testimonial-text">
-                "Living at Cormier has been fantastic. The apartments are spacious and clean and the location is unbeatable because it is close to everything you need.
-                It truly feels like home and I’m happy to recommend it to anyone looking for a great place to live."
-              </p>
-              <p className="testimonial-author"></p>
-            </div>
-          </div>
-        </section>
-        */}
       </main>
 
       {/* Modal for Apply Now */}

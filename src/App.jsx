@@ -6,6 +6,8 @@ import Pearson from './Pearson';
 import CormierGallery from './CormierGallery';
 import PearsonGallery from './PearsonGallery';
 import HomeFr from './HomeFr';
+import CormierFr from './CormierFr';
+import PearsonFr from './PearsonFr';
 
 function App() {
   return (
@@ -18,8 +20,10 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="home/fr" element={<HomeFr />} />
         <Route path="/cormier" element={<Cormier />} />
+        <Route path="/cormier/fr" element={<CormierFr />} />
         <Route path="/cormier/photos" element={<CormierGallery />} />
         <Route path="/pearson" element={<Pearson />} />
+        <Route path="/pearson/fr" element={<PearsonFr />} />
         <Route path="/pearson/photos" element={<PearsonGallery />} />
       </Routes>
     </Router>
