@@ -20,7 +20,7 @@ import rivieraLogo from './assets/Icons/Riviera-logo.png';
 
 // Amenities
 import cinema from './assets/Amenities/cinema2.jpg';
-import pool from './assets/outside/pearsonPool.jpg';
+import pool from './assets/Outside/pearsonPool.jpg';
 
 
 // Studio
