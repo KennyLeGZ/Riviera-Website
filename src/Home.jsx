@@ -11,39 +11,33 @@ import rivieraImage2 from './assets/Outside/drone2.jpg';
 import rivieraImage3 from './assets/Outside/drone3.jpg';
 import cormierImage1 from './assets/Outside/cormier-outside3.jpg';
 import cormierImage2 from './assets/Outside/cormier-outside2.jpg';
-import pearsonImage1 from './assets/Outside/78-Pearson-1.jpg';
+import pearsonImage1 from './assets/Outside/80-Pearson-10.jpg';
 import pearsonImage2 from './assets/Outside/80-Pearson-3.jpg';
 
 
 // Amenities
 import outdoorPoolImage from './assets/Amenities/pool1.png';
-import bbqImage from './assets/Amenities/park1.png';
-import basketballImage from './assets/Amenities/park1.png';
-import tennisImage from './assets/Amenities/park1.png';
+import bbqImage from './assets/Amenities/BBQ.jpg';
+import tennisImage from './assets/Amenities/tennis.png';
 import gymImage from './assets/Amenities/gym1.jpg';
-import laundryImage from './assets/Amenities/park1.png';
-import dogParkImage from './assets/Amenities/park1.png';
+import laundryImage from './assets/Amenities/laundry_room_2.jpg';
+import dogParkImage from './assets/Amenities/dogpark.png';
 import cinemaImage from './assets/Amenities/cinema1.jpg';
 
 // Icons
 import washerIcon from './assets/Icons/washer.png';
 import gymIcon from './assets/Icons/gymIcon.png';
 import outdoorPoolIcon from './assets/Icons/outdoorPoolIcon.png';
-import basketball from './assets/Icons/basketball.png';
 import bbq from './assets/Icons/bbq.png';
 import tennis from './assets/Icons/tennis.png';
 import dog from './assets/Icons/dog.png';
 import cinema from './assets/Icons/cinema.png';
 
+// Cormier
+import furnished1Bed1 from './assets/Appartements/Cormier/1Bedroom/furnished1Bed1.png';
+
 // Logo
 import rivieraLogo from './assets/Icons/Riviera-logo.png';
-
-// Appartments
-import apartment1 from './assets/Appartements/IMG_4854_web.jpg';
-
-
-
-
 
 const images = [
   { src: rivieraImage1, caption: "Riviera Building View", type: 'outside' },
@@ -129,12 +123,12 @@ function Home() {
 
   const slides = [
     {
-      image: rivieraImage1,
+      image: rivieraImage3,
       title: "Discover Riviera",
     },
     {
       image: outdoorPoolImage,
-      title: "Explore New Horizons",
+      title: "Find Comfort, Find Community",
     },
   ];
 
@@ -198,10 +192,10 @@ function Home() {
       {/* Mobile Dropdown Menu */}
       <div className={`dropdown-menu ${isMenuOpen ? 'open' : ''}`}>
         <button className="nav-header-link" onClick={() => scrollToRef(aboutRef1, -200)}>About</button>
-        <button className="nav-header-link" onClick={() => scrollToRef(discoverRef1, -220)}>Visit Cormier</button>
-        <button className="nav-header-link" onClick={() => scrollToRef(discoverRef2, -220)}>Visit Pearson</button>
+        <button className="nav-header-link" onClick={() => scrollToRef(discoverRef1, -200)}>Our Properties</button>
         <button className="nav-header-link" onClick={handleContactClick}>Contact Leasing Agent</button>
         <button className="nav-header-link" onClick={openModal}>Book A Tour</button>
+        <button className="nav-header-link" onClick={() => navigate('/home/fr')}>FR</button>
       </div>
 
     </header>
@@ -255,7 +249,7 @@ function Home() {
         >
           <div className="hero-content-wrapper">
             <div className="hero-image">
-              <img src={apartment1} alt="Beautiful unit at 2170 Lincoln" />
+              <img src={furnished1Bed1} alt="Beautiful unit at 2170 Lincoln" />
             </div>
             <div className="hero-text">
               <h1>Find Your Next<br />Home With Riviera</h1>
@@ -455,13 +449,6 @@ function Home() {
                 <p>Enjoy outdoor cooking and dining with our BBQ facilities, perfect for gatherings.</p>
               </div>
 
-              {/* Card 3: Basketball Court */}
-              <div className="feature-card" onClick={() => setSelectedAmenity({ title: "Basketball Court", image: basketballImage })}>
-                <img src={basketball} alt="Basketball icon" className="feature-icon" style={{ width: '110px', height: '110px', marginTop: '40px' }}/>
-                <h3>Basketball Court</h3>
-                <p>Enjoy a game of basketball on our outdoor court, designed for fun and fitness.</p>
-              </div>
-
               {/* Card 4: Tennis Court */}
               <div className="feature-card" onClick={() => setSelectedAmenity({ title: "Tennis Court", image: tennisImage })}>
                 <img src={tennis} alt="Tennis icon" className="feature-icon" style={{ width: '110px', height: '110px', marginTop: '40px' }} />
@@ -508,11 +495,6 @@ function Home() {
               <div className="feature-photo-item" onClick={() => setSelectedAmenity({ title: "BBQ Area", image: bbqImage })}>
                 <img src={bbqImage} alt="BBQ Area" className="feature-photo"/>
                 <p className="photo-caption">BBQ Area</p>
-              </div>
-
-              <div className="feature-photo-item" onClick={() => setSelectedAmenity({ title: "Basketball Court", image: basketballImage })}>
-                <img src={basketballImage} alt="Basketball Court" className="feature-photo"/>
-                <p className="photo-caption">Basketball Court</p>
               </div>
 
               <div className="feature-photo-item" onClick={() => setSelectedAmenity({ title: "Tennis Court", image: tennisImage })}>
@@ -619,7 +601,7 @@ function Home() {
         >
           <div className="modern-location-wrapper">
             <div className="modern-location-text">
-              <h2>Discover the Neighborhood</h2>
+              <h2>Discover The Neighborhood</h2>
               <p>
                 <strong>Riviera Apartments</strong> is ideally located just minutes from <b>downtown Ottawa</b> and steps away 
                 from the <b>Ottawa River</b>, offering both convenience and natural beauty. 
@@ -653,7 +635,7 @@ function Home() {
             <div className="testimonial-card">
               <p className="testimonial-text">
                 "Highly recommend living at 60 Cormier! The apartments are spacious and comfortable. The building is well-maintained and clean, and the location is great.
-                I’m happy to call this place home and definitely plan to stay long-term!"
+                I’m happy to call this place home!"
               </p>
               <p className="testimonial-author"></p>
             </div>
@@ -749,6 +731,10 @@ function Home() {
 
       </div>
 
+      <span style={{ paddingLeft: "1rem", fontSize: "0.80rem", color: "gray" }}>
+        *Some furnished images are virtually staged. Rooms may differ slightly from what is shown.
+      </span>
+
       {/* Footer */}
       <footer className="footer lightgray-bg">
         <p>© 2025 Riviera Apartments. All rights reserved.</p>
@@ -756,5 +742,6 @@ function Home() {
     </>
   );
 }
+
 
 export default Home;

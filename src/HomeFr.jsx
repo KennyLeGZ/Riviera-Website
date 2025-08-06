@@ -11,39 +11,33 @@ import rivieraImage2 from './assets/Outside/drone2.jpg';
 import rivieraImage3 from './assets/Outside/drone3.jpg';
 import cormierImage1 from './assets/Outside/cormier-outside3.jpg';
 import cormierImage2 from './assets/Outside/cormier-outside2.jpg';
-import pearsonImage1 from './assets/Outside/78-Pearson-1.jpg';
+import pearsonImage1 from './assets/Outside/80-Pearson-10.jpg';
 import pearsonImage2 from './assets/Outside/80-Pearson-3.jpg';
 
 
 // Amenities
 import outdoorPoolImage from './assets/Amenities/pool1.png';
-import bbqImage from './assets/Amenities/park1.png';
-import basketballImage from './assets/Amenities/park1.png';
-import tennisImage from './assets/Amenities/park1.png';
+import bbqImage from './assets/Amenities/BBQ.jpg';
+import tennisImage from './assets/Amenities/tennis.png';
 import gymImage from './assets/Amenities/gym1.jpg';
-import laundryImage from './assets/Amenities/park1.png';
-import dogParkImage from './assets/Amenities/park1.png';
+import laundryImage from './assets/Amenities/laundry_room_2.jpg';
+import dogParkImage from './assets/Amenities/dogpark.png';
 import cinemaImage from './assets/Amenities/cinema1.jpg';
 
 // Icons
 import washerIcon from './assets/Icons/washer.png';
 import gymIcon from './assets/Icons/gymIcon.png';
 import outdoorPoolIcon from './assets/Icons/outdoorPoolIcon.png';
-import basketball from './assets/Icons/basketball.png';
 import bbq from './assets/Icons/bbq.png';
 import tennis from './assets/Icons/tennis.png';
 import dog from './assets/Icons/dog.png';
 import cinema from './assets/Icons/cinema.png';
 
+// Cormier
+import furnished1Bed1 from './assets/Appartements/Cormier/1Bedroom/furnished1Bed1.png';
+
 // Logo
 import rivieraLogo from './assets/Icons/Riviera-logo.png';
-
-// Appartments
-import apartment1 from './assets/Appartements/IMG_4854_web.jpg';
-
-
-
-
 
 const images = [
   { src: rivieraImage1, caption: "Vue du bâtiment Riviera", type: 'outside' },
@@ -129,12 +123,12 @@ function Home() {
 
   const slides = [
     {
-      image: rivieraImage1,
+      image: rivieraImage3,
       title: "Découvrez Riviera",
     },
     {
       image: outdoorPoolImage,
-      title: "Explorez De Nouveaux Horizons",
+      title: "Trouvez Du Réconfort, Trouvez Une Communauté",
     },
   ];
 
@@ -198,9 +192,10 @@ function Home() {
       {/* Mobile Dropdown Menu */}
       <div className={`dropdown-menu ${isMenuOpen ? 'open' : ''}`}>
         <button className="nav-header-link" onClick={() => scrollToRef(aboutRef1, -200)}>À Propos</button>
-        <button className="nav-header-link" onClick={() => scrollToRef(discoverRef1, -190)}>Nos Propriétés</button>
+        <button className="nav-header-link" onClick={() => scrollToRef(discoverRef1, -200)}>Nos Propriétés</button>
         <button className="nav-header-link" onClick={handleContactClick}>Contacter l'Agent</button>
         <button className="nav-header-link" onClick={openModal}>Réserver Une Visite</button>
+        <button className="nav-header-link" onClick={() => navigate('/home')}>EN</button>
       </div>
 
     </header>
@@ -254,10 +249,10 @@ function Home() {
         >
           <div className="hero-content-wrapper">
             <div className="hero-image">
-              <img src={apartment1} alt="Beautiful unit at Riviera" />
+              <img src={furnished1Bed1} alt="Beautiful unit at Riviera" />
             </div>
             <div className="hero-text">
-              <h1>Trouvez Votre Prochaine<br />Maison avec Riviera</h1>
+              <h1>Trouvez Votre Prochaine<br />Appartement avec Riviera</h1>
               <p>Logement Abordable, Emplacement Imbattable et Confort Inégalé</p>
               <button className="hero-tour-button" onClick={openModal}>
                 Réserver Une Visite
@@ -288,8 +283,8 @@ function Home() {
               <p>
                 Bienvenue aux <strong>Appartements Riviera</strong>, une communauté résidentielle abordable située 
                 dans le secteur Aylmer de Gatineau. À seulement quelques minutes d’Ottawa et de la rivière des Outaouais, 
-                Riviera allie confort et valeur avec un accès pratique aux écoles, aux parcs, aux centres commerciaux 
-                et au transport en commun. Les commodités sur place incluent des piscines extérieures, un centre de mise en forme, 
+                Riviera offre confort et valeur, avec un accès pratique aux écoles, aux parcs, aux centres commerciaux et aux transports en commun. 
+                Les commodités sur place incluent des piscines extérieures, un centre de mise en forme, 
                 des terrains de sport, un parc canin et des installations de buanderie.
               </p>
               <p>
@@ -312,7 +307,7 @@ function Home() {
         <section className="our-properties-section" data-aos="fade-up" data-aos-once="true">
           <h2>Nos Propriétés</h2>
           <p>
-            Riviera possède et gère fièrement deux résidences de premier plan : <strong>Cormier</strong> et <strong>Pearson</strong>. 
+            Riviera possède et gère fièrement deux résidences de premier plan: <strong>Cormier</strong> et <strong>Pearson</strong>. 
             Explorez chaque propriété en utilisant le sélecteur ci‑dessous.
           </p>
 
@@ -344,7 +339,7 @@ function Home() {
                     Les résidents profitent de commodités essentielles sur place, notamment le stationnement, un centre de mise en forme, 
                     des espaces extérieurs et un accès facile au transport en commun. 
                     Situé à seulement quelques minutes du centre-ville d’Ottawa ainsi que des commerces, restaurants et parcs locaux, 
-                    <strong> Cormier</strong> offre un environnement accueillant qui allie confort au quotidien et valeurs communautaires 
+                    <strong> Cormier</strong> offre un environnement accueillant qui propose confort au quotidien et valeurs communautaires 
                     des Appartements Riviera.
                   </p>
                 </div>
@@ -394,7 +389,7 @@ function Home() {
               <div className="building-info-box">
                 <h2>Découvrez Cormier</h2>
                 <button
-                  onClick={() => { window.scrollTo(0, 0); navigate('/cormier'); }}
+                  onClick={() => { window.scrollTo(0, 0); navigate('/cormier/fr'); }}
                   className="visit-button"
                 >
                   Visitez Cormier
@@ -412,7 +407,7 @@ function Home() {
               <div className="building-info-box">
                 <h2>Découvrez Pearson</h2>
                 <button
-                  onClick={() => { window.scrollTo(0, 0); navigate('/pearson'); }}
+                  onClick={() => { window.scrollTo(0, 0); navigate('/pearson/fr'); }}
                   className="visit-button"
                 >
                   Visitez Pearson
@@ -436,7 +431,7 @@ function Home() {
           {/* Toggle Button */}
           <div className="view-toggle">
             <button onClick={() => setViewMode(viewMode === "cards" ? "photos" : "cards")}>
-              Switch to {viewMode === "cards" ? "Photo View" : "Card View"}
+              Passer À {viewMode === "cards" ? "La Vue Photo" : "La Vue Carte"}
             </button>
           </div>
 
@@ -457,13 +452,6 @@ function Home() {
                 <img src={bbq} alt="BBQ icon" className="feature-icon" style={{ width: '110px', height: '110px', marginTop: '40px' }} />
                 <h3>Espace Barbecue</h3>
                 <p>Profitez de nos barbecues extérieurs, parfaits pour vos rassemblements.</p>
-              </div>
-
-              {/* Card 3: Basketball Court */}
-              <div className="feature-card" onClick={() => setSelectedAmenity({ title: "Basketball Court", image: basketballImage })}>
-                <img src={basketball} alt="Basketball icon" className="feature-icon" style={{ width: '110px', height: '110px', marginTop: '40px' }}/>
-                <h3>Terrain de Basket</h3>
-                <p>Profitez d'une partie de basket-ball sur notre terrain extérieur, conçu pour le plaisir et la remise en forme.</p>
               </div>
 
               {/* Card 4: Tennis Court */}
@@ -490,7 +478,7 @@ function Home() {
               {/* Card 7: Dog Park */}
               <div className="feature-card feature-card-medium" onClick={() => setSelectedAmenity({ title: "Dog Park", image: dogParkImage })}>
                 <img src={dog} alt="Dog icon" className="feature-icon" />
-                <h3>Parc À Chiens</h3>
+                <h3>Parc à Chiens</h3>
                 <p>Parc à chiens pratique sur place pour que vos amis à quatre pattes puissent jouer et socialiser.</p>
               </div>
 
@@ -498,7 +486,7 @@ function Home() {
               <div className="feature-card feature-card-medium" onClick={() => setSelectedAmenity({ title: "Cinema Room", image: cinemaImage })}>
                 <img src={cinema} alt="Cinema icon" className="feature-icon" style={{ width: '150px', height: '150px'}}/>
                 <h3>Salle de Cinéma</h3>
-                <p>Profitez de notre salle de cinéma conviviale avec sièges confortables et grand écran.</p>
+                <p>Profitez de notre salle de cinéma avec sièges confortables et grand écran.</p>
               </div>
             </div>
           ) : (
@@ -512,11 +500,6 @@ function Home() {
               <div className="feature-photo-item" onClick={() => setSelectedAmenity({ title: "BBQ Area", image: bbqImage })}>
                 <img src={bbqImage} alt="BBQ Area" className="feature-photo"/>
                 <p className="photo-caption">Espace Barbecue</p>
-              </div>
-
-              <div className="feature-photo-item" onClick={() => setSelectedAmenity({ title: "Basketball Court", image: basketballImage })}>
-                <img src={basketballImage} alt="Basketball Court" className="feature-photo"/>
-                <p className="photo-caption">Terrain de Basket</p>
               </div>
 
               <div className="feature-photo-item" onClick={() => setSelectedAmenity({ title: "Tennis Court", image: tennisImage })}>
@@ -536,7 +519,7 @@ function Home() {
 
               <div className="feature-photo-item" onClick={() => setSelectedAmenity({ title: "Dog Park", image: dogParkImage })}>
                 <img src={dogParkImage} alt="Dog Park" className="feature-photo"/>
-                <p className="photo-caption">Parc À Chiens</p>
+                <p className="photo-caption">Parc à Chiens</p>
               </div>
 
               <div className="feature-photo-item" onClick={() => setSelectedAmenity({ title: "Cinema Room", image: cinemaImage })}>
@@ -623,10 +606,10 @@ function Home() {
         >
           <div className="modern-location-wrapper">
             <div className="modern-location-text">
-              <h2>Découvrez le Quartier</h2>
+              <h2>Découvrez Le Quartier</h2>
               <p>
                 Les <strong>Appartements Riviera</strong> sont idéalement situés à quelques minutes du 
-                <b> centre-ville d’Ottawa</b> et à deux pas de la <b>rivière des Outaouais</b>, offrant à la fois commodité et beauté naturelle. 
+                <b> centre-ville d’Ottawa</b> et de la <b>rivière des Outaouais</b>, offrant à la fois commodité et beauté naturelle. 
                 À proximité, vous trouverez des <b>parcs, écoles, centres commerciaux et épiceries</b>, ainsi que des 
                 <b>liaisons de transport en commun fiables</b> à travers Gatineau et vers Ottawa. 
                 Que vous soyez en déplacement, aux études ou en plein air, Riviera vous place au cœur de tout.
@@ -654,30 +637,27 @@ function Home() {
           <div className="testimonials-grid">
             <div className="testimonial-card">
               <p className="testimonial-text">
-                "Je recommande vivement de vivre au 60 Cormier ! Les appartements sont spacieux et confortables. 
+                "Je recommande vivement de vivre au 60 Cormier! Les appartements sont spacieux et confortables. 
                 L’immeuble est bien entretenu et propre, et l’emplacement est excellent. 
-                Je suis heureux(se) d’appeler cet endroit ma maison et je prévois certainement d’y rester à long terme !"
+                Je suis heureuse d’appeler cet endroit ma maison!"
               </p>
-              <p className="testimonial-author">– Sarah L.</p>
             </div>
 
             <div className="testimonial-card">
               <p className="testimonial-text">
                 "Mon mari et moi avons eu une expérience incroyable en vivant ici. C’était notre première fois à Gatineau et 
-                l’emplacement est exactement comme décrit : proche de quartiers animés, de restaurants et de bars. 
+                l’emplacement est exactemefnt comme décrit: proche de quartiers animés, de restaurants et de bars. 
                 Notre appartement était spacieux avec une cuisine complète, une belle salle de bain et un charmant balcon. 
                 Je recommanderais sans hésiter le 78 Pearson à toute personne à la recherche d’un excellent logement."
               </p>
-              <p className="testimonial-author">– Emily & James P.</p>
             </div>
 
             <div className="testimonial-card">
               <p className="testimonial-text">
                 "Vivre au 50 Cormier a été fantastique. Les appartements sont spacieux et propres, et l’emplacement est imbattable 
-                car il est proche de tout ce dont vous avez besoin. Cela ressemble vraiment à la maison et je suis heureux(se) de 
+                car il est proche de tout ce dont vous avez besoin. Cela ressemble vraiment à la maison et je suis heureux de 
                 le recommander à toute personne à la recherche d’un endroit idéal où vivre."
               </p>
-              <p className="testimonial-author">– Daniel M.</p>
             </div>
           </div>
         </section>
@@ -755,6 +735,10 @@ function Home() {
       )}
 
       </div>
+
+      <span style={{ paddingLeft: "1rem", fontSize: "0.80rem", color: "gray" }}>
+        *Certaines images sont virtuellement meublées; les pièces peuvent varier.
+      </span>
 
       {/* Footer */}
       <footer className="footer lightgray-bg">

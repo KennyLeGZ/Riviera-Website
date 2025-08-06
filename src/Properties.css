@@ -126,35 +126,56 @@
 }
 
 /* Mobile tweaks */
+/* ---------- Mobile Slideshow Styles ---------- */
 @media (max-width: 768px) {
   .slideshow-section {
-    margin-top: 120px;
+    width: 100%;
     max-width: 100%;
+    margin-top: 60px; /* smaller margin for mobile */
+    background-color: #ffffff;
   }
 
   .slideshow-container {
-    height: 50vh;
+    display: block;             /* stack content */
+    width: 100%;
+    height: auto;               /* let height adjust */
+    overflow: hidden;
+    border-radius: 0;           /* remove rounded corners for full width */
+    margin-top: 4rem;
   }
 
+  /* Only show main image */
   .main-image {
-    flex: 0 0 80%;
-    margin: 0 -3%;
+    width: 100% !important;
+    height: auto !important;    /* proportionate scaling */
+    object-fit: contain !important; /* no cropping */
+    margin: 0 auto;
+    border-radius: 0;
+    box-shadow: none;           /* optional: cleaner look on mobile */
   }
 
+  /* Hide side images */
   .side-image {
-    flex: 0 0 10%;
+    display: none !important;
   }
 
+  /* Make sure nav buttons don’t overlap badly */
   .nav-button {
-    font-size: 2rem;
-    padding: 0 10px;
+    font-size: 2rem;            /* slightly smaller for mobile */
+    top: 45%;
+    background-color: rgba(255,255,255,0.7);
+    padding: 0.3rem 0.6rem;
   }
 
+  /* Caption below image */
   .caption {
     font-size: 1rem;
+    margin-top: 0.5rem;
     padding: 0 1rem;
+    text-align: center;
   }
 }
+
 
 /* About Section */
 .about-section {
@@ -374,7 +395,7 @@
   min-height: 320px; 
 }
 
-.feature-card-medium .feature-icon {
+.feature-card-medium .feature-icon .feature-icon-heating {
   width: 125px;
   height: 125px;
 }
@@ -384,6 +405,14 @@
   margin-top: 3.5rem;
   width: 90px;  /* bigger width */
   height: 90px; /* bigger height */
+  margin-bottom: 0 rem;
+  display: block;
+}
+
+.feature-icon-heating {
+  margin-top: 3.5rem;
+  width: 110px;  /* bigger width */
+  height: 100px; /* bigger height */
   margin-bottom: 0 rem;
   display: block;
 }
@@ -520,33 +549,80 @@
 }
 
 @media (max-width: 768px) {
+  .amenities-hero {
+    flex-direction: column;     /* stack everything vertically */
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+  }
+
   .amenities-hero-content-wrapper {
-    flex-direction: column !important;  /* force column */
-    width: 100%;                        /* full width */
+    flex-direction: column !important;  /* force stacked */
+    width: 100%;
+    margin: 0;
+    align-items: center;                 /* center content */
   }
 
-  .amenities-hero-image,
-  .amenities-hero-text {
-    width: 100% !important;             /* force full width */
-    max-width: 100% !important;
-    flex: unset !important;             /* disable flex-grow/shrink to avoid weird resizing */
-    box-sizing: border-box;             /* consistent sizing */
+  /* Image takes full width, auto height */
+  .amenities-hero-image {
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;                    /* remove corners for edge-to-edge */
+    box-shadow: none;                    /* cleaner mobile look */
+    margin-bottom: 1.5rem;
   }
 
+  .amenities-hero-image img {
+    width: 100%;
+    height: auto;                        /* keep proportions */
+    object-fit: contain;                 /* no cropping */
+    border-radius: 0;
+  }
+
+  /* Text centered below */
   .amenities-hero-text {
-    padding: 1.5rem 1rem;               /* padding */
+    flex: none;
+    max-width: 90%;                      /* keep nice margins on sides */
+    width: 100%;
+    padding: 1rem;
     text-align: center;
-    margin-top: 1rem;                   /* add some spacing below image */
+    align-items: center;
   }
 
   .amenities-hero-text h1 {
-    font-size: 2.4rem;
+    font-size: 2rem;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .amenities-hero-text h1::after {
+    width: 40px;                         /* smaller underline */
+    height: 3px;
+    margin: 0.5rem auto 0 auto;          /* centered underline */
   }
 
   .amenities-hero-text p {
     font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    text-align: center;
+    max-width: 95%;
   }
 }
+
+/* Extra small devices like iPhone SE */
+@media (max-width: 480px) {
+  .amenities-hero-text h1 {
+    font-size: 1.6rem;
+  }
+
+  .amenities-hero-text p {
+    font-size: 0.9rem;
+  }
+}
+
 
 
 /* Units Section */

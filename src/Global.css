@@ -365,26 +365,193 @@ html, body, #root, app-container {
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
+/* ---------- Mobile Styles for Hero Section ---------- */
 @media (max-width: 768px) {
   .highlight-hero {
-    padding: 3rem 1rem;
+    padding: 2rem 1rem;
+    width: 100%;
+    max-width: 100%;
+    height: auto !important;       /* allow growth */
+    min-height: auto !important;
+    overflow: visible !important;  /* prevent clipping */
+    box-sizing: border-box;
   }
 
   .hero-content-wrapper {
-    flex-direction: column;
-    text-align: center;
+    display: flex;
+    flex-direction: column;        /* stack vertically */
+    align-items: center;           /* center children */
+    text-align: center;            /* center text */
+    width: 100%;
+    max-width: 100%;
+    height: auto !important;
+  }
+
+  .hero-image {
+    width: 100%;
+    margin-bottom: -1.5rem;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    object-fit: contain;
+  }
+
+  .hero-text {
+    width: 100%;
+    padding: 0 1rem;
   }
 
   .hero-text h1 {
-    font-size: 2.4rem;
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+    word-break: break-word;
+  }
+
+  /* 🔑 Underline matches alignment */
+  .hero-text h1::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 3px;
+    margin: 0.5rem auto 0 auto;   /* keep centered */
+    background: #2c5ea8;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
   }
 
   .hero-tour-button {
     width: 100%;
-    max-width: 280px;
+    max-width: 260px;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+/* Extra small devices (iPhone SE / 320px) */
+@media (max-width: 480px) {
+  .hero-text h1 {
+    font-size: 1.6rem;
   }
 
-  .hero-image img {
-    max-width: 100%;
+  .hero-text h1::after {
+    width: 30px;   /* scale underline with text */
   }
+
+  .hero-text p {
+    font-size: 0.95rem;
+  }
+}
+
+
+
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+.modal-content {
+  width: 80vw;          /* Take 80% of viewport width */
+  height: 80vh;         /* Take 80% of viewport height */
+  max-width: 1000px;    /* Optional: don’t get too huge on big screens */
+  max-height: 800px;    /* Optional */
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;     /* Ensures iframe fits nicely */
+  padding: 1rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.modal-image {
+  max-width: 100%;
+  max-height: 85vh;       /* Make image bigger vertically */
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.modal-caption {
+  margin-top: 0.7rem;
+  font-size: 1.3rem;
+  color: #333;
+}
+
+/* Close button */
+.modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  font-size: 2.8rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #555;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  color: #000;
+}
+
+/* Prev / Next buttons */
+.modal-prev,
+.modal-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+  font-size: 3rem;
+  padding: 0 14px;
+  cursor: pointer;
+  border-radius: 6px;
+  color: #222;
+  user-select: none;
+  transition: background-color 0.25s ease;
+}
+
+.modal-prev:hover,
+.modal-next:hover {
+  background: #ffffff;
+}
+
+.modal-prev {
+  left: 1rem;
+}
+
+.modal-next {
+  right: 1rem;
+}
+
+.modal-content iframe {
+  flex: 1;              /* Makes iframe stretch inside modal */
+  width: 100%;
+  height: 100%;
+}
+
+.modal-content h2 {
+  text-align: center;
+  margin: 0 0 1rem 0;  /* optional: tidy up spacing */
+  font-size: 1.5rem;   /* optional: make it stand out */
 }

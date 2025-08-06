@@ -100,3 +100,69 @@
 .after-label {
   right: 20px;
 }
+
+/* ---------- Mobile Styles for Before/After Slider ---------- */
+@media (max-width: 768px) {
+  .before-after-container {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    height: auto;                  /* let height follow image */
+    aspect-ratio: 16 / 9;          /* keeps consistent shape */
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  /* Images scale proportionally, no cropping */
+  .before-image,
+  .after-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain !important; /* 👈 keep full image visible */
+    background: #f9f9f9;               /* filler background if letterboxed */
+  }
+
+  /* Divider + handle smaller */
+  .divider {
+    width: 2px;
+  }
+
+  .handle {
+    width: 30px;
+    height: 30px;
+    border: 2px solid #333;
+  }
+
+  .handle::before,
+  .handle::after {
+    width: 6px;
+    height: 6px;
+  }
+
+  /* Labels smaller */
+  .label {
+    font-size: 12px;
+    padding: 4px 10px;
+  }
+}
+
+/* Extra small screens (e.g. iPhone SE, <480px) */
+@media (max-width: 480px) {
+  .before-after-container {
+    aspect-ratio: 4 / 3;           /* slightly taller for tiny phones */
+  }
+
+  .handle {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #333;
+  }
+
+  .label {
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+}

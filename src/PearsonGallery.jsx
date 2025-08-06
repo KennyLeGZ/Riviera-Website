@@ -5,82 +5,96 @@ import BeforeAfterSlider from "./BeforeAfterSlider";
 
 import { useNavigate } from 'react-router-dom';
 
-// Example pairs (replace with real before/after images)
-
-// 1 Bedroom Apartments
-// Unfurnished → Furnished
-import img1 from './assets/Appartements/image1.png';
-import img2 from './assets/Appartements/image2.png';
-import img3 from './assets/Appartements/image3.png';
-import img4 from './assets/Appartements/image4.png';
-import img5 from './assets/Appartements/furnished7.png';
-import img6 from './assets/Appartements/furnished2.png';
-import img7 from './assets/Appartements/furnished3.png';
-import img8 from './assets/Appartements/furnished4.png';
-import img10 from './assets/Appartements/furnished5.png';
-import img11 from './assets/Appartements/furnished6.png';
-
-// 2 Bedroom Apartments
-import img12 from './assets/Appartements/IMG_4835_web.jpg';
-import img13 from './assets/Appartements/IMG_4839_web.jpg';
-import img14 from './assets/Appartements/IMG_4844_web.jpg';
-import img15 from './assets/Appartements/IMG_4847_web.jpg';
-import img16 from './assets/Appartements/IMG_4853_web.jpg';
-import img17 from './assets/Appartements/IMG_4854_web.jpg';
-import img18 from './assets/Appartements/IMG_4859_web.jpg';
-import img19 from './assets/Appartements/IMG_4862_web.jpg';
-import img20 from './assets/Appartements/IMG_4864_web.jpg';
-import img21 from './assets/Appartements/IMG_4865_web.jpg';
-import img22 from './assets/Appartements/IMG_4867_web.jpg';
-import img23 from './assets/Appartements/IMG_4868_web.jpg';
-
-
 // Logo
 import rivieraLogo from './assets/Icons/Riviera-logo.png';
 
+// Studio
+import img1 from './assets/Appartements/Pearson/Studio/Pearson_Studio_1.png';
+import furnishedStudio1 from './assets/Appartements/Pearson/Studio/Pearson_Studio_6.png';
+import img2 from './assets/Appartements/Pearson/Studio/Pearson_Studio_2.png';
+import img3 from './assets/Appartements/Pearson/Studio/Pearson_Studio_3.png';
+import img4 from './assets/Appartements/Pearson/Studio/Pearson_Studio_4.png';
+import img5 from './assets/Appartements/Pearson/Studio/Pearson_Studio_5.png';
+
+// 1 Bedroom
+import img7 from './assets/Appartements/Pearson/1Bedroom/Pearson_1Bedroom_1.jpg';
+import furnished1Bed1 from './assets/Appartements/Pearson/1Bedroom/furnished1Bed1.png';
+import img8 from './assets/Appartements/Pearson/1Bedroom/Pearson_1Bedroom_2.jpg';
+import img9 from './assets/Appartements/Pearson/1Bedroom/Pearson_1Bedroom_3.jpg';
+import img10 from './assets/Appartements/Pearson/1Bedroom/Pearson_1Bedroom_4.jpg';
+import img11 from './assets/Appartements/Pearson/1Bedroom/Pearson_1Bedroom_6.jpg';
+import furnished1Bed2 from './assets/Appartements/Pearson/1Bedroom/furnished1Bed2.png';
+import img12 from './assets/Appartements/Pearson/1Bedroom/Pearson_1Bedroom_7.jpg';
+import img13 from './assets/Appartements/Pearson/1Bedroom/Pearson_1Bedroom_5.jpg';
+
+
+// 2 Bedroom
+import img14 from './assets/Appartements/Pearson/2Bedroom/Pearson_2Bedroom_3.jpg';
+import furnished2Bed1 from './assets/Appartements/Pearson/2Bedroom/furnished2Bed1.png';
+import img15 from './assets/Appartements/Pearson/2Bedroom/Pearson_2Bedroom_4.jpg';
+import img16 from './assets/Appartements/Pearson/2Bedroom/Pearson_2Bedroom_2.jpg';
+import img17 from './assets/Appartements/Pearson/2Bedroom/Pearson_2Bedroom_5.jpg';
+import img18 from './assets/Appartements/Pearson/2Bedroom/Pearson_2Bedroom_7.jpg';
+import furnished2Bed2 from './assets/Appartements/Pearson/2Bedroom/furnished2Bed2.png';
+import img19 from './assets/Appartements/Pearson/2Bedroom/Pearson_2Bedroom_6.jpg';
+import img20 from './assets/Appartements/Pearson/2Bedroom/Pearson_2Bedroom_8.jpg';
+import img21 from './assets/Appartements/Pearson/2Bedroom/Pearson_2Bedroom_9.jpg';
+import img22 from './assets/Appartements/Pearson/2Bedroom/Pearson_2Bedroom_1.jpg';
+
+// 3 Bedroom
+import img23 from './assets/Appartements/Pearson/3Bedroom/Pearson_3Bedroom_4.jpg';
+import furnished3Bed1 from './assets/Appartements/Pearson/3Bedroom/furnished3Bed1.png';
+import img24 from './assets/Appartements/Pearson/3Bedroom/Pearson_3Bedroom_10.jpg';
+import img25 from './assets/Appartements/Pearson/3Bedroom/Pearson_3Bedroom_5.jpg';
+import img26 from './assets/Appartements/Pearson/3Bedroom/Pearson_3Bedroom_7.jpg';
+import furnished3Bed2 from './assets/Appartements/Pearson/3Bedroom/furnished3Bed2.png';
+import img27 from './assets/Appartements/Pearson/3Bedroom/Pearson_3Bedroom_8.jpg';
+import img28 from './assets/Appartements/Pearson/3Bedroom/Pearson_3Bedroom_6.jpg';
+import img29 from './assets/Appartements/Pearson/3Bedroom/Pearson_3Bedroom_1.jpg';
+import img30 from './assets/Appartements/Pearson/3Bedroom/Pearson_3Bedroom_2.jpg';
+import img31 from './assets/Appartements/Pearson/3Bedroom/Pearson_3Bedroom_9.jpg';
+
 // Define gallery items
 const images = [
-  { 
-    type: '1 bedroom',
-    before: img1, after: img5,
-    captionBefore: "Unfurnished Living Area", 
-    captionAfter: "Furnished Living Area"
-  },
-  { 
-    type: '1 bedroom',
-    before: img2, after: img6,
-    captionBefore: "Unfurnished Desk Space", 
-    captionAfter: "Furnished Desk Space"
-  },
-  { 
-    type: '1 bedroom',
-    before: img3, after: img8,
-    captionBefore: "Unfurnished Desk Space", 
-    captionAfter: "Furnished Desk Space"
-  },
-  { 
-    type: '1 bedroom',
-    before: img4, after: img11,
-    captionBefore: "Unfurnished Desk Space", 
-    captionAfter: "Furnished Desk Space"
-  },
-  { type: '2 bedroom', before: img12, captionBefore: "2BR Kitchen" },
-  { type: '2 bedroom', before: img13, captionBefore: "2BR Living Room" },
-  { type: '2 bedroom', before: img14, captionBefore: "2BR Bedroom" },
-  { type: '2 bedroom', before: img15, captionBefore: "2BR Dining Area" },
-  { type: '2 bedroom', before: img16, captionBefore: "2BR Kitchen" },
-  { type: '2 bedroom', before: img17, captionBefore: "2BR Living Room" },
-  { type: '2 bedroom', before: img18, captionBefore: "2BR Bedroom" },
-  { type: '2 bedroom', before: img19, captionBefore: "2BR Dining Area" },
-  { type: '2 bedroom', before: img20, captionBefore: "2BR Kitchen" },
-  { type: '2 bedroom', before: img21, captionBefore: "2BR Living Room" },
-  { type: '2 bedroom', before: img22, captionBefore: "2BR Bedroom" },
-  { type: '2 bedroom', before: img23, captionBefore: "2BR Dining Area" },
+  { type: 'Studio', before: img1, after: furnishedStudio1, captionBefore: "Studio: Living Area Unfurnished", captionAfter: "Living Area Unfurnished"},
+  { type: 'Studio', before: img2, captionBefore: "Studio: Kitchen 1" },
+  { type: 'Studio', before: img3, captionBefore: "Studio: Kitchen 2" },
+  { type: 'Studio', before: img4, captionBefore: "Studio: Bathroom" },
+  { type: 'Studio', before: img5, captionBefore: "Studio: Entrance" },
+
+  { type: '1 Bedroom', before: img7, after: furnished1Bed1, captionBefore: "1 Bedroom: Bedroom Unfurnished", captionAfter: "Bedroom Furnished"},
+  { type: '1 Bedroom', before: img8, captionBefore: "1 Bedroom: Bedroom View 2" },
+  { type: '1 Bedroom', before: img9, captionBefore: "1 Bedroom: Bedroom View 3" },
+  { type: '1 Bedroom', before: img10, captionBefore: "1 Bedroom: Living Area View 1" },
+  { type: '1 Bedroom', before: img11, after: furnished1Bed2, captionBefore: "1 Bedroom: Living Area Unfurnished", captionAfter: "Living Area Furnished"},
+  { type: '1 Bedroom', before: img12, captionBefore: "1 Bedroom: Living Area View 3" },
+  { type: '1 Bedroom', before: img13, captionBefore: "1 Bedroom: Kitchen" },
+  { type: '1 Bedroom', before: img22, captionBefore: "1 Bedroom: Bathroom" },
+
+  { type: '2 Bedroom', before: img14, after: furnished2Bed1, captionBefore: "2 Bedroom: Living Area Unfurnished", captionAfter: "Living Area Unfurnished"},
+  { type: '2 Bedroom', before: img15, captionBefore: "2 Bedroom: Living Area View 2" },
+  { type: '2 Bedroom', before: img16, captionBefore: "2 Bedroom: Kitchen" },
+  { type: '2 Bedroom', before: img17, captionBefore: "2 Bedroom: Hallway" },
+  { type: '2 Bedroom', before: img18, after: furnished2Bed2, captionBefore: "2 Bedroom: Bedroom Unfurnished", captionAfter: "Bedroom Furnished"},
+  { type: '2 Bedroom', before: img19, captionBefore: "2 Bedroom: Bedroom 1 View 2" },
+  { type: '2 Bedroom', before: img20, captionBefore: "2 Bedroom: Bedroom 2 View 1" },
+  { type: '2 Bedroom', before: img21, captionBefore: "2 Bedroom: Bedroom 2 View 2" },
+  { type: '2 Bedroom', before: img22, captionBefore: "2 Bedroom: Bathroom" },
+
+  { type: '3 Bedroom', before: img23, after: furnished3Bed1, captionBefore: "3 Bedroom: Living Area Unfurnished", captionAfter: "Living Area Furnished"},
+  { type: '3 Bedroom', before: img24, captionBefore: "3 Bedroom: Living Area View 2" },
+  { type: '3 Bedroom', before: img25, captionBefore: "3 Bedroom: Hallway" },
+  { type: '3 Bedroom', before: img26, after: furnished3Bed2, captionBefore: "3 Bedroom: Bedroom 1 Unfurnished", captionAfter: "Bedroom 1 Furnished"},
+  { type: '3 Bedroom', before: img27, captionBefore: "3 Bedroom: Bedroom 1 Walk In Closet" },
+  { type: '3 Bedroom', before: img28, captionBefore: "3 Bedroom: Bedroom 2" },
+  { type: '3 Bedroom', before: img29, captionBefore: "3 Bedroom: Bedroom 3 View 1" },
+  { type: '3 Bedroom', before: img30, captionBefore: "3 Bedroom: Bedroom 3 View 1" },
+  { type: '3 Bedroom', before: img31, captionBefore: "3 Bedroom: Bathroom" },
 ];
 
 function PhotoHeader() {
   const navigate = useNavigate();
-  const goToFrenchPhotos = () => navigate('/fr/photos');
+  const goToFrenchPhotos = () => navigate('/pearson/photos/fr');
   const [showModal, setShowModal] = useState(false);
   const handleContactClick = () => {
     window.location.href = 'mailto:kle@gestionzagora.com';
@@ -149,10 +163,15 @@ function Photos() {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [filter, setFilter] = useState('all');
 
+  // Scroll to top
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   const slides = [
-    { image: img1, title: "Photo Gallery" },
-    { image: img2, title: "50 Pearson" },
-    { image: img3, title: "60 Pearson" },
+    { image: furnished2Bed1, title: "Photo Gallery" },
+    { image: furnished2Bed2, title: "78 Pearson" },
+    { image: furnished3Bed1, title: "80 Pearson" },
   ];
 
   const nextSlide = () => {
@@ -182,9 +201,10 @@ function Photos() {
   }, [isTransitioning]);
 
   const groupedPhotos = {
-    '1 bedroom': images.filter(photo => photo.type === '1 bedroom'),
-    '2 bedroom': images.filter(photo => photo.type === '2 bedroom'),
-    'studio': images.filter(photo => photo.type === 'studio'),
+    'Studio': images.filter(photo => photo.type === 'Studio'),
+    '1 Bedroom': images.filter(photo => photo.type === '1 Bedroom'),
+    '2 Bedroom': images.filter(photo => photo.type === '2 Bedroom'),
+    '3 Bedroom': images.filter(photo => photo.type === '3 Bedroom'),
   };
 
   const filteredPhotos = filter === 'all' ? null : groupedPhotos[filter];
@@ -235,17 +255,18 @@ function Photos() {
         <h2 className="photo-title">Browse Our Apartments</h2>
         <div className="photo-subtitle">
           <p>
-            Explore a gallery of 2170 Lincoln's beautifully designed apartments. 
-            Slide left/right on the images to compare unfurnished and furnished versions.
+            Explore a gallery of 78 & 80 Pearson apartments. 
+            Slide left/right on certain images to compare unfurnished and furnished versions.
           </p>
         </div>
 
         {/* Filter Panel */}
         <div className="filter-panel">
           <button className={filter === 'all' ? 'filter-btn active' : 'filter-btn'} onClick={() => setFilter('all')}>All</button>
-          <button className={filter === '1 bedroom' ? 'filter-btn active' : 'filter-btn'} onClick={() => setFilter('1 bedroom')}>1 Bedroom</button>
-          <button className={filter === '2 bedroom' ? 'filter-btn active' : 'filter-btn'} onClick={() => setFilter('2 bedroom')}>2 Bedroom</button>
-          <button className={filter === 'studio' ? 'filter-btn active' : 'filter-btn'} onClick={() => setFilter('studio')}>Studio</button>
+          <button className={filter === 'Studio' ? 'filter-btn active' : 'filter-btn'} onClick={() => setFilter('Studio')}>Studio</button>
+          <button className={filter === '1 Bedroom' ? 'filter-btn active' : 'filter-btn'} onClick={() => setFilter('1 Bedroom')}>1 Bedroom</button>
+          <button className={filter === '2 Bedroom' ? 'filter-btn active' : 'filter-btn'} onClick={() => setFilter('2 Bedroom')}>2 Bedroom</button>
+          <button className={filter === '3 Bedroom' ? 'filter-btn active' : 'filter-btn'} onClick={() => setFilter('3 Bedroom')}>3 Bedroom</button>
         </div>
       </div>
 
@@ -329,6 +350,10 @@ function Photos() {
           </>
         )}
       </div>
+
+      <span style={{ paddingLeft: "1rem", fontSize: "0.80rem", color: "gray" }}>
+        *Some furnished images are virtually staged. Rooms may differ slightly from what is shown.
+      </span>
 
       <footer className="footer lightgray-bg">
         <p>© 2025 Pearson. All rights reserved.</p>

@@ -114,11 +114,10 @@
   }
 
   .arrow-button {
-    width: 42px;
-    height: 42px;
-    font-size: 1.6rem;
-    right: 16px;         /* ensure arrow stays inside */
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    width: 0px;
+    height: 0px;
+    font-size: 0rem;
+    right: 12px;         /* tighter spacing on small screens */
   }
 
   .arrow-button:hover {
@@ -141,9 +140,9 @@
   }
 
   .arrow-button {
-    width: 36px;
-    height: 36px;
-    font-size: 1.4rem;
+    width: 0px;
+    height: 0px;
+    font-size: 0rem;
     right: 12px;         /* tighter spacing on small screens */
   }
 }
@@ -377,14 +376,13 @@ th {
 
 /* Map section */
 .location-section {
-  padding: 0 0 7rem 0;
-  font-family: 'Inter', sans-serif;
-  width: 100%;
-  height: 80vh; /* Full viewport height */
   display: flex;
   align-items: stretch;
-  margin-bottom: 0;
+  min-height: 100vh;   /* start at 80% of the viewport */
+  height: auto;       /* grow as needed */
+  overflow: visible;  /* let children expand */
 }
+
 
 .modern-location-wrapper {
   display: flex;
@@ -396,16 +394,17 @@ th {
 .modern-location-text {
   flex: 1;
   padding: 3rem 4rem;
+  background-color: #F9FAFB;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #F9FAFB;
-  box-sizing: border-box;
-  max-width: 33%;
+  overflow: visible; /* no scrollbars */
 }
 
+
 .modern-location-text h2 {
-  font-size: 2.75rem;
+  font-size: clamp(1.8rem, 2.5vw, 2.75rem); /* shrinks on smaller screens */
   color: #2c2c2c;
   font-weight: 700;
   margin-bottom: 1.25rem;
@@ -422,15 +421,18 @@ th {
   border-radius: 2px;
 }
 
+
 .modern-location-text p {
-  font-size: 1.125rem;
+  font-size: clamp(0.9rem, 1.2vw, 1.125rem);
   color: #555;
-  line-height: 1.75;
+  line-height: 1.6;
 }
 
+
+
 .modern-location-map {
-  flex: 2;
-  height: 95%;
+  flex: 2; /* takes 2/3 width */
+  height: 100%; /* match parent */
 }
 
 .modern-location-map iframe {
@@ -454,13 +456,17 @@ th {
   }
 
   .modern-location-text {
-    max-width: 100%;          /* take full width */
-    padding: 1.5rem 1rem;     /* smaller padding */
-    text-align: center;       /* center text for mobile */
+    display: flex;
+    justify-content: center;   /* horizontal center */
+    align-items: center;       /* vertical center */
+    flex-direction: column;    /* keep text stacked */
+    text-align: center;
+    height: 100%;              /* ensure it fills parent box */
   }
 
+
   .modern-location-text h2 {
-    font-size: 2.5rem !important;        /* smaller heading */
+    font-size: 2.2rem !important;        /* smaller heading */
     margin-bottom: 1rem;
     text-align: center;
     padding-left: 0;
@@ -1371,10 +1377,10 @@ th {
 
 .photo-caption {
   margin-top: 8px;
-  font-size: 1rem;        /* same as normal text */
+  font-size: 1.1rem;        /* same as normal text */
   font-weight: normal;    /* match paragraph weight */
   color: inherit;         /* inherit color from parent/global */
-  font-family: inherit;   /* use the same font as the rest */
+  font-family: 'Inter', Tahoma, Geneva, Verdana, sans-serif;   /* use the same font as the rest */
 }
 
 

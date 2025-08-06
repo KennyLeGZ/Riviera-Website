@@ -233,13 +233,12 @@ body {
 /* Photo Grid - 2 per row full width */
 .photo-grid {
   display: grid;
-  grid-template-columns: repeat(2, 850px); /* fixed image width */
+  grid-template-columns: repeat(2, 1fr);  /* always 2 per row on desktop */
   gap: 1.5rem;
-  justify-content: center;   /* centers the whole grid */
-  justify-items: center; /* centers each item in its cell */
   margin: 0 auto;
-  padding: 0;
+  padding: 0 2rem;   /* 👈 spacing on left/right edges */
   margin-bottom: 5rem;
+  box-sizing: border-box;
 }
 
 
@@ -344,22 +343,21 @@ body {
   transform: scale(1.02);                 /* subtle zoom on hover */
 }
 
+/* Make single photos match the Before/After container size */
 .single-photo {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height:500px;       /* same as .before-after-container */
+  object-fit: cover;   /* crop instead of squish */
   border-radius: 8px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.08);
 }
+
 
 .photo-item {
   display: flex;
   flex-direction: column; /* stack image + caption */
   align-items: center;
 }
-
-
-
 
 .photo-img {
   width: 100%;
@@ -368,96 +366,7 @@ body {
   display: block;
 }
 
-/* Modal Overlay */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0,0,0,0.75);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1.5rem;
-  z-index: 1000;
-  box-sizing: border-box;
-}
 
-.modal-content {
-  position: relative;
-  max-width: 1500px;      /* Increase max width */
-  max-height: 100vh;       /* Increase max height */
-  background: white;
-  border-radius: 10px;
-  padding: 1rem 4rem;     /* More padding on sides for arrows */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-sizing: border-box;
-  text-align: center;
-}
-
-.modal-image {
-  max-width: 100%;
-  max-height: 85vh;       /* Make image bigger vertically */
-  border-radius: 8px;
-  object-fit: contain;
-}
-
-.modal-caption {
-  margin-top: 0.7rem;
-  font-size: 1.3rem;
-  color: #333;
-}
-
-/* Close button */
-.modal-close {
-  position: absolute;
-  top: 0.5rem;
-  right: 1rem;
-  font-size: 2.8rem;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  color: #555;
-  font-weight: bold;
-  line-height: 1;
-}
-
-.modal-close:hover {
-  color: #000;
-}
-
-/* Prev / Next buttons */
-.modal-prev,
-.modal-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.85);
-  border: none;
-  font-size: 3rem;
-  padding: 0 14px;
-  cursor: pointer;
-  border-radius: 6px;
-  color: #222;
-  user-select: none;
-  transition: background-color 0.25s ease;
-}
-
-.modal-prev:hover,
-.modal-next:hover {
-  background: rgba(255, 255, 255, 1);
-}
-
-.modal-prev {
-  left: 1rem;
-}
-
-.modal-next {
-  right: 1rem;
-}
 
 @media (max-width: 768px) {
   .header {
@@ -589,11 +498,29 @@ body {
   .photo-section-title::after {
     width: 40px;
   }
+  
+  .single-photo {
+    height: 400px;          /* smaller height on phones/tablets */
+    object-fit: cover;      /* still fill the box nicely */
+    border-radius: 6px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    margin-top: -2rem;
+  }
 
   /* --- Photo Items --- */
   .photo-item {
     border-radius: 0.75rem;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  }
+
+  .photo-item img {
+    width: 100%;
+    aspect-ratio: 16 / 9;       /* 👈 match slider ratio */
+    object-fit: contain;        /* 👈 same scaling as slider */
+    background: #f9f9f9;        /* same filler background */
+    display: block;
+    border-radius: 0.75rem;
+    margin-bottom: -5rem; 
   }
 
   .photo-item:hover {
@@ -603,8 +530,10 @@ body {
 
   /* --- Photo Caption --- */
   .photo-caption {
-    font-size: 1rem;
+    font-size: 0.8rem;
     padding: 0.5rem 1rem;
+    margin-top: 0.5rem;
+    font-family: 'Inter', Tahoma, Geneva, Verdana, sans-serif;
   }
 
   /* --- Modal Overlay --- */

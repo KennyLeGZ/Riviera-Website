@@ -34,8 +34,8 @@ function BeforeAfterSlider({ beforeImage, afterImage }) {
         <div className="handle"></div>
       </div>
 
-      <span className="label before-label">Before</span>
-      <span className="label after-label">After</span>
+      <span className="label before-label">Unfurnished</span>
+      <span className="label after-label">Furnished</span>
     </div>
   );
 }

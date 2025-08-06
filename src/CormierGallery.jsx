@@ -5,82 +5,101 @@ import BeforeAfterSlider from "./BeforeAfterSlider";
 
 import { useNavigate } from 'react-router-dom';
 
-// Example pairs (replace with real before/after images)
+// Studio
+import img1 from './assets/Appartements/Cormier/Studio/Cormier_Studio_1.jpg';
+import furnishedStudio1 from './assets/Appartements/Cormier/Studio/furnishedStudio1.png';
+import img2 from './assets/Appartements/Cormier/Studio/Cormier_Studio_2.jpg';
+import img3 from './assets/Appartements/Cormier/Studio/Cormier_Studio_3.jpg';
+import img4 from './assets/Appartements/Cormier/Studio/Cormier_Studio_4.jpg';
+import img5 from './assets/Appartements/Cormier/Studio/Cormier_Studio_5.jpg';
+import img6 from './assets/Appartements/Cormier/Studio/Cormier_Studio_6.jpg';
+import img7 from './assets/Appartements/Cormier/Studio/Cormier_Studio_7.jpg';
+import img8 from './assets/Appartements/Cormier/Studio/Cormier_Studio_8.jpg';
+import img9 from './assets/Appartements/Cormier/Studio/Cormier_Studio_9.jpg';
 
-// 1 Bedroom Apartments
-// Unfurnished → Furnished
-import img1 from './assets/Appartements/image1.png';
-import img2 from './assets/Appartements/image2.png';
-import img3 from './assets/Appartements/image3.png';
-import img4 from './assets/Appartements/image4.png';
-import img5 from './assets/Appartements/furnished7.png';
-import img6 from './assets/Appartements/furnished2.png';
-import img7 from './assets/Appartements/furnished3.png';
-import img8 from './assets/Appartements/furnished4.png';
-import img10 from './assets/Appartements/furnished5.png';
-import img11 from './assets/Appartements/furnished6.png';
+// 1 Bedroom
+import img10 from './assets/Appartements/Cormier/1Bedroom/Comier_1Bedroom_1.jpg';
+import img11 from './assets/Appartements/Cormier/1Bedroom/Comier_1Bedroom_2.jpg';
+import img12 from './assets/Appartements/Cormier/1Bedroom/Comier_1Bedroom_3.jpg';
+import img13 from './assets/Appartements/Cormier/1Bedroom/Comier_1Bedroom_4.jpg';
+import furnished1Bed1 from './assets/Appartements/Cormier/1Bedroom/furnished1Bed1.png';
+import img14 from './assets/Appartements/Cormier/1Bedroom/Comier_1Bedroom_5.jpg';
+import img15 from './assets/Appartements/Cormier/1Bedroom/Comier_1Bedroom_6.jpg';
+import img16 from './assets/Appartements/Cormier/1Bedroom/Comier_1Bedroom_7.jpg';
+import furnished1Bed2 from './assets/Appartements/Cormier/1Bedroom/furnished1Bed2.png';
+import img17 from './assets/Appartements/Cormier/1Bedroom/Comier_1Bedroom_8.jpg';
+import img18 from './assets/Appartements/Cormier/1Bedroom/Comier_1Bedroom_9.jpg';
+import img19 from './assets/Appartements/Cormier/1Bedroom/Comier_1Bedroom_10.jpg';
+import img20 from './assets/Appartements/Cormier/1Bedroom/Comier_1Bedroom_11.jpg';
 
-// 2 Bedroom Apartments
-import img12 from './assets/Appartements/IMG_4835_web.jpg';
-import img13 from './assets/Appartements/IMG_4839_web.jpg';
-import img14 from './assets/Appartements/IMG_4844_web.jpg';
-import img15 from './assets/Appartements/IMG_4847_web.jpg';
-import img16 from './assets/Appartements/IMG_4853_web.jpg';
-import img17 from './assets/Appartements/IMG_4854_web.jpg';
-import img18 from './assets/Appartements/IMG_4859_web.jpg';
-import img19 from './assets/Appartements/IMG_4862_web.jpg';
-import img20 from './assets/Appartements/IMG_4864_web.jpg';
-import img21 from './assets/Appartements/IMG_4865_web.jpg';
-import img22 from './assets/Appartements/IMG_4867_web.jpg';
-import img23 from './assets/Appartements/IMG_4868_web.jpg';
+// 2 Bedroom
+import img21 from './assets/Appartements/Cormier/2Bedroom/Cormier_2Bedroom_1.jpg';
+import furnished2Bed1 from './assets/Appartements/Cormier/2Bedroom/furnished2Bed1.png';
+import img22 from './assets/Appartements/Cormier/2Bedroom/Cormier_2Bedroom_2.jpg';
+import img23 from './assets/Appartements/Cormier/2Bedroom/Cormier_2Bedroom_3.jpg';
+import img24 from './assets/Appartements/Cormier/2Bedroom/Cormier_2Bedroom_4.jpg';
+import img25 from './assets/Appartements/Cormier/2Bedroom/Cormier_2Bedroom_5.jpg';
+import img26 from './assets/Appartements/Cormier/2Bedroom/Cormier_2Bedroom_6.jpg';
+import img27 from './assets/Appartements/Cormier/2Bedroom/Cormier_2Bedroom_7.jpg';
+import furnished2Bed2 from './assets/Appartements/Cormier/2Bedroom/furnished2Bed2.png';
+import img28 from './assets/Appartements/Cormier/2Bedroom/Cormier_2Bedroom_8.jpg';
+import img29 from './assets/Appartements/Cormier/2Bedroom/Cormier_2Bedroom_9.jpg';
+import img30 from './assets/Appartements/Cormier/2Bedroom/Cormier_2Bedroom_10.jpg';
+import img31 from './assets/Appartements/Cormier/2Bedroom/Cormier_2Bedroom_11.jpg';
+import img32 from './assets/Appartements/Cormier/2Bedroom/Cormier_2Bedroom_12.jpg';
+import img33 from './assets/Appartements/Cormier/2Bedroom/Cormier_2Bedroom_13.jpg';
+import img34 from './assets/Appartements/Cormier/2Bedroom/Cormier_2Bedroom_15.jpg';
+import furnished2Bed3 from './assets/Appartements/Cormier/2Bedroom/furnished2Bed3.png';
+import img36 from './assets/Appartements/Cormier/2Bedroom/Cormier_2Bedroom_17.jpg';
 
 
 // Logo
 import rivieraLogo from './assets/Icons/Riviera-logo.png';
 
-// Define gallery items
 const images = [
-  { 
-    type: '1 bedroom',
-    before: img1, after: img5,
-    captionBefore: "Unfurnished Living Area", 
-    captionAfter: "Furnished Living Area"
-  },
-  { 
-    type: '1 bedroom',
-    before: img2, after: img6,
-    captionBefore: "Unfurnished Desk Space", 
-    captionAfter: "Furnished Desk Space"
-  },
-  { 
-    type: '1 bedroom',
-    before: img3, after: img8,
-    captionBefore: "Unfurnished Desk Space", 
-    captionAfter: "Furnished Desk Space"
-  },
-  { 
-    type: '1 bedroom',
-    before: img4, after: img11,
-    captionBefore: "Unfurnished Desk Space", 
-    captionAfter: "Furnished Desk Space"
-  },
-  { type: '2 bedroom', before: img12, captionBefore: "2BR Kitchen" },
-  { type: '2 bedroom', before: img13, captionBefore: "2BR Living Room" },
-  { type: '2 bedroom', before: img14, captionBefore: "2BR Bedroom" },
-  { type: '2 bedroom', before: img15, captionBefore: "2BR Dining Area" },
-  { type: '2 bedroom', before: img16, captionBefore: "2BR Kitchen" },
-  { type: '2 bedroom', before: img17, captionBefore: "2BR Living Room" },
-  { type: '2 bedroom', before: img18, captionBefore: "2BR Bedroom" },
-  { type: '2 bedroom', before: img19, captionBefore: "2BR Dining Area" },
-  { type: '2 bedroom', before: img20, captionBefore: "2BR Kitchen" },
-  { type: '2 bedroom', before: img21, captionBefore: "2BR Living Room" },
-  { type: '2 bedroom', before: img22, captionBefore: "2BR Bedroom" },
-  { type: '2 bedroom', before: img23, captionBefore: "2BR Dining Area" },
+  { type: 'Studio', before: img1, after: furnishedStudio1, captionBefore: "Studio: Living Area Unfurnished", captionAfter: "Living Area Furnished"},
+  { type: 'Studio', before: img2, captionBefore: "Studio: Living Area + Kitchen View 2" },
+  { type: 'Studio', before: img3, captionBefore: "Studio: Entrance + Kitchen" },
+  { type: 'Studio', before: img4, captionBefore: "Studio: Living Area View 1" },
+  { type: 'Studio', before: img5, captionBefore: "Studio: Living Area View 2" },
+  { type: 'Studio', before: img6, captionBefore: "Studio: Living Area View 3" },
+  { type: 'Studio', before: img7, captionBefore: "Studio: Bathroom View 1" },
+  { type: 'Studio', before: img8, captionBefore: "Studio: Bathroom View 2" },
+  { type: 'Studio', before: img9, captionBefore: "Studio: Kitchen" },
+
+  { type: '1 Bedroom', before: img10, captionBefore: "1 Bed: Kitchen" },
+  { type: '1 Bedroom', before: img11, captionBefore: "1 Bed: Living Area View 1" },
+  { type: '1 Bedroom', before: img12, captionBefore: "1 Bed: Living Area View 2" },
+  { type: '1 Bedroom', before: img13, after: furnished1Bed1, captionBefore: "1 Bed: Living Area Unfurnished", captionAfter: "Living Area Furnished"},
+  { type: '1 Bedroom', before: img14, captionBefore: "1 Bed: Living Area + Entrance" },
+  { type: '1 Bedroom', before: img15, captionBefore: "1 Bed: Living Area View 4" },
+  { type: '1 Bedroom', before: img16, captionBefore: "1 Bed: Bedroom View 1" },
+  { type: '1 Bedroom', before: img17, after: furnished1Bed2, captionBefore: "1 Bed: Bedroom Unfurnished", captionAfter: "Bedroom Furnished"},
+  { type: '1 Bedroom', before: img18, captionBefore: "1 Bed: Bedroom View 3" },
+  { type: '1 Bedroom', before: img19, captionBefore: "1 Bed: Bathroom" },
+  { type: '1 Bedroom', before: img20, captionBefore: "1 Bed: Bedroom + Living Area" },
+
+  { type: '2 Bedroom', before: img21, after: furnished2Bed1, captionBefore: "2 Bed: Living Area Unfurnished", captionAfter: "Living Area Furnished"},
+  { type: '2 Bedroom', before: img22, captionBefore: "2 Bed: Living Area View 2" },
+  { type: '2 Bedroom', before: img23, captionBefore: "2 Bed: Living Area View 3" },
+  { type: '2 Bedroom', before: img24, captionBefore: "2 Bed: Kitchen" },
+  { type: '2 Bedroom', before: img25, captionBefore: "2 Bed: Bathroom View 1" },
+  { type: '2 Bedroom', before: img26, captionBefore: "2 Bed: Bathroom View 2" },
+  { type: '2 Bedroom', before: img27, after: furnished2Bed2, captionBefore: "2 Bed: 1st Bedroom Unfurnished", captionAfter: "1st Bedroom Furnished"},
+  { type: '2 Bedroom', before: img28, captionBefore: "2 Bed: Bedroom 1 View 2" },
+  { type: '2 Bedroom', before: img29, captionBefore: "2 Bed: Hallway" },
+  { type: '2 Bedroom', before: img30, captionBefore: "2 Bed: Balcony View 1" },
+  { type: '2 Bedroom', before: img31, captionBefore: "2 Bed: Balcony View 2" },
+  { type: '2 Bedroom', before: img32, captionBefore: "2 Bed: Balcony View 3" },
+  { type: '2 Bedroom', before: img33, captionBefore: "2 Bed: Balcony View 4" },
+  { type: '2 Bedroom', before: img34, after: furnished2Bed3, captionBefore: "2 Bed: 2nd Bedroom Unfurnished", captionAfter: "2nd Bedroom Furnished"},
+  { type: '2 Bedroom', before: img36, captionBefore: "2 Bed: Bedroom 2 View 2" },
 ];
+
 
 function PhotoHeader() {
   const navigate = useNavigate();
-  const goToFrenchPhotos = () => navigate('/fr/photos');
+  const goToFrenchPhotos = () => navigate('/cormier/photos/fr');
   const [showModal, setShowModal] = useState(false);
   const handleContactClick = () => {
     window.location.href = 'mailto:kle@gestionzagora.com';
@@ -149,10 +168,15 @@ function Photos() {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [filter, setFilter] = useState('all');
 
+  // Scroll to top
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   const slides = [
-    { image: img1, title: "Photo Gallery" },
-    { image: img2, title: "50 Cormier" },
-    { image: img3, title: "60 Cormier" },
+    { image: furnished1Bed2, title: "Photo Gallery" },
+    { image: furnished2Bed1, title: "50 Cormier" },
+    { image: furnished2Bed3, title: "60 Cormier" },
   ];
 
   const nextSlide = () => {
@@ -182,10 +206,9 @@ function Photos() {
   }, [isTransitioning]);
 
   const groupedPhotos = {
-    'studio': images.filter(photo => photo.type === 'studio'),
-    '1 bedroom': images.filter(photo => photo.type === '1 bedroom'),
-    '2 bedroom': images.filter(photo => photo.type === '2 bedroom'),
-    '3 bedroom': images.filter(photo => photo.type === '3 bedroom'),
+    'Studio': images.filter(photo => photo.type === 'Studio'),
+    '1 Bedroom': images.filter(photo => photo.type === '1 Bedroom'),
+    '2 Bedroom': images.filter(photo => photo.type === '2 Bedroom'),
   };
 
   const filteredPhotos = filter === 'all' ? null : groupedPhotos[filter];
@@ -236,18 +259,17 @@ function Photos() {
         <h2 className="photo-title">Browse Our Apartments</h2>
         <div className="photo-subtitle">
           <p>
-            Explore a gallery of 2170 Lincoln's beautifully designed apartments. 
-            Slide left/right on the images to compare unfurnished and furnished versions.
+            Explore a gallery of 50 & 60 Cormier apartments. 
+            Slide left/right on certain images to compare unfurnished and furnished versions.
           </p>
         </div>
 
         {/* Filter Panel */}
         <div className="filter-panel">
           <button className={filter === 'all' ? 'filter-btn active' : 'filter-btn'} onClick={() => setFilter('all')}>All</button>
-          <button className={filter === 'studio' ? 'filter-btn active' : 'filter-btn'} onClick={() => setFilter('studio')}>Studio</button>
-          <button className={filter === '1 bedroom' ? 'filter-btn active' : 'filter-btn'} onClick={() => setFilter('1 bedroom')}>1 Bedroom</button>
-          <button className={filter === '2 bedroom' ? 'filter-btn active' : 'filter-btn'} onClick={() => setFilter('2 bedroom')}>2 Bedroom</button>
-          <button className={filter === '3 bedroom' ? 'filter-btn active' : 'filter-btn'} onClick={() => setFilter('3 bedroom')}>3 Bedroom</button>
+          <button className={filter === 'Studio' ? 'filter-btn active' : 'filter-btn'} onClick={() => setFilter('Studio')}>Studio</button>
+          <button className={filter === '1 Bedroom' ? 'filter-btn active' : 'filter-btn'} onClick={() => setFilter('1 Bedroom')}>1 Bedroom</button>
+          <button className={filter === '2 Bedroom' ? 'filter-btn active' : 'filter-btn'} onClick={() => setFilter('2 Bedroom')}>2 Bedroom</button>
         </div>
       </div>
 
@@ -331,6 +353,11 @@ function Photos() {
           </>
         )}
       </div>
+
+      <span style={{ paddingLeft: "1rem", fontSize: "0.80rem", color: "gray" }}>
+        *Some furnished images are virtually staged. Rooms may differ slightly from what is shown.
+      </span>
+
 
       <footer className="footer lightgray-bg">
         <p>© 2025 Cormier. All rights reserved.</p>

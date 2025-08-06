@@ -6,38 +6,125 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import HamburgerMenu from './HamburgerMenu';
 
-// 1 Bedroom
-import img1 from './assets/Appartements/furnished1.png';
-import img2 from './assets/Appartements/furnished3.png';
-import img3 from './assets/Appartements/furnished4.png';
-import img4 from './assets/Appartements/furnished5.png';
 
-import wifiIcon from './assets/Icons/wifi.svg';
+// Icons
 import kitchenIcon from './assets/Icons/kitchen.svg';
 import lockIcon from './assets/Icons/security-camera.svg';
-import heatingCoolingIcon from './assets/Icons/heating-cooling.png';
+import heatingIcon from './assets/Icons/heating-icon-19.jpg';
 import washerIcon from './assets/Icons/washer.png';
 import gymIcon from './assets/Icons/gymIcon.png';
+import electricityIcon from './assets/Icons/electricityIcon.png';
 
 // Logo
 import rivieraLogo from './assets/Icons/Riviera-logo.png';
 
+// Amenities
+import cinema from './assets/Amenities/cinema2.jpg';
+import pool from './assets/outside/pearsonPool.jpg';
 
 
+// Studio
+import img1 from './assets/Appartements/Pearson/Studio/Pearson_Studio_1.png';
+import furnishedStudio1 from './assets/Appartements/Pearson/Studio/Pearson_Studio_6.png';
+import img2 from './assets/Appartements/Pearson/Studio/Pearson_Studio_2.png';
+import img3 from './assets/Appartements/Pearson/Studio/Pearson_Studio_3.png';
+import img4 from './assets/Appartements/Pearson/Studio/Pearson_Studio_4.png';
+import img5 from './assets/Appartements/Pearson/Studio/Pearson_Studio_5.png';
+
+// 1 Chambre
+import img7 from './assets/Appartements/Pearson/1Bedroom/Pearson_1Bedroom_1.jpg';
+import furnished1Bed1 from './assets/Appartements/Pearson/1Bedroom/furnished1Bed1.png';
+import img8 from './assets/Appartements/Pearson/1Bedroom/Pearson_1Bedroom_2.jpg';
+import img9 from './assets/Appartements/Pearson/1Bedroom/Pearson_1Bedroom_3.jpg';
+import img10 from './assets/Appartements/Pearson/1Bedroom/Pearson_1Bedroom_4.jpg';
+import img11 from './assets/Appartements/Pearson/1Bedroom/Pearson_1Bedroom_6.jpg';
+import furnished1Bed2 from './assets/Appartements/Pearson/1Bedroom/furnished1Bed2.png';
+import img12 from './assets/Appartements/Pearson/1Bedroom/Pearson_1Bedroom_7.jpg';
+import img13 from './assets/Appartements/Pearson/1Bedroom/Pearson_1Bedroom_5.jpg';
+
+
+// 2 Chambres
+import img14 from './assets/Appartements/Pearson/2Bedroom/Pearson_2Bedroom_3.jpg';
+import furnished2Bed1 from './assets/Appartements/Pearson/2Bedroom/furnished2Bed1.png';
+import img15 from './assets/Appartements/Pearson/2Bedroom/Pearson_2Bedroom_4.jpg';
+import img16 from './assets/Appartements/Pearson/2Bedroom/Pearson_2Bedroom_2.jpg';
+import img17 from './assets/Appartements/Pearson/2Bedroom/Pearson_2Bedroom_5.jpg';
+import img18 from './assets/Appartements/Pearson/2Bedroom/Pearson_2Bedroom_7.jpg';
+import furnished2Bed2 from './assets/Appartements/Pearson/2Bedroom/furnished2Bed2.png';
+import img19 from './assets/Appartements/Pearson/2Bedroom/Pearson_2Bedroom_6.jpg';
+import img20 from './assets/Appartements/Pearson/2Bedroom/Pearson_2Bedroom_8.jpg';
+import img21 from './assets/Appartements/Pearson/2Bedroom/Pearson_2Bedroom_9.jpg';
+import img22 from './assets/Appartements/Pearson/2Bedroom/Pearson_2Bedroom_1.jpg';
+
+// 3 Chambres
+import img23 from './assets/Appartements/Pearson/3Bedroom/Pearson_3Bedroom_4.jpg';
+import furnished3Bed1 from './assets/Appartements/Pearson/3Bedroom/furnished3Bed1.png';
+import img24 from './assets/Appartements/Pearson/3Bedroom/Pearson_3Bedroom_10.jpg';
+import img25 from './assets/Appartements/Pearson/3Bedroom/Pearson_3Bedroom_5.jpg';
+import img26 from './assets/Appartements/Pearson/3Bedroom/Pearson_3Bedroom_7.jpg';
+import furnished3Bed2 from './assets/Appartements/Pearson/3Bedroom/furnished3Bed2.png';
+import img27 from './assets/Appartements/Pearson/3Bedroom/Pearson_3Bedroom_8.jpg';
+import img28 from './assets/Appartements/Pearson/3Bedroom/Pearson_3Bedroom_6.jpg';
+import img29 from './assets/Appartements/Pearson/3Bedroom/Pearson_3Bedroom_1.jpg';
+import img30 from './assets/Appartements/Pearson/3Bedroom/Pearson_3Bedroom_2.jpg';
+import img31 from './assets/Appartements/Pearson/3Bedroom/Pearson_3Bedroom_9.jpg';
+
+// Define gallery items
 const images = [
-  { src: img1, caption: "Spacious 1 Bedroom Living Area", type: '1 bedroom' },
-  { src: img2, caption: " 1 Bedroom Living Area", type: '1 bedroom' },
-  { src: img3, caption: "Spacious 1  Living Area", type: '1 bedroom' },
-  { src: img4, caption: "Spacious 1 Bedroom Living Area", type: '1 bedroom' },
+  // Studio
+  { src: furnishedStudio1, caption: "Studio : Salon meublé", type: "Studio", furnished: true },
+  { src: furnished1Bed1, caption: "1 Chambre : Chambre meublée", type: "1 Chambre", furnished: true },
+  { src: furnished1Bed2, caption: "1 Chambre : Salon meublé", type: "1 Chambre", furnished: true },
+  { src: furnished2Bed1, caption: "2 Chambres : Salon non meublé", type: "2 Chambres", furnished: true },
+  { src: furnished2Bed2, caption: "2 Chambres : Chambre meublée", type: "2 Chambres", furnished: true },
+  { src: furnished3Bed1, caption: "3 Chambres : Salon meublé", type: "3 Chambres", furnished: true },
+  { src: furnished3Bed2, caption: "3 Chambres : Chambre 1 meublée", type: "3 Chambres", furnished: true },
+  { src: img1, caption: "Studio : Salon non meublé", type: "Studio", furnished: false },
+  { src: img2, caption: "Studio : Cuisine 1", type: "Studio", furnished: false },
+  { src: img3, caption: "Studio : Cuisine 2", type: "Studio", furnished: false },
+  { src: img4, caption: "Studio : Salle de bain", type: "Studio", furnished: false },
+  { src: img5, caption: "Studio : Entrée", type: "Studio", furnished: false },
+
+  // 1 Chambre
+  { src: img7, caption: "1 Chambre : Chambre non meublée", type: "1 Chambre", furnished: false },
+  { src: img8, caption: "1 Chambre : Chambre Vue 2", type: "1 Chambre", furnished: false },
+  { src: img9, caption: "1 Chambre : Chambre Vue 3", type: "1 Chambre", furnished: false },
+  { src: img10, caption: "1 Chambre : Salon Vue 1", type: "1 Chambre", furnished: false },
+  { src: img11, caption: "1 Chambre : Salon non meublé", type: "1 Chambre", furnished: false },
+  { src: img12, caption: "1 Chambre : Salon Vue 3", type: "1 Chambre", furnished: false },
+  { src: img13, caption: "1 Chambre : Cuisine", type: "1 Chambre", furnished: false },
+  { src: img22, caption: "1 Chambre : Salle de bain", type: "1 Chambre", furnished: false },
+
+  // 2 Chambres
+  { src: img14, caption: "2 Chambres : Salon non meublé", type: "2 Chambres", furnished: false },
+  { src: img15, caption: "2 Chambres : Salon Vue 2", type: "2 Chambres", furnished: false },
+  { src: img16, caption: "2 Chambres : Cuisine", type: "2 Chambres", furnished: false },
+  { src: img17, caption: "2 Chambres : Couloir", type: "2 Chambres", furnished: false },
+  { src: img18, caption: "2 Chambres : Chambre non meublée", type: "2 Chambres", furnished: false },
+  { src: img19, caption: "2 Chambres : Chambre 1 Vue 2", type: "2 Chambres", furnished: false },
+  { src: img20, caption: "2 Chambres : Chambre 2 Vue 1", type: "2 Chambres", furnished: false },
+  { src: img21, caption: "2 Chambres : Chambre 2 Vue 2", type: "2 Chambres", furnished: false },
+  { src: img22, caption: "2 Chambres : Salle de bain", type: "2 Chambres", furnished: false },
+
+  // 3 Chambres
+  { src: img23, caption: "3 Chambres : Salon non meublé", type: "3 Chambres", furnished: false },
+  { src: img24, caption: "3 Chambres : Salon Vue 2", type: "3 Chambres", furnished: false },
+  { src: img25, caption: "3 Chambres : Couloir", type: "3 Chambres", furnished: false },
+  { src: img26, caption: "3 Chambres : Chambre 1 non meublée", type: "3 Chambres", furnished: false },
+  { src: img27, caption: "3 Chambres : Chambre 1 Walk-in", type: "3 Chambres", furnished: false },
+  { src: img28, caption: "3 Chambres : Chambre 2", type: "3 Chambres", furnished: false },
+  { src: img29, caption: "3 Chambres : Chambre 3 Vue 1", type: "3 Chambres", furnished: false },
+  { src: img30, caption: "3 Chambres : Chambre 3 Vue 1", type: "3 Chambres", furnished: false },
+  { src: img31, caption: "3 Chambres : Salle de bain", type: "3 Chambres", furnished: false },
 ];
 
 
 // Sample units data
 const unitsData = [
-  { unit: '101', type: '1 Bedroom', size: '490 sq ft', floor: 1, price: '$1,745 / month', img: img1 },
-  { unit: '203', type: '2 Bedroom', size: '765 sq ft', floor: 2, price: '$2,345 / month', img: img2 },
-  { unit: '305', type: 'Studio', size: '300-342 sq ft', floor: 3, price: '$1,645 / month', img: img3 },
-  { unit: '405', type: '3 Bedroom', size: '300-342 sq ft', floor: 3, price: '$1,695 / month', img: img4 },
+  { type: 'Studio', size: '438 pi²', price: '$1,145 / month', img: furnishedStudio1 },
+  { type: '1 Chambre', size: '427-615 pi²', price: '$1,220 / month', img: furnished1Bed1 },
+  { type: '2 Chambres', size: '843-857 pi²', price: '$1,495 / month', img: furnished2Bed2 },
+  { type: '3 Chambres', size: '1114-1197 pi²', price: '$1,695 / month', img: furnished3Bed2 },
 ];
 
 
@@ -49,11 +136,12 @@ function Pearson() {
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   const slides = [
-    { image: img1, title: "Modern Living at Pearson" },
-    { image: img2, title: "Spacious & Bright Interiors" },
-    { image: img3, title: "Prime Location in Montreal" },
-    { image: img4, title: "Designed for Comfort" },
+    { image: furnished1Bed2, title: "Vivre moderne au Pearson" },
+    { image: furnished2Bed1, title: "Intérieurs spacieux et lumineux" },
+    { image: furnished3Bed1, title: "Emplacement idéal à Gatineau" },
+    { image: img5, title: "Conçu pour le confort" },
   ];
+
 
   const nextSlide = () => {
     if (isTransitioning) return; // prevent spam clicks
@@ -170,6 +258,10 @@ function Pearson() {
     }
   };
 
+  // Sort furnished images first
+  const sortedImages = [...images].sort((a, b) => {
+    return (b.furnished === true) - (a.furnished === true);
+  });
 
   // Open apply modal
   const openModal = () => setShowModal(true);
@@ -187,11 +279,12 @@ function Pearson() {
       <div className="header-left">
         {/* Desktop links */}
         <div className="desktop-links">
-          <button className="nav-header-link" onClick={() => navigate('/home')}>Riviera</button>
-          <button className="nav-header-link" onClick={() => scrollToRef(aboutRef1, -200)}>About</button>
-          <button className="nav-header-link" onClick={() => navigate('/pearson/photos')}>Gallery</button>
-          <button className="nav-header-link" onClick={() => scrollToRef(unitsRef1, -200)}>Available Units</button>
+          <button className="nav-header-link" onClick={() => navigate('/home/fr')}>Riviera</button>
+          <button className="nav-header-link" onClick={() => scrollToRef(aboutRef1, -200)}>À Propos</button>
+          <button className="nav-header-link" onClick={() => navigate('/pearson/photos/fr')}>Galerie</button>
+          <button className="nav-header-link" onClick={() => scrollToRef(unitsRef1, -200)}>Unités Disponibles</button>
         </div>
+
         
         {/* Hamburger Icon for Mobile */}
         <div className="hamburger-icon" onClick={toggleMenu}>
@@ -214,22 +307,24 @@ function Pearson() {
       </div>
 
       <div className="header-right">
-        {/* Desktop buttons */}
-        <div className="desktop-buttons">
-          <button className="nav-header-link" onClick={handleContactClick}>Contact Leasing Agent</button>
-          <button className="nav-header-link" onClick={openModal}>Book A Tour</button>
-          <button className="nav-header-link" onClick={() => navigate('/pearson')}>EN</button>
-        </div>
+      {/* Desktop buttons */}
+      <div className="desktop-buttons">
+        <button className="nav-header-link" onClick={handleContactClick}>Contacter l'Agent</button>
+        <button className="nav-header-link" onClick={openModal}>Réserver Une Visite</button>
+        <button className="nav-header-link" onClick={() => navigate('/pearson')}>EN</button>
       </div>
+    </div>
+
 
       {/* Mobile Dropdown Menu */}
       <div className={`dropdown-menu ${isMenuOpen ? 'open' : ''}`}>
-        <button className="nav-header-link" onClick={() => scrollToRef(aboutRef1, -200)}>About</button>
-        <button className="nav-header-link" onClick={() => navigate('/photos')}>Gallery</button>
-        <button className="nav-header-link" onClick={() => scrollToRef(unitsRef1, -220)}>Available Units</button>
-        <button className="nav-header-link" onClick={handleContactClick}>Contact Leasing Agent</button>
-        <button className="nav-header-link" onClick={openModal}>Book A Tour</button>
+        <button className="nav-header-link" onClick={() => scrollToRef(aboutRef1, -200)}>À Propos</button>
+        <button className="nav-header-link" onClick={() => navigate('/photos')}>Galerie</button>
+        <button className="nav-header-link" onClick={() => scrollToRef(unitsRef1, -220)}>Unités Disponibles</button>
+        <button className="nav-header-link" onClick={handleContactClick}>Contacter l'Agent</button>
+        <button className="nav-header-link" onClick={openModal}>Réserver Une Visite</button>
       </div>
+
 
     </header>
 
@@ -241,6 +336,7 @@ function Pearson() {
         {/* Slideshow */}
         <section className="slideshow-section" aria-label="Building images slideshow">
           <div className="slideshow-container triple-display" role="region" aria-live="polite" style={{ position: 'relative' }}>
+            
             {/* Left arrow button */}
             <button
               className="nav-button left"
@@ -253,8 +349,8 @@ function Pearson() {
 
             {/* Previous image preview */}
             <img
-              src={images[(currentIndex - 1 + images.length) % images.length].src}
-              alt={`Previous: ${images[(currentIndex - 1 + images.length) % images.length].caption}`}
+              src={sortedImages[(currentIndex - 1 + sortedImages.length) % sortedImages.length].src}
+              alt={`Previous: ${sortedImages[(currentIndex - 1 + sortedImages.length) % sortedImages.length].caption}`}
               className="side-image"
               onClick={goToPrevious}
               tabIndex={0}
@@ -264,16 +360,16 @@ function Pearson() {
 
             {/* Main image */}
             <img
-              key={images[currentIndex].src}
-              src={images[currentIndex].src}
-              alt={images[currentIndex].caption}
+              key={sortedImages[currentIndex].src}
+              src={sortedImages[currentIndex].src}
+              alt={sortedImages[currentIndex].caption}
               className={`main-image ${fade ? 'fade-in' : 'fade-out'}`}
             />
 
             {/* Next image preview */}
             <img
-              src={images[(currentIndex + 1) % images.length].src}
-              alt={`Next: ${images[(currentIndex + 1) % images.length].caption}`}
+              src={sortedImages[(currentIndex + 1) % sortedImages.length].src}
+              alt={`Next: ${sortedImages[(currentIndex + 1) % sortedImages.length].caption}`}
               className="side-image"
               onClick={goToNext}
               tabIndex={0}
@@ -291,7 +387,7 @@ function Pearson() {
               ›
             </button>
           </div>
-          <p className="caption">{images[currentIndex].caption}</p>
+          <p className="caption">{sortedImages[currentIndex].caption}</p>
         </section>
 
         {/* Book A Tour Section */}
@@ -300,13 +396,13 @@ function Pearson() {
         >
           <div className="hero-content-wrapper">
             <div className="hero-image">
-              <img src={images[1].src} alt="Beautiful unit at Pearson" />
+              <img src={furnished1Bed2} alt="Beautiful unit at Pearson" />
             </div>
             <div className="hero-text">
-              <h1>Find Your New Home<br />At Pearson</h1>
-              <p>Modern Design, Unbeatable Location, and Unmatched Comfort.</p>
+              <h1>Trouvez votre nouveau chez‑vous<br />au Pearson</h1>
+              <p>Design moderne, emplacement imbattable et confort inégalé.</p>
               <button className="hero-tour-button" onClick={openModal}>
-                Book a Tour
+                Réserver une visite
               </button>
             </div>
           </div>
@@ -331,76 +427,81 @@ function Pearson() {
             </div>
 
             <div className="about-text">
-              <h2>About Pearson</h2>
+              <h2>À Propos De Pearson</h2>
               <p>
-                Welcome to <strong>Pearson</strong>, a beautifully renovated
-                residential building located in a vibrant neighborhood close to downtown Montréal. 
-                Designed for modern comfort, it blends convenience with style,
-                offering a high-quality living experience for a diverse community.
+                Bienvenue à <strong>Pearson</strong>, une résidence rénovée à <strong>Aylmer, Gatineau</strong>, à quelques minutes du <strong>centre‑ville d’Ottawa</strong> et de l’<strong>Université d’Ottawa</strong>. 
+                Surplombant la <strong>rivière des Outaouais</strong>, Pearson combine confort et emplacement exceptionnel.
               </p>
               <p>
-                We strive to create a community where comfort meets convenience, offering thoughtfully 
-                designed spaces and modern features that enhance everyday living.
+                Entouré de <strong>cafés, restaurants, boutiques</strong> et commodités, Pearson offre un style de vie pratique et agréable. 
+                Avec ses appartements bien conçus et son atmosphère conviviale, c’est l’équilibre parfait entre <strong>confort et communauté</strong>.
               </p>
               <ul className="about-features">
-                <li>Modern and stylish design</li>
-                <li>Prime location close to Concordia, Dawson, downtown, and other amenities</li>
-                <li>Spacious, thoughtfully crafted living spaces</li>
-                <li>Community-focused atmosphere</li>
+                <li><strong>Emplacement idéal près de la rivière des Outaouais et du centre‑ville</strong></li>
+                <li><strong>À deux pas des cafés, restos et commodités</strong></li>
+                <li><strong>Espaces spacieux et confortables</strong></li>
+                <li><strong>Atmosphère chaleureuse et communautaire</strong></li>
               </ul>
             </div>
           </div>
         </section>
 
         {/* Insert Features Cards Section right here */}
-        <section className="features-cards-section white-bg" data-aos="fade-down" data-aos-once="true" data-aos-duration="600" data-aos-easing="ease-in-out">
-          <h2>Live Better at Pearson</h2>
+        <section 
+          className="features-cards-section white-bg" 
+          data-aos="fade-down" 
+          data-aos-once="true" 
+          data-aos-duration="600" 
+          data-aos-easing="ease-in-out"
+        >
+          <h2>Vivez mieux au Pearson</h2>
           <div className="features-cards-container">
-            {/* Card 1: Free Wifi */}
+            {/* Carte 1 : Hydro inclus */}
             <div className="feature-card">
-              <img src={wifiIcon} alt="WiFi icon" className="feature-icon" />
-              <h3>Free Internet</h3>
-              <p>Stay connected with included wireless internet available throughout the building.</p>
+              <img src={electricityIcon} alt="Icône électricité" className="feature-icon" />
+              <h3>Électricité</h3>
+              <p>L’électricité et l’eau sont incluses dans votre loyer pour plus de commodité.</p>
             </div>
 
-            {/* Card 2: Kitchen Features */}
+            {/* Carte 2 : Cuisine équipée */}
             <div className="feature-card">
-              <img src={kitchenIcon} alt="Kitchen icon" className="feature-icon" />
-              <h3>Equipped Kitchen</h3>
-              <p>A kitchen equipped with a cooktop, microwave, and other essentials, designed for your convenience and comfort</p>
+              <img src={kitchenIcon} alt="Icône cuisine" className="feature-icon" />
+              <h3>Cuisine équipée</h3>
+              <p>Une cuisine avec cuisinière, frigo et autres essentiels, conçue pour votre confort et votre praticité.</p>
             </div>
 
-            {/* Card 3: Secure Building */}
+            {/* Carte 3 : Sécurité */}
             <div className="feature-card">
-              <img src={lockIcon} alt="Lock icon" className="feature-icon" />
-              <h3>24/7 Secure Access</h3>
-              <p>Feel safe with round-the-clock surveillance and secure entry systems for residents.</p>
+              <img src={lockIcon} alt="Icône sécurité" className="feature-icon" />
+              <h3>Accès sécurisé 24/7</h3>
+              <p>Vivez en toute tranquillité grâce à une surveillance continue et des systèmes d’entrée sécurisés.</p>
             </div>
 
-            {/* Card 4: Heating and Cooling */}
+            {/* Carte 4 : Chauffage et climatisation */}
             <div className="feature-card">
-              <img src={heatingCoolingIcon} alt="Heating/Cooling icon" className="feature-icon" />
-              <h3>Air Conditioning & Heating</h3>
-              <p>Comfortable air conditioning and heating included year-round for your convenience.</p>
+              <img src={heatingIcon} alt="Icône chauffage/climatisation" className="feature-icon-heating" />
+              <h3>Chauffage et climatisation</h3>
+              <p>Confort assuré avec chauffage inclus.</p>
             </div>
 
-            {/* Card 4: Gym */}
+            {/* Carte 5 : Gym */}
             <div className="feature-card feature-card-medium">
-              <img src={gymIcon} alt="Gym icon" className="feature-icon" />
-              <h3>On-Site Gym</h3>
-              <p>Stay fit and active with our fully equipped on-site gym, available 24/7 for residents.</p>
+              <img src={gymIcon} alt="Icône gym" className="feature-icon" />
+              <h3>Gym sur place</h3>
+              <p>Restez en forme grâce à notre gym entièrement équipé, accessible 24/7 pour les résidents.</p>
             </div>
 
-            {/* Card 5: In-Unit Washer/Dryer */}
+            {/* Carte 6 : Buanderie */}
             <div className="feature-card feature-card-medium">
-              <img src={washerIcon} alt="Washer/Dryer icon" className="feature-icon" />
-              <h3>Laundry Room</h3>
-              <p>Convenient on-site laundry with modern washers and dryers.</p>
+              <img src={washerIcon} alt="Icône buanderie" className="feature-icon" />
+              <h3>Buanderie</h3>
+              <p>Buanderie pratique sur place avec laveuses et sécheuses.</p>
             </div>
           </div>
         </section>
 
-        {/* Amenities Gym Highlight Section */}
+
+        {/* Amenities Cinema Highlight Section */}
         <section
           className="amenities-hero lightgray-bg"
           data-aos="fade-right"
@@ -409,16 +510,16 @@ function Pearson() {
         >
           <div className="amenities-hero-content-wrapper">
             <div className="amenities-hero-image">
-              <img src={img1} alt="Gym at Pearson" />
+              <img src={cinema} alt="Cinema at Pearson" />
             </div>
             <div className="amenities-hero-text">
-              <h1>Modern Gym with Stunning <br />Downtown Montreal View</h1>
-              <p>Enjoy your workouts in a bright, modern gym with stunning panoramic views of downtown Montréal.</p>
+              <h1>Expérience cinéma privée</h1>
+              <p>Détendez‑vous et profitez de vos films préférés dans une salle de cinéma confortable, conçue pour une expérience immersive.</p>
             </div>
           </div>
         </section>
 
-        {/* Amenities Conference Room Highlight Section */}
+        {/* Amenities Pool Highlight Section */}
         <section
           className="amenities-hero lightgray-bg reverse"
           data-aos="fade-left"
@@ -427,11 +528,11 @@ function Pearson() {
         >
           <div className="amenities-hero-content-wrapper">
             <div className="amenities-hero-image">
-              <img src={img2} alt="Conference Room at Pearson" />
+              <img src={pool} alt="Pool at Pearson" />
             </div>
             <div className="amenities-hero-text">
-              <h1>Fully Equipped Conference Space</h1>
-              <p>Host your meetings and events in our elegant conference room, designed to provide a professional and comfortable space for all your gatherings.</p>
+              <h1>Piscine Extérieure Relaxante</h1>
+              <p>Détendez‑vous et rafraîchissez‑vous dans notre piscine extérieure, un espace lumineux et accueillant conçu pour les loisirs, la détente et les belles journées d’été.</p>
             </div>
           </div>
         </section>
@@ -446,10 +547,10 @@ function Pearson() {
           data-aos-duration="400"
           data-aos-easing="ease-in-out"
         >
-          <h2>Available Units & Floor Plans</h2>
+          <h2>Unités Disponibles</h2>
 
           <div className="units-card-container">
-            {['Studio', '1 Bedroom', '2 Bedroom', '3 Bedroom'].map((type) => {
+            {['Studio', '1 Chambre', '2 Chambres', '3 Chambres'].map((type) => {
               // Show all units of this type (no filter)
               const unitsOfType = filteredUnits.filter(u => u.type === type);
               if (unitsOfType.length === 0) return null;
@@ -461,9 +562,9 @@ function Pearson() {
                     <div key={unit} className="unit-card">
                       <img src={img} alt={`${type} unit ${unit}`} className="unit-image" />
                       <div className="unit-info">
-                        <p><strong>Type:</strong> {type}</p>
-                        <p><strong>Size:</strong> {size}</p>
-                        <p><strong>Starting Price:</strong> {price}</p>
+                        <p><strong>Type :</strong> {type}</p>
+                        <p><strong>Superficie :</strong> {size}</p>
+                        <p><strong>Prix à partir de :</strong> {price}</p>
                       </div>
                     </div>
                   ))}
@@ -485,11 +586,13 @@ function Pearson() {
         >
           <div className="modern-location-wrapper">
             <div className="modern-location-text">
-              <h2>Discover the Neighborhood</h2>
+              <h2>Découvrez Le Quartier</h2>
               <p>
-                Pearson is ideally located just 10 minutes from <b>downtown Montréal</b> and <b>Mount Royal Park</b>, and only steps away from <b>Concordia University</b> and <b>Dawson College</b>.
-                Metro stations, shopping centres, cafés, and daily conveniences are all next to the building, making life easy and accessible.
-                Whether you're commuting, studying, or unwinding, Pearson is the perfect place to be.
+                <strong>Pearson</strong> est idéalement situé à <b>Aylmer, Gatineau</b>, à seulement quelques minutes du 
+                <b>centre‑ville d’Ottawa</b> et de l’<b>Université d’Ottawa</b>.  
+                Surplombant la <b>rivière des Outaouais</b> et entouré de cafés, restaurants, boutiques et commodités essentielles, 
+                tout ce dont vous avez besoin est à portée de main.  
+                Que vous soyez étudiant, travailleur ou simplement en quête de détente, Pearson offre l’équilibre idéal entre confort, commodité et style de vie.
               </p>
             </div>
             <div className="modern-location-map">
@@ -502,44 +605,6 @@ function Pearson() {
             </div>
           </div>
         </section>
-
-
-
-        {/* Testimonials
-        <section
-          ref={testimonialsRef1}
-          className="testimonials-section"
-          data-aos="fade-down"
-          data-aos-once="true"
-          data-aos-duration="600"
-        >
-          <h2 className="testimonials-title">What Our Residents Say</h2>
-          <div className="testimonials-grid">
-            <div className="testimonial-card">
-              <p className="testimonial-text">
-                "Highly recommend living at Pearson! The apartments are spacious and comfortable. The building is well-maintained and clean, and the location is great.
-                I’m happy to call this place home and definitely plan to stay long-term!"
-              </p>
-              <p className="testimonial-author"></p>
-            </div>
-            <div className="testimonial-card">
-              <p className="testimonial-text">
-                "My husband and I had an amazing experience living here. It was our first time in Montréal and the location is just as great as described. It is close to vibrant neighborhoods, restaurants, and bars. 
-                Our apartment felt spacious with a full kitchen, a nice bathroom, and a lovely balcony.
-                I would definitely recommend Pearson to anyone looking for a great home."
-              </p>
-              <p className="testimonial-author"></p>
-            </div>
-            <div className="testimonial-card">
-              <p className="testimonial-text">
-                "Living at Pearson has been fantastic. The apartments are spacious and clean and the location is unbeatable because it is close to everything you need.
-                It truly feels like home and I’m happy to recommend it to anyone looking for a great place to live."
-              </p>
-              <p className="testimonial-author"></p>
-            </div>
-          </div>
-        </section>
-        */}
       </main>
 
       {/* Modal for Apply Now */}
@@ -615,9 +680,14 @@ function Pearson() {
 
       </div>
 
+      <span style={{ paddingLeft: "1rem", fontSize: "0.80rem", color: "gray" }}>
+        *Certaines images sont virtuellement meublées; les pièces peuvent varier.
+      </span>
+
+
       {/* Footer */}
       <footer className="footer lightgray-bg">
-        <p>© 2025 Pearson. All rights reserved.</p>
+        <p>© 2025 Pearson. Tous droits réservés.</p>
       </footer>
     </>
   );

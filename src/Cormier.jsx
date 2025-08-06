@@ -6,18 +6,60 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import HamburgerMenu from './HamburgerMenu';
 
-// 1 Bedroom
-import img1 from './assets/Appartements/furnished1.png';
-import img2 from './assets/Appartements/furnished3.png';
-import img3 from './assets/Appartements/furnished4.png';
-import img4 from './assets/Appartements/furnished5.png';
+// Studio
+import img1 from './assets/Appartements/Cormier/Studio/Cormier_Studio_1.jpg';
+import furnishedStudio1 from './assets/Appartements/Cormier/Studio/furnishedStudio1.png';
+import img2 from './assets/Appartements/Cormier/Studio/Cormier_Studio_2.jpg';
+import img3 from './assets/Appartements/Cormier/Studio/Cormier_Studio_3.jpg';
+import img4 from './assets/Appartements/Cormier/Studio/Cormier_Studio_4.jpg';
+import img5 from './assets/Appartements/Cormier/Studio/Cormier_Studio_5.jpg';
+import img6 from './assets/Appartements/Cormier/Studio/Cormier_Studio_6.jpg';
+import img7 from './assets/Appartements/Cormier/Studio/Cormier_Studio_7.jpg';
+import img8 from './assets/Appartements/Cormier/Studio/Cormier_Studio_8.jpg';
+import img9 from './assets/Appartements/Cormier/Studio/Cormier_Studio_9.jpg';
 
-import wifiIcon from './assets/Icons/wifi.svg';
+// 1 Bedroom
+import img10 from './assets/Appartements/Cormier/1Bedroom/Comier_1Bedroom_1.jpg';
+import img11 from './assets/Appartements/Cormier/1Bedroom/Comier_1Bedroom_2.jpg';
+import img12 from './assets/Appartements/Cormier/1Bedroom/Comier_1Bedroom_3.jpg';
+import img13 from './assets/Appartements/Cormier/1Bedroom/Comier_1Bedroom_4.jpg';
+import furnished1Bed1 from './assets/Appartements/Cormier/1Bedroom/furnished1Bed1.png';
+import img14 from './assets/Appartements/Cormier/1Bedroom/Comier_1Bedroom_5.jpg';
+import img15 from './assets/Appartements/Cormier/1Bedroom/Comier_1Bedroom_6.jpg';
+import img16 from './assets/Appartements/Cormier/1Bedroom/Comier_1Bedroom_7.jpg';
+import furnished1Bed2 from './assets/Appartements/Cormier/1Bedroom/furnished1Bed2.png';
+import img17 from './assets/Appartements/Cormier/1Bedroom/Comier_1Bedroom_8.jpg';
+import img18 from './assets/Appartements/Cormier/1Bedroom/Comier_1Bedroom_9.jpg';
+import img19 from './assets/Appartements/Cormier/1Bedroom/Comier_1Bedroom_10.jpg';
+import img20 from './assets/Appartements/Cormier/1Bedroom/Comier_1Bedroom_11.jpg';
+
+// 2 Bedroom
+import img21 from './assets/Appartements/Cormier/2Bedroom/Cormier_2Bedroom_1.jpg';
+import furnished2Bed1 from './assets/Appartements/Cormier/2Bedroom/furnished2Bed1.png';
+import img22 from './assets/Appartements/Cormier/2Bedroom/Cormier_2Bedroom_2.jpg';
+import img23 from './assets/Appartements/Cormier/2Bedroom/Cormier_2Bedroom_3.jpg';
+import img24 from './assets/Appartements/Cormier/2Bedroom/Cormier_2Bedroom_4.jpg';
+import img25 from './assets/Appartements/Cormier/2Bedroom/Cormier_2Bedroom_5.jpg';
+import img26 from './assets/Appartements/Cormier/2Bedroom/Cormier_2Bedroom_6.jpg';
+import img27 from './assets/Appartements/Cormier/2Bedroom/Cormier_2Bedroom_7.jpg';
+import furnished2Bed2 from './assets/Appartements/Cormier/2Bedroom/furnished2Bed2.png';
+import img28 from './assets/Appartements/Cormier/2Bedroom/Cormier_2Bedroom_8.jpg';
+import img29 from './assets/Appartements/Cormier/2Bedroom/Cormier_2Bedroom_9.jpg';
+import img30 from './assets/Appartements/Cormier/2Bedroom/Cormier_2Bedroom_10.jpg';
+import img31 from './assets/Appartements/Cormier/2Bedroom/Cormier_2Bedroom_11.jpg';
+import img32 from './assets/Appartements/Cormier/2Bedroom/Cormier_2Bedroom_12.jpg';
+import img33 from './assets/Appartements/Cormier/2Bedroom/Cormier_2Bedroom_13.jpg';
+import img34 from './assets/Appartements/Cormier/2Bedroom/Cormier_2Bedroom_15.jpg';
+import furnished2Bed3 from './assets/Appartements/Cormier/2Bedroom/furnished2Bed3.png';
+import img36 from './assets/Appartements/Cormier/2Bedroom/Cormier_2Bedroom_17.jpg';
+
+// Icons
 import kitchenIcon from './assets/Icons/kitchen.svg';
 import lockIcon from './assets/Icons/security-camera.svg';
-import heatingCoolingIcon from './assets/Icons/heating-cooling.png';
+import heatingIcon from './assets/Icons/heating-icon-19.jpg';
 import washerIcon from './assets/Icons/washer.png';
 import gymIcon from './assets/Icons/gymIcon.png';
+import electricityIcon from './assets/Icons/electricityIcon.png';
 
 // Logo
 import rivieraLogo from './assets/Icons/Riviera-logo.png';
@@ -29,22 +71,62 @@ import pool from './assets/Amenities/pool1.png';
 import balconyview from './assets/Outside/view1.png';
 
 
-
-
-
 const images = [
-  { src: img1, caption: "Spacious 1 Bedroom Living Area", type: '1 bedroom' },
-  { src: img2, caption: " 1 Bedroom Living Area", type: '1 bedroom' },
-  { src: img3, caption: "Spacious 1  Living Area", type: '1 bedroom' },
-  { src: img4, caption: "Spacious 1 Bedroom Living Area", type: '1 bedroom' },
+  // Studio
+  { src: img1, caption: "Studio: Living Area Unfurnished", type: "Studio", furnished: false },
+  { src: furnishedStudio1, caption: "Studio: Living Area Furnished", type: "Studio", furnished: true },
+  { src: img2, caption: "Studio: Living Area + Kitchen View 2", type: "Studio", furnished: false },
+  { src: img3, caption: "Studio: Entrance + Kitchen", type: "Studio", furnished: false },
+  { src: img4, caption: "Studio: Living Area View 1", type: "Studio", furnished: false },
+  { src: img5, caption: "Studio: Living Area View 2", type: "Studio", furnished: false },
+  { src: img6, caption: "Studio: Living Area View 3", type: "Studio", furnished: false },
+  { src: img7, caption: "Studio: Bathroom View 1", type: "Studio", furnished: false },
+  { src: img8, caption: "Studio: Bathroom View 2", type: "Studio", furnished: false },
+  { src: img9, caption: "Studio: Kitchen", type: "Studio", furnished: false },
+
+  // 1 Bedroom
+  { src: img10, caption: "1 Bed: Kitchen", type: "1 Bedroom" },
+  { src: img11, caption: "1 Bed: Living Area View 1", type: "1 Bedroom", furnished: false },
+  { src: img12, caption: "1 Bed: Living Area View 2", type: "1 Bedroom", furnished: false },
+  { src: img13, caption: "1 Bed: Living Area Unfurnished", type: "1 Bedroom", furnished: false },
+  { src: furnished1Bed1, caption: "1 Bed: Living Area Furnished", type: "1 Bedroom", furnished: true },
+  { src: img14, caption: "1 Bed: Living Area + Entrance", type: "1 Bedroom", furnished: false },
+  { src: img15, caption: "1 Bed: Living Area View 4", type: "1 Bedroom", furnished: false },
+  { src: img16, caption: "1 Bed: Bedroom View 1", type: "1 Bedroom", furnished: false },
+  { src: img17, caption: "1 Bed: Bedroom Unfurnished", type: "1 Bedroom", furnished: false },
+  { src: furnished1Bed2, caption: "1 Bed: Bedroom Furnished", type: "1 Bedroom", furnished: true },
+  { src: img18, caption: "1 Bed: Bedroom View 3", type: "1 Bedroom", furnished: false },
+  { src: img19, caption: "1 Bed: Bathroom", type: "1 Bedroom", furnished: false },
+  { src: img20, caption: "1 Bed: Bedroom + Living Area", type: "1 Bedroom", furnished: false },
+
+  // 2 Bedroom
+  { src: img21, caption: "2 Bed: Living Area Unfurnished", type: "2 Bedroom", furnished: false },
+  { src: furnished2Bed1, caption: "2 Bed: Living Area Furnished", type: "2 Bedroom", furnished: true },
+  { src: img22, caption: "2 Bed: Living Area View 2", type: "2 Bedroom", furnished: false },
+  { src: img23, caption: "2 Bed: Living Area View 3", type: "2 Bedroom", furnished: false },
+  { src: img24, caption: "2 Bed: Kitchen", type: "2 Bedroom", furnished: false },
+  { src: img25, caption: "2 Bed: Bathroom View 1", type: "2 Bedroom", furnished: false },
+  { src: img26, caption: "2 Bed: Bathroom View 2", type: "2 Bedroom", furnished: false },
+  { src: img27, caption: "2 Bed: 1st Bedroom Unfurnished", type: "2 Bedroom", furnished: false },
+  { src: furnished2Bed2, caption: "2 Bed: 1st Bedroom Furnished", type: "2 Bedroom", furnished: true },
+  { src: img28, caption: "2 Bed: Bedroom 1 View 2", type: "2 Bedroom", furnished: false },
+  { src: img29, caption: "2 Bed: Hallway", type: "2 Bedroom", furnished: false },
+  { src: img30, caption: "2 Bed: Balcony View 1", type: "2 Bedroom", furnished: false },
+  { src: img31, caption: "2 Bed: Balcony View 2", type: "2 Bedroom", furnished: false },
+  { src: img32, caption: "2 Bed: Balcony View 3", type: "2 Bedroom", furnished: false },
+  { src: img33, caption: "2 Bed: Balcony View 4", type: "2 Bedroom", furnished: false },
+  { src: img34, caption: "2 Bed: 2nd Bedroom Unfurnished", type: "2 Bedroom", furnished: false },
+  { src: furnished2Bed3, caption: "2 Bed: 2nd Bedroom Furnished", type: "2 Bedroom", furnished: true },
+  { src: img36, caption: "2 Bed: Bedroom 2 View 2", type: "2 Bedroom", furnished: false },
 ];
+
 
 
 // Sample units data
 const unitsData = [
-  { unit: '101', type: '1 Bedroom', size: '490 sq ft', floor: 1, price: '$1,220 / month', img: img1 },
-  { unit: '203', type: '2 Bedroom', size: '765 sq ft', floor: 2, price: '$1,695 / month', img: img2 },
-  { unit: '305', type: 'Studio', size: '300-342 sq ft', floor: 3, price: '$1,220 / month', img: img3 },
+  { type: 'Studio', size: '448 pi²', price: '$1,220 / month', img: furnishedStudio1 },
+  { type: '1 Bedroom', size: '652 pi²', price: '$1,345 / month', img: furnished1Bed2 },
+  { type: '2 Bedroom', size: '837-930 pi²', price: '$1,695 / month', img: furnished2Bed2 },
 ];
 
 
@@ -56,10 +138,10 @@ function Cormier() {
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   const slides = [
-    { image: img1, title: "Modern Living at Cormier" },
-    { image: img2, title: "Spacious & Bright Interiors" },
-    { image: img3, title: "Prime Location in Montreal" },
-    { image: img4, title: "Designed for Comfort" },
+    { image: furnishedStudio1, title: "Modern Living at Cormier" },
+    { image: furnished1Bed1, title: "Spacious & Bright Interiors" },
+    { image: furnished1Bed2, title: "Prime Location in Montreal" },
+    { image: furnished2Bed1, title: "Designed for Comfort" },
   ];
 
   const nextSlide = () => {
@@ -105,8 +187,11 @@ function Cormier() {
   const aboutRef2 = useRef(null);
   const unitsRef1 = useRef(null);
   const locationRef = useRef(null);
-  const testimonialsRef1 = useRef(null);
-  const additionalInfoRef = useRef(null);
+
+  // Sort furnished images first
+  const sortedImages = [...images].sort((a, b) => {
+    return (b.furnished === true) - (a.furnished === true);
+  });
 
   // Auto slideshow with fade
   useEffect(() => {
@@ -237,6 +322,7 @@ function Cormier() {
         <button className="nav-header-link" onClick={() => scrollToRef(unitsRef1, -220)}>Available Units</button>
         <button className="nav-header-link" onClick={handleContactClick}>Contact Leasing Agent</button>
         <button className="nav-header-link" onClick={openModal}>Book A Tour</button>
+        <button className="nav-header-link" onClick={() => navigate('/cormier/fr')}>FR</button>
       </div>
 
     </header>
@@ -247,14 +333,9 @@ function Cormier() {
       <main className="main-content">
 
         {/* Slideshow */}
-        <section className="slideshow-section" 
-          aria-label="Building images slideshow" 
-          data-aos="fade-left"
-          data-aos-once="true"
-          data-aos-duration="400"
-          data-aos-easing="ease-in-out"
-        >
+        <section className="slideshow-section" aria-label="Building images slideshow">
           <div className="slideshow-container triple-display" role="region" aria-live="polite" style={{ position: 'relative' }}>
+            
             {/* Left arrow button */}
             <button
               className="nav-button left"
@@ -267,8 +348,8 @@ function Cormier() {
 
             {/* Previous image preview */}
             <img
-              src={images[(currentIndex - 1 + images.length) % images.length].src}
-              alt={`Previous: ${images[(currentIndex - 1 + images.length) % images.length].caption}`}
+              src={sortedImages[(currentIndex - 1 + sortedImages.length) % sortedImages.length].src}
+              alt={`Previous: ${sortedImages[(currentIndex - 1 + sortedImages.length) % sortedImages.length].caption}`}
               className="side-image"
               onClick={goToPrevious}
               tabIndex={0}
@@ -278,16 +359,16 @@ function Cormier() {
 
             {/* Main image */}
             <img
-              key={images[currentIndex].src}
-              src={images[currentIndex].src}
-              alt={images[currentIndex].caption}
+              key={sortedImages[currentIndex].src}
+              src={sortedImages[currentIndex].src}
+              alt={sortedImages[currentIndex].caption}
               className={`main-image ${fade ? 'fade-in' : 'fade-out'}`}
             />
 
             {/* Next image preview */}
             <img
-              src={images[(currentIndex + 1) % images.length].src}
-              alt={`Next: ${images[(currentIndex + 1) % images.length].caption}`}
+              src={sortedImages[(currentIndex + 1) % sortedImages.length].src}
+              alt={`Next: ${sortedImages[(currentIndex + 1) % sortedImages.length].caption}`}
               className="side-image"
               onClick={goToNext}
               tabIndex={0}
@@ -305,7 +386,7 @@ function Cormier() {
               ›
             </button>
           </div>
-          <p className="caption">{images[currentIndex].caption}</p>
+          <p className="caption">{sortedImages[currentIndex].caption}</p>
         </section>
 
         {/* Book A Tour Section */}
@@ -321,10 +402,10 @@ function Cormier() {
               <img src={images[1].src} alt="Beautiful unit at Cormier" />
             </div>
             <div className="hero-text">
-              <h1>Welcome To <br/>50 & 60 Cormier<br />Riviera Apartments</h1>
+              <h1>Welcome To <br/>50 & 60 Cormier<br /></h1>
               <p>Affordable Housing, Central Location, Total Comfort.</p>
               <button className="hero-tour-button" onClick={openModal}>
-                Book a Tour
+                Book A Tour
               </button>
             </div>
           </div>
@@ -342,7 +423,7 @@ function Cormier() {
           <div className="about-wrapper">
             <div className="about-image">
               <img
-                src={images[1].src}
+                src={furnished2Bed1}
                 alt="Cormier Building Exterior"
                 loading="lazy"
               />
@@ -351,7 +432,7 @@ function Cormier() {
             <div className="about-text">
               <h2>About Cormier</h2>
               <p>
-                Welcome to <strong>Cormier</strong>, a beautifully renovated residence in Aylmer, Gatineau,  
+                Welcome to <strong>Cormier</strong>, a beautiful residence in Aylmer, Gatineau,  
                 just minutes from the Ottawa River and downtown Ottawa. Designed for comfort, it blends convenience with style  
                 to offer a high‑quality living experience.
               </p>
@@ -371,20 +452,20 @@ function Cormier() {
 
         {/* Insert Features Cards Section right here */}
         <section className="features-cards-section white-bg" data-aos="fade-down" data-aos-once="true" data-aos-duration="600" data-aos-easing="ease-in-out">
-          <h2>Live Better at Cormier</h2>
+          <h2>Live Better at Pearson</h2>
           <div className="features-cards-container">
-            {/* Card 1: Free Wifi */}
+            {/* Card 1: Hydro Included */}
             <div className="feature-card">
-              <img src={wifiIcon} alt="WiFi icon" className="feature-icon" />
-              <h3>Free Internet</h3>
-              <p>Stay connected with included wireless internet available throughout the building.</p>
+              <img src={electricityIcon} alt="WiFi icon" className="feature-icon" />
+              <h3>Electricity</h3>
+              <p>Electricity and water are included in your rent for added convenience.</p>
             </div>
 
             {/* Card 2: Kitchen Features */}
             <div className="feature-card">
               <img src={kitchenIcon} alt="Kitchen icon" className="feature-icon" />
               <h3>Equipped Kitchen</h3>
-              <p>A kitchen equipped with a cooktop, microwave, and other essentials, designed for your convenience and comfort</p>
+              <p>A kitchen equipped with a stove, fridge, and other essentials, designed for your convenience and comfort</p>
             </div>
 
             {/* Card 3: Secure Building */}
@@ -396,9 +477,9 @@ function Cormier() {
 
             {/* Card 4: Heating and Cooling */}
             <div className="feature-card">
-              <img src={heatingCoolingIcon} alt="Heating/Cooling icon" className="feature-icon" />
-              <h3>Air Conditioning & Heating</h3>
-              <p>Comfortable air conditioning and heating included year-round for your convenience.</p>
+              <img src={heatingIcon} alt="Heating/Cooling icon" className="feature-icon-heating" />
+              <h3>Heating</h3>
+              <p>Comfortable heating included for your convenience.</p>
             </div>
 
             {/* Card 4: Gym */}
@@ -412,12 +493,12 @@ function Cormier() {
             <div className="feature-card feature-card-medium">
               <img src={washerIcon} alt="Washer/Dryer icon" className="feature-icon" />
               <h3>Laundry Room</h3>
-              <p>Convenient on-site laundry with modern washers and dryers.</p>
+              <p>Convenient on-site laundry with washers and dryers.</p>
             </div>
           </div>
         </section>
 
-        {/* Amenities Gym Highlight Section */}
+        {/* Amenities Pool Highlight Section */}
         <section
           className="amenities-hero lightgray-bg"
           data-aos="fade-right"
@@ -429,13 +510,13 @@ function Cormier() {
               <img src={pool} alt="Pool at Cormier" />
             </div>
             <div className="amenities-hero-text">
-              <h1>Relax and Refresh by the Pool</h1>
+              <h1>Relax And Refresh By The Pool</h1>
               <p>Enjoy a refreshing swim in a bright, welcoming pool designed for relaxation and leisure.</p>
             </div>
           </div>
         </section>
 
-        {/* Amenities Conference Room Highlight Section */}
+        {/* Amenities View Highlight Section */}
         <section
           className="amenities-hero lightgray-bg reverse"
           data-aos="fade-left"
@@ -444,7 +525,7 @@ function Cormier() {
         >
           <div className="amenities-hero-content-wrapper">
             <div className="amenities-hero-image">
-              <img src={balconyview} alt="Conference Room at Cormier" />
+              <img src={balconyview} alt="View at Cormier" />
             </div>
             <div className="amenities-hero-text">
               <h1>A Stunning View Across the Ottawa River</h1>
@@ -465,7 +546,7 @@ function Cormier() {
           data-aos-duration="400"
           data-aos-easing="ease-in-out"
         >
-          <h2>Available Units & Floor Plans</h2>
+          <h2>Available Units</h2>
 
           <div className="units-card-container">
             {['Studio', '1 Bedroom', '2 Bedroom'].map((type) => {
@@ -507,7 +588,7 @@ function Cormier() {
               <h2>Discover the Neighborhood</h2>
               <p>
                 Nestled in Aylmer, Gatineau, <strong>Cormier</strong> offers easy access to the <b>Ottawa River</b> and is just minutes from <b>downtown Ottawa</b>.  
-                Surrounded by cafés, restaurants, and shops, daily conveniences are always within reach, and the <b>University of Ottawa</b> is only a 15‑minute drive away.  
+                Surrounded by cafés, restaurants, and shops, daily conveniences are always within reach, and the <b>University of Ottawa</b> is only a 20‑minute drive away.  
                 Cormier is where comfort, convenience, and location come together.
               </p>
             </div>
@@ -595,6 +676,10 @@ function Cormier() {
       )}
 
       </div>
+
+      <span style={{ paddingLeft: "1rem", fontSize: "0.80rem", color: "gray" }}>
+        *Some furnished images are virtually staged. Rooms may differ slightly from what is shown.
+      </span>
 
       {/* Footer */}
       <footer className="footer lightgray-bg">
