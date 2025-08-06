@@ -270,7 +270,7 @@ function Cormier() {
 
   // Handle Contact button click
   const handleContactClick = () => {
-    window.location.href = 'mailto:kle@gestionzagora.com';
+    window.location.href = 'mailto:location@apartmentsriviera.ca';
   };
 
   return (

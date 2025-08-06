@@ -97,7 +97,7 @@ function PhotoHeader() {
   const goToFrenchPhotos = () => navigate('/pearson/photos/fr');
   const [showModal, setShowModal] = useState(false);
   const handleContactClick = () => {
-    window.location.href = 'mailto:kle@gestionzagora.com';
+    window.location.href = 'mailto:location@apartmentsriviera.ca';
   };
 
   return (
